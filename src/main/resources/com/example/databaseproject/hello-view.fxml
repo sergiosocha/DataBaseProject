@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.databaseproject.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox alignment="CENTER" prefHeight="557.0" prefWidth="774.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.HelloController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+   <children>
+      <Pane id="title_label" prefHeight="446.0" prefWidth="734.0" style="-fx-background-color: #b1afaf;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="48.0" prefHeight="44.0" prefWidth="482.0" text="INGRESO DE USUARIO" textAlignment="CENTER">
+               <font>
+                  <Font name="Forte" size="30.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="310.0" layoutY="149.0" prefHeight="30.0" prefWidth="111.0" text="USER">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField id="user_box" alignment="CENTER" layoutX="234.0" layoutY="185.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
+            <Label alignment="CENTER" layoutX="298.0" layoutY="236.0" prefHeight="36.0" prefWidth="137.0" text="PASWORD">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField id="pasword_box" alignment="CENTER" layoutX="235.0" layoutY="272.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
+            <Button layoutX="293.0" layoutY="346.0" mnemonicParsing="false" onMouseClicked="#inputLoggin" prefHeight="25.0" prefWidth="148.0" text="ingresar" />
+         </children>
+      </Pane>
+   </children>
 </VBox>
