@@ -28,5 +28,7 @@ public class DataBaseConnection {
 
 
     }
-
+    public static void prueba(){
+        System.out.println("hola mundo");
+    }
 }
