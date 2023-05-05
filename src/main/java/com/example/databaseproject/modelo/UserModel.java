@@ -1,10 +1,10 @@
 package com.example.databaseproject.modelo;
 
 public class UserModel {
-    String user;
-    String password;
+    private String user;
+    private String password;
 
-    public UserModel() {
+    public UserModel(String user) {
         this.user = "";
         this.password = "";
 
@@ -21,5 +21,13 @@ public class UserModel {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

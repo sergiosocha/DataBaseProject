@@ -1,7 +1,7 @@
 package com.example.databaseproject;
 
 import com.example.databaseproject.modelo.Database_model;
-import javafx.beans.Observable;
+import com.example.databaseproject.modelo.UserModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +16,7 @@ public class ShowDatabasesController {
 
     Database_model database_model;
     HelloController logginController;
+    UserModel userM;
 
 
     @javafx.fxml.FXML
@@ -26,16 +27,40 @@ public class ShowDatabasesController {
     private TableView dataBases;
 
     private ObservableList<Database_model> databases;
+    @javafx.fxml.FXML
+    private Button update_button;
 
     public void initialize(){
         this.database_model = new Database_model();
         this.logginController = new HelloController();
         modelaTabla();
+    }
+
+    @javafx.fxml.FXML
+    public void cerrarsesion_button(ActionEvent actionEvent) {
+    }
+
+    public void modelaTabla(){
+        this.databases = FXCollections.observableArrayList();
+        this.databases_table.setCellValueFactory(new PropertyValueFactory("Bases De Datos"));
+    }
+
+    public void cargarDataBase(){
+
+    }
+
+    @javafx.fxml.FXML
+    public void update_buttonAction(ActionEvent actionEvent) {
 
         String url = "jdbc:mysql://localhost:3306/";
-        logginController.conexion(logginController.user, logginController.pasword);
-        String username = logginController.conexion;
-        String password = logginController.pasword;
+
+
+        HelloController loggin = new HelloController();
+        String username = loggin.user;
+        String password = loggin.password;
+
+        System.out.println(username + "usuario");
+        System.out.println(password + "password");
 
 
         try{
@@ -47,31 +72,14 @@ public class ShowDatabasesController {
 
 
             while (resultSet.next()) {
-                Database_model data = new Database_model(resultSet.getString("DataBase"));
+
                 System.out.println(resultSet.getString("DataBase"));
-                this.databases.add(data);
+
 
             }
 
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
-
-    }
-
-    @javafx.fxml.FXML
-    public void cerrarsesion_button(ActionEvent actionEvent) {
-    }
-
-    public void modelaTabla(){
-
-        this.databases = FXCollections.observableArrayList();
-
-        this.databases_table.setCellValueFactory(new PropertyValueFactory("Bases De Datos"));
-
-
-
     }
 }

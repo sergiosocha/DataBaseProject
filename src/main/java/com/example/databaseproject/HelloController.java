@@ -1,5 +1,6 @@
 package com.example.databaseproject;
 
+import com.example.databaseproject.modelo.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.sql.*;
 
 public class HelloController {
-
+    UserModel userM;
     @FXML
     private TextField password_id;
     @FXML
@@ -22,15 +23,23 @@ public class HelloController {
     @FXML
     private Button loggin_password;
 
+    public String user = "";
+    public String password = "";
+
+
 
 
     @FXML
     public void loggin(ActionEvent actionEvent) {
-        String user = user_id.getText();
-        String pasword = password_id.getText();
+
+        user = user_id.getText();
+        password = password_id.getText();
+
+
 
         try {
-            conexion(user,pasword);
+            conexion(user,password);
+
 
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("show_databases.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
@@ -43,6 +52,8 @@ public class HelloController {
             myStage.close();
 
 
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -50,6 +61,8 @@ public class HelloController {
 
 
     }
+
+
     public void conexion (String username, String password){
         String url = "jdbc:mysql://localhost:3306/";
 
@@ -61,10 +74,8 @@ public class HelloController {
 
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");
 
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("DataBase"));
 
-            }
+
 
         }catch (SQLException e){
             e.printStackTrace();

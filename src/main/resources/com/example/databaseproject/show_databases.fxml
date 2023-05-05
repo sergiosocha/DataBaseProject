@@ -22,6 +22,11 @@
                 <TableColumn fx:id="databases_table" prefWidth="220.0" text="Bases De Datos" />
               </columns>
             </TableView>
+            <Button fx:id="update_button" layoutX="245.0" layoutY="24.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" text="actualizar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
