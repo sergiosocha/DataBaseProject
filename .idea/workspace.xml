@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="New files, src, interface">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="Loggin interface, DataBaseConnection updating">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +52,7 @@
       <recent name="com.example.databaseproject" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DataBaseConnection">
+  <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="DataBaseConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.databaseproject.DataBaseConnection" />
       <module name="DataBaseProject" />
@@ -90,8 +92,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DataBaseConnection" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.DataBaseConnection" />
       </list>
     </recent_temporary>
   </component>
@@ -107,6 +109,7 @@
       <workItem from="1683208000002" duration="3243000" />
       <workItem from="1683218128822" duration="155000" />
       <workItem from="1683228974141" duration="1028000" />
+      <workItem from="1683312350847" duration="1000000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -122,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683229422292</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Loggin interface, DataBaseConnection updating">
+      <created>1683312609789</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683312609789</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +151,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New files, src, interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="New files, src, interface" />
+    <MESSAGE value="Loggin interface, DataBaseConnection updating" />
+    <option name="LAST_COMMIT_MESSAGE" value="Loggin interface, DataBaseConnection updating" />
   </component>
 </project>

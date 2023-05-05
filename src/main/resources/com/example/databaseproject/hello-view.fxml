@@ -25,14 +25,14 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField id="user_box" alignment="CENTER" layoutX="234.0" layoutY="185.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
+            <TextField id="user_box" fx:id="user_id" alignment="CENTER" layoutX="234.0" layoutY="185.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
             <Label alignment="CENTER" layoutX="298.0" layoutY="236.0" prefHeight="36.0" prefWidth="137.0" text="PASWORD">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField id="pasword_box" alignment="CENTER" layoutX="235.0" layoutY="272.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
-            <Button layoutX="293.0" layoutY="346.0" mnemonicParsing="false" onMouseClicked="#inputLoggin" prefHeight="25.0" prefWidth="148.0" text="ingresar" />
+            <TextField id="pasword_box" fx:id="password_id" alignment="CENTER" layoutX="235.0" layoutY="272.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
+            <Button fx:id="loggin_password" layoutX="293.0" layoutY="346.0" mnemonicParsing="false" onAction="#loggin" prefHeight="25.0" prefWidth="148.0" text="Login" />
          </children>
       </Pane>
    </children>
