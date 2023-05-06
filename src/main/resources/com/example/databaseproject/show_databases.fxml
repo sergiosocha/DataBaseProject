@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.ShowDatabasesController">
    <children>
       <Pane layoutX="14.0" layoutY="14.0" prefHeight="373.0" prefWidth="574.0">
@@ -17,9 +16,9 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TableView fx:id="dataBases" layoutX="14.0" layoutY="24.0" prefHeight="281.0" prefWidth="221.0">
+            <TableView fx:id="dataBases_tableView" layoutX="14.0" layoutY="24.0" prefHeight="281.0" prefWidth="221.0">
               <columns>
-                <TableColumn fx:id="databases_table" prefWidth="220.0" text="Bases De Datos" />
+                <TableColumn fx:id="Database" prefWidth="220.0" text="Bases De Datos" />
               </columns>
             </TableView>
             <Button fx:id="update_button" layoutX="245.0" layoutY="24.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" text="actualizar">
