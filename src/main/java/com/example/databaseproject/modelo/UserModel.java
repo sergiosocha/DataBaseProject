@@ -4,7 +4,7 @@ public class UserModel {
     private String user;
     private String password;
 
-    public UserModel(String user) {
+    public UserModel() {
         this.user = "";
         this.password = "";
 

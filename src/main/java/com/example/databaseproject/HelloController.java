@@ -26,17 +26,11 @@ public class HelloController {
     public String user = "";
     public String password = "";
 
-
-
-
     @FXML
     public void loggin(ActionEvent actionEvent) {
-
+        this.userM = new UserModel();
         user = user_id.getText();
         password = password_id.getText();
-
-
-
         try {
             conexion(user,password);
 
@@ -73,6 +67,14 @@ public class HelloController {
 
 
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");
+
+
+            while ( resultSet.next()){
+
+                System.out.println(resultSet.getString("DataBase"));
+
+            }
+
 
 
 

@@ -42,7 +42,7 @@ public class ShowDatabasesController {
 
     public void modelaTabla(){
         this.databases = FXCollections.observableArrayList();
-        this.databases_table.setCellValueFactory(new PropertyValueFactory("Bases De Datos"));
+
     }
 
     public void cargarDataBase(){
@@ -51,35 +51,40 @@ public class ShowDatabasesController {
 
     @javafx.fxml.FXML
     public void update_buttonAction(ActionEvent actionEvent) {
+        this.userM = new UserModel();
+        modelaTabla();
 
         String url = "jdbc:mysql://localhost:3306/";
+        String username = "root";
+        String password = "12345";
 
 
-        HelloController loggin = new HelloController();
-        String username = loggin.user;
-        String password = loggin.password;
-
-        System.out.println(username + "usuario");
-        System.out.println(password + "password");
 
 
-        try{
-            Connection connection = DriverManager.getConnection(url, username, password);
+        System.out.println(userM.getUser() + "user");
+        System.out.println(userM.getPassword() + "password");
+        ObservableList<Database_model> databases = FXCollections.observableArrayList();
+        try {
+            Connection connection = DriverManager.getConnection(url,username, password);
             Statement statement = connection.createStatement();
-
-
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");
 
-
-            while (resultSet.next()) {
-
-                System.out.println(resultSet.getString("DataBase"));
-
+            while ( resultSet.next()){
+                Database_model st = new Database_model();
+                st.setName(resultSet.getString("DataBase"));
+                databases.add(st);
 
             }
+
+            dataBases.setItems(databases);
+            this.databases_table.setCellValueFactory(new PropertyValueFactory("databases_table"));
+
 
         }catch (SQLException e){
             e.printStackTrace();
         }
+
+
+
     }
 }
