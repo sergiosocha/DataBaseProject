@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="UPDATE README FILE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +107,9 @@
       <workItem from="1683342773633" duration="42000" />
       <workItem from="1683411938164" duration="2963000" />
       <workItem from="1683423226818" duration="818000" />
-      <workItem from="1683494887849" duration="12310000" />
+      <workItem from="1683494887849" duration="12915000" />
+      <workItem from="1683511496485" duration="453000" />
+      <workItem from="1683574875074" duration="3928000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -168,7 +167,28 @@
       <option name="project" value="LOCAL" />
       <updated>1683500083251</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="BUTTON DELETE, CREATE AND UPDATE WORKING ON DATABASES INTERFACE(CRUD WORKS)">
+      <created>1683510739615</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683510739615</updated>
+    </task>
+    <task id="LOCAL-00010" summary="BUTTON DELETE, CREATE AND UPDATE WORKING ON DATABASES INTERFACE(CRUD WORKS)">
+      <created>1683510874019</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683510874019</updated>
+    </task>
+    <task id="LOCAL-00011" summary="UPDATE README FILE">
+      <created>1683510962263</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683510962263</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +213,8 @@
     <MESSAGE value="fixed interface errors, table view" />
     <MESSAGE value="working databases interface,  actualy shows all mysqldatabases on pc" />
     <MESSAGE value="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME" />
-    <option name="LAST_COMMIT_MESSAGE" value="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME" />
+    <MESSAGE value="BUTTON DELETE, CREATE AND UPDATE WORKING ON DATABASES INTERFACE(CRUD WORKS)" />
+    <MESSAGE value="UPDATE README FILE" />
+    <option name="LAST_COMMIT_MESSAGE" value="UPDATE README FILE" />
   </component>
 </project>

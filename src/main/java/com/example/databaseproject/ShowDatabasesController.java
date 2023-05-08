@@ -12,21 +12,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 
 import java.sql.*;
 import javax.swing.*;
 
 public class ShowDatabasesController {
-
     com.example.databaseproject.modelo.Database dataBaseM;
     HelloController logginController;
     User userM;
     Table tableM;
 
-
     @javafx.fxml.FXML
     private Button cerrarsesion_button;
-
     private ObservableList<Database> databases;
     @javafx.fxml.FXML
     private Button update_button;
@@ -50,6 +48,14 @@ public class ShowDatabasesController {
 
     Connection con;
     PreparedStatement pst;
+    @javafx.fxml.FXML
+    private Button createNewTable_button;
+    @javafx.fxml.FXML
+    private Pane createTables_interface;
+    @javafx.fxml.FXML
+    private Button volverShowTables_Button;
+    @javafx.fxml.FXML
+    private Pane ShowDatabasesPane;
 
     public void Connection(){
         try{
@@ -78,24 +84,24 @@ public class ShowDatabasesController {
     }
 
     public void tableDataBases(){
-        Connection();
+        Connection(); //Trae la funcion Connection para poder usarla en el CreateStatement para luego prepara la consulta
         ObservableList<Database> databases = FXCollections.observableArrayList();
         this.Database.setCellValueFactory(new PropertyValueFactory("Database"));
 
         try {
 
-            Statement statement = con.createStatement();
-            ResultSet resultSet = statement.executeQuery("SHOW DATABASES");
+            Statement statement = con.createStatement(); //Usa con previamente declarado en las variables para preparar el Statement
+            ResultSet resultSet = statement.executeQuery("SHOW DATABASES");//Con el statement anterior en un nuevo objeto resulset preparamos el query
 
             while ( resultSet.next()){
-                com.example.databaseproject.modelo.Database st = new Database();
-                st.setDatabase(resultSet.getString("Database"));
+                Database st = new Database(); //Creamos un nuevo objeto de tipo DataBase en este caso st
+                st.setDatabase(resultSet.getString("Database"));//Usamos St para dar formato a los datos que obtenemos
                 String var = resultSet.getString("DataBase");
-                databases.add(st);
+                databases.add(st); //agregamos al oversableList los elementos st
             }
 
-            dataBases_tableView.setItems(databases);
-            Database.setCellValueFactory(f->f.getValue().getDatabase());
+            dataBases_tableView.setItems(databases);//Traemos los items a la table view
+            Database.setCellValueFactory(f->f.getValue().getDatabase());//damos formatos ala la columna o celdas dentro de la tabla
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -106,7 +112,6 @@ public class ShowDatabasesController {
 
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
-
         String urlToSearch = url+searchDatabase;
 
         ObservableList<Table> tables = FXCollections.observableArrayList();
@@ -129,10 +134,6 @@ public class ShowDatabasesController {
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
-
-
     }
 
     @Deprecated
@@ -179,5 +180,17 @@ public class ShowDatabasesController {
             e.printStackTrace();
         }
 
+    }
+
+    @javafx.fxml.FXML
+    public void doCreateNewTable(ActionEvent actionEvent) {
+        this.createTables_interface.setVisible(true);
+        this.ShowDatabasesPane.setVisible(false);
+    }
+
+    @javafx.fxml.FXML
+    public void doVolver(ActionEvent actionEvent) {
+        this.createTables_interface.setVisible(false);
+        this.ShowDatabasesPane.setVisible(true);
     }
 }
