@@ -160,12 +160,10 @@ public class ShowDatabasesController {
             e.printStackTrace();
         }
     }
-
     @javafx.fxml.FXML
     public void doDelete(ActionEvent actionEvent) {
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
-
 
         try {
             Connection connection = DriverManager.getConnection(url,username, password);
