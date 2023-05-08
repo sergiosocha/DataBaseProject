@@ -1,21 +1,19 @@
 package com.example.databaseproject;
 
-import com.example.databaseproject.modelo.UserModel;
+import com.example.databaseproject.modelo.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.w3c.dom.events.Event;
 
 import java.io.IOException;
 import java.sql.*;
 
 public class HelloController {
-    UserModel userM;
+    User userM;
     @FXML
     private TextField password_id;
     @FXML
@@ -26,20 +24,13 @@ public class HelloController {
     public String user = "";
     public String password = "";
 
-
-
-
     @FXML
     public void loggin(ActionEvent actionEvent) {
-
+        this.userM = new User();
         user = user_id.getText();
         password = password_id.getText();
-
-
-
         try {
             conexion(user,password);
-
 
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("show_databases.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
@@ -50,8 +41,6 @@ public class HelloController {
 
             Stage myStage = (Stage) this.loggin_password.getScene().getWindow();
             myStage.close();
-
-
 
 
         } catch (IOException e) {
@@ -73,6 +62,14 @@ public class HelloController {
 
 
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");
+
+
+            while ( resultSet.next()){
+
+                System.out.println(resultSet.getString("DataBase"));
+
+            }
+
 
 
 

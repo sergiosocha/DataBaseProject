@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="last commit" />
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +41,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/sergi/Desktop/REPOSITORIOS/DataBaseProject/src/main/java/com/example/databaseproject&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/sergi/Downloads/ProyectoPrograPR1/ProyectoPrograPR1/ProjectoProgramacionPr&quot;,
@@ -50,7 +58,7 @@
       <recent name="com.example.databaseproject" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DataBaseConnection">
+  <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="DataBaseConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.databaseproject.DataBaseConnection" />
       <module name="DataBaseProject" />
@@ -79,8 +87,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DataBaseConnection" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.DataBaseConnection" />
       </list>
     </recent_temporary>
   </component>
@@ -98,6 +106,11 @@
       <workItem from="1683228974141" duration="1028000" />
       <workItem from="1683312350847" duration="11978000" />
       <workItem from="1683324865565" duration="136000" />
+      <workItem from="1683333532979" duration="6283000" />
+      <workItem from="1683342773633" duration="42000" />
+      <workItem from="1683411938164" duration="2963000" />
+      <workItem from="1683423226818" duration="818000" />
+      <workItem from="1683494887849" duration="12310000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -134,14 +147,28 @@
       <option name="project" value="LOCAL" />
       <updated>1683319978010</updated>
     </task>
-    <task id="LOCAL-00006" summary="last commit">
-      <created>1683326208971</created>
+    <task id="LOCAL-00006" summary="fixed interface errors, table view">
+      <created>1683341956242</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1683326208971</updated>
+      <updated>1683341956242</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="working databases interface,  actualy shows all mysqldatabases on pc">
+      <created>1683414204682</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683414204682</updated>
+    </task>
+    <task id="LOCAL-00008" summary="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME">
+      <created>1683500083251</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683500083251</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +190,9 @@
     <MESSAGE value="Loggin interface, DataBaseConnection updating" />
     <MESSAGE value="Loggin interface working" />
     <MESSAGE value="Loggin interface, databases Interface, Model classes" />
-    <MESSAGE value="last commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="last commit" />
+    <MESSAGE value="fixed interface errors, table view" />
+    <MESSAGE value="working databases interface,  actualy shows all mysqldatabases on pc" />
+    <MESSAGE value="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME" />
+    <option name="LAST_COMMIT_MESSAGE" value="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME" />
   </component>
 </project>
