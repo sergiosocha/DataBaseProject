@@ -24,7 +24,7 @@
 
 ###
 
-<p align="left">- ⚡ The main idea behind this project is make a database management<br>that use the Mysql databases installed on PC or also other data bases with .SQL extension<br>you can make query's and modify the thinks that you need(CRUD)</p>
+<p align="left">- ⚡ The main idea behind this project is make a database management program<br>that using Mysql databases installed on PC or also other data bases with .SQL extension<br>you can make query's and modify the thinks that you need(CRUD)</p>
 
 ###
 
