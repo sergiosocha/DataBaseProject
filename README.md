@@ -20,26 +20,26 @@
 
 ###
 
-<h3 align="left">👩‍💻  About Project</h3>
+<h3 align="center">👩‍💻  About Project</h3>
 
 ###
 
-<p align="left">- ⚡ The main idea behind this project is make a database management program<br>that using Mysql databases installed on PC or also other data bases with .SQL extension<br>you can make query's and modify the thinks that you need(CRUD)</p>
+<p align="center">- ⚡ The main idea behind this project is make a database management program<br>that using Mysql databases installed on PC or also other data bases with .SQL extension<br>you can make query's and modify the thinks that you need(CRUD)</p>
 
 ###
 
-<h3 align="left">🛠 Language and tools</h3>
+<h3 align="center">🛠 Language and tools</h3>
 
 ###
 
-<div align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height="40" width="52" alt="java logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="40" width="52" alt="mysql logo"  />
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height="50" width="72" alt="java logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="50" width="72" alt="mysql logo"  />
 </div>
 
 ###
 
-<h3 align="left">🔥   My Stats :</h3>
+<h3 align="center">🔥   My Stats :</h3>
 
 ###
 
