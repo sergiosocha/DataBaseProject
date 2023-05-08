@@ -21,7 +21,7 @@
                 <TableColumn fx:id="Database" prefWidth="220.0" text="Bases De Datos" />
               </columns>
             </TableView>
-            <Button fx:id="update_button" layoutX="260.0" layoutY="24.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" text="actualizar">
+            <Button fx:id="update_button" layoutX="260.0" layoutY="24.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" text="Actualizar">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -31,6 +31,16 @@
                 <TableColumn fx:id="showTables" prefWidth="220.0" text="Tablas" />
               </columns>
             </TableView>
+            <Button fx:id="create_button" layoutX="260.0" layoutY="155.0" mnemonicParsing="false" onAction="#doCreate" prefHeight="27.0" prefWidth="129.0" text="Create">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="delete_button" layoutX="260.0" layoutY="278.0" mnemonicParsing="false" onAction="#doDelete" prefHeight="27.0" prefWidth="129.0" text="Delete">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
