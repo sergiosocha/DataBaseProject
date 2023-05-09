@@ -4,6 +4,7 @@ import com.example.databaseproject.modelo.Database;
 import com.example.databaseproject.modelo.Table;
 import com.example.databaseproject.modelo.User;
 import com.example.databaseproject.modelo.newTable;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -71,6 +72,8 @@ public class ShowDatabasesController {
     private Button modifyFieldButton;
     @javafx.fxml.FXML
     private Button newFieldButton;
+
+    private ObservableList<newTable> newTables;
 
     String url = "jdbc:mysql://localhost:3306/";
     String username = "root";
@@ -214,6 +217,10 @@ public class ShowDatabasesController {
         fillComboBoxes();
         this.createTables_interface.setVisible(true);
         this.ShowDatabasesPane.setVisible(false);
+
+        newTables = FXCollections.observableArrayList();
+        setTablaFields();
+        fieldTables.setItems(newTables);
     }
 
     @javafx.fxml.FXML
@@ -226,52 +233,29 @@ public class ShowDatabasesController {
     public void selectField(Event event) {
     }
 
+    public void setTablaFields(){
+        //DAMOS FORMATO ALAS CELDAS DE LA TABLA INTERFAZ CREACION NEW TABLE
+        nameColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getName()));
+        typeColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getType()));
+        nullColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().isNullable() ? "NULL" : "NOT NULL"));
+        extraColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getExtra()));
+    }
+
     @javafx.fxml.FXML
     public void doCreateField(ActionEvent actionEvent) {
 
-        String nameField ;
-        String isNull;
-        String typeField;
-        String extra = "FALTA HACER ESTO";
-        //System.out.println("nombre campo "+ nameField + " isNull " + isNull + " ComboBoxType: " + typeField );
-
-
-
-
-        ObservableList<newTable> newTables = FXCollections.observableArrayList();
-
-        setTableFields();
 
         try{
 
 
-            newTable newTable = new newTable();
-            newTable.setName(nameCampoNewTable.getText());
-            if(nullCheckBox.isSelected()){
+            String name = nameCampoNewTable.getText();
+            boolean isNullable = nullCheckBox.isSelected();
+            String type = typesComboBox.getValue();
+            String extra = "ESTO FALTA KBRON";
 
-                newTable.setNull("NULL");
-            } else if(!nullCheckBox.isSelected()){
-                newTable.setNull("NOT NULL");
-            }
-
-            newTable.setType(typesComboBox.getValue());
-            newTable.setExtra("ESTO FALTA KBRON");
-
-
-            newTables.add(newTable);
+            newTable tableData = new newTable(name, type, isNullable, extra);
+            newTables.add(tableData);
             fieldTables.setItems(newTables);
-
-
-
-
-
-            nameCampoNewTable.setText("");
-            nullCheckBox.setSelected(false);
-            typesComboBox.setValue(String.valueOf(0));
-            nameColumb.setCellValueFactory(f->f.getValue().getName());
-            typeColumb.setCellValueFactory(f->f.getValue().getType());
-            nullColumb.setCellValueFactory(f->f.getValue().getNull());
-            extraColumb.setCellValueFactory(f->f.getValue().getExtra());
             fieldTables.refresh();
 
 

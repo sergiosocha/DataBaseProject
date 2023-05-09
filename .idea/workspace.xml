@@ -7,6 +7,7 @@
     <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/newTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/newTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +111,8 @@
       <workItem from="1683511496485" duration="453000" />
       <workItem from="1683574875074" duration="14098000" />
       <workItem from="1683591120950" duration="25000" />
-      <workItem from="1683594527311" duration="2203000" />
+      <workItem from="1683594527311" duration="2229000" />
+      <workItem from="1683662861443" duration="994000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -210,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683591129049</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON">
+      <created>1683597361608</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1683597361608</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
