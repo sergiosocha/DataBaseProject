@@ -9,15 +9,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 import javax.swing.*;
 
-public class ShowDatabasesController {
+public class ShowDatabasesController implements Initializable {
     com.example.databaseproject.modelo.Database dataBaseM;
     HelloController logginController;
     User userM;
@@ -83,10 +86,15 @@ public class ShowDatabasesController {
     @javafx.fxml.FXML
     private Button delete_button;
 
+    private int myIndex;
     Connection con;
     PreparedStatement pst;
 
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        modelaTabla();
+        tableDataBases();
+    }
     public void Connection(){
         try{
             con = DriverManager.getConnection(url,username, password);
@@ -231,6 +239,13 @@ public class ShowDatabasesController {
 
     @javafx.fxml.FXML
     public void selectField(Event event) {
+        newTable newTables = this.fieldTables.getSelectionModel().getSelectedItem();
+        if(newTables != null){
+            this.nameCampoNewTable.setText(newTables.getName());
+            this.typesComboBox.setValue(newTables.getType());
+            this.nullCheckBox.setSelected(newTables.isNullable());
+        }
+
     }
 
     public void setTablaFields(){
@@ -243,11 +258,7 @@ public class ShowDatabasesController {
 
     @javafx.fxml.FXML
     public void doCreateField(ActionEvent actionEvent) {
-
-
         try{
-
-
             String name = nameCampoNewTable.getText();
             boolean isNullable = nullCheckBox.isSelected();
             String type = typesComboBox.getValue();
@@ -258,27 +269,70 @@ public class ShowDatabasesController {
             fieldTables.setItems(newTables);
             fieldTables.refresh();
 
+            nameCampoNewTable.setText("");
+            nullCheckBox.setSelected(false);
+            typesComboBox.setValue(String.valueOf(0));
 
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 
     @javafx.fxml.FXML
     public void doCreateTables(ActionEvent actionEvent) {
 
-
-
     }
 
     @javafx.fxml.FXML
     public void doDeleteField(ActionEvent actionEvent) {
+        newTable newTables = this.fieldTables.getSelectionModel().getSelectedItem();
+
+        this.newTables.remove(newTables);
+        this.fieldTables.refresh();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Info");
+        alert.setContentText("CAMPO ELIMINADO");
+        alert.showAndWait();
+
+        nameCampoNewTable.setText("");
+        nullCheckBox.setSelected(false);
+        typesComboBox.setValue(String.valueOf(0));
+
+
     }
 
     @javafx.fxml.FXML
     public void doModifyField(ActionEvent actionEvent) {
+
+        newTable newTables = this.fieldTables.getSelectionModel().getSelectedItem();
+
+        try {
+            String newName = this.nameCampoNewTable.getText();
+            String type = this.typesComboBox.getValue();
+            boolean isNullable = nullCheckBox.isSelected();
+            String extra = "sigue faltando esto kbron";
+            newTable overwriteField = new newTable(newName,type,isNullable,extra);
+            if(!this.newTables.contains(overwriteField)){
+
+                newTables.setName(overwriteField.getName());
+                newTables.setType(overwriteField.getType());
+                newTables.setNullable(overwriteField.isNullable());
+                newTables.setExtra(overwriteField.getExtra());
+
+                this.fieldTables.refresh();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Info");
+                alert.setContentText("CAMPO MODIFICADO");
+                alert.showAndWait();
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
     }
 
 
@@ -302,4 +356,6 @@ public class ShowDatabasesController {
 
 
     }
+
+
 }

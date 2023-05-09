@@ -17,6 +17,13 @@ public class newTable {
     private boolean isNullable;
     private String extra;
 
+    public newTable(){
+        this.name="";
+        this.type="";
+        this.isNullable = false;
+        this.extra = "";
+    }
+
     public newTable(String name, String type, boolean isNullable, String extra) {
         this.name = name;
         this.type = type;
@@ -40,7 +47,22 @@ public class newTable {
         return extra;
     }
 
-/*
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setNullable(boolean nullable) {
+        isNullable = nullable;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
+    /*
     public newTable(){
         name = new SimpleStringProperty(this, "name");
         type = new SimpleStringProperty(this, "type");

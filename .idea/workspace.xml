@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="ERROR ON TABLE FIXED">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/newTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/newTable.java" afterDir="false" />
@@ -112,7 +112,7 @@
       <workItem from="1683574875074" duration="14098000" />
       <workItem from="1683591120950" duration="25000" />
       <workItem from="1683594527311" duration="2229000" />
-      <workItem from="1683662861443" duration="994000" />
+      <workItem from="1683662861443" duration="6844000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -219,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683597361608</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="ERROR ON TABLE FIXED">
+      <created>1683663938900</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1683663938900</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +255,7 @@
     <MESSAGE value="UPDATE README FILE" />
     <MESSAGE value="NEW TABLES INTERFACE" />
     <MESSAGE value="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON" />
-    <option name="LAST_COMMIT_MESSAGE" value="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON" />
+    <MESSAGE value="ERROR ON TABLE FIXED" />
+    <option name="LAST_COMMIT_MESSAGE" value="ERROR ON TABLE FIXED" />
   </component>
 </project>
