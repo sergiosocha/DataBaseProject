@@ -239,6 +239,7 @@ public class ShowDatabasesController {
 
 
         ObservableList<newTable> newTables = FXCollections.observableArrayList();
+
         setTableFields();
 
         try{
@@ -259,19 +260,25 @@ public class ShowDatabasesController {
 
             newTables.add(newTable);
             fieldTables.setItems(newTables);
-            fieldTables.refresh();
 
-            nameColumb.setCellValueFactory(f->f.getValue().getName());
-            typeColumb.setCellValueFactory(f->f.getValue().getType());
-            nullColumb.setCellValueFactory(f->f.getValue().getNull());
-            extraColumb.setCellValueFactory(f->f.getValue().getExtra());
+
+
+
 
             nameCampoNewTable.setText("");
             nullCheckBox.setSelected(false);
             typesComboBox.setValue(String.valueOf(0));
+            nameColumb.setCellValueFactory(f->f.getValue().getName());
+            typeColumb.setCellValueFactory(f->f.getValue().getType());
+            nullColumb.setCellValueFactory(f->f.getValue().getNull());
+            extraColumb.setCellValueFactory(f->f.getValue().getExtra());
+            fieldTables.refresh();
+
+
         }catch (Exception e){
             e.printStackTrace();
         }
+
 
     }
 
