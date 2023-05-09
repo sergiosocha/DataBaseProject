@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="NEW TABLES INTERFACE">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/newTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +105,7 @@
       <workItem from="1683423226818" duration="818000" />
       <workItem from="1683494887849" duration="12915000" />
       <workItem from="1683511496485" duration="453000" />
-      <workItem from="1683574875074" duration="13937000" />
+      <workItem from="1683574875074" duration="14098000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -196,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683579855674</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON">
+      <created>1683590962959</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683590962959</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +226,7 @@
     <MESSAGE value="BUTTON DELETE, CREATE AND UPDATE WORKING ON DATABASES INTERFACE(CRUD WORKS)" />
     <MESSAGE value="UPDATE README FILE" />
     <MESSAGE value="NEW TABLES INTERFACE" />
-    <option name="LAST_COMMIT_MESSAGE" value="NEW TABLES INTERFACE" />
+    <MESSAGE value="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON" />
+    <option name="LAST_COMMIT_MESSAGE" value="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON" />
   </component>
 </project>
