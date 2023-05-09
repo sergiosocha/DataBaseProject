@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="UPDATE README FILE">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="NEW TABLES INTERFACE">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/newTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
@@ -109,7 +110,7 @@
       <workItem from="1683423226818" duration="818000" />
       <workItem from="1683494887849" duration="12915000" />
       <workItem from="1683511496485" duration="453000" />
-      <workItem from="1683574875074" duration="3928000" />
+      <workItem from="1683574875074" duration="13937000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -188,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683510962263</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="NEW TABLES INTERFACE">
+      <created>1683579855674</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683579855674</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +223,7 @@
     <MESSAGE value="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME" />
     <MESSAGE value="BUTTON DELETE, CREATE AND UPDATE WORKING ON DATABASES INTERFACE(CRUD WORKS)" />
     <MESSAGE value="UPDATE README FILE" />
-    <option name="LAST_COMMIT_MESSAGE" value="UPDATE README FILE" />
+    <MESSAGE value="NEW TABLES INTERFACE" />
+    <option name="LAST_COMMIT_MESSAGE" value="NEW TABLES INTERFACE" />
   </component>
 </project>
