@@ -13,26 +13,41 @@
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
    <children>
-      <Pane id="title_label" prefHeight="446.0" prefWidth="734.0" style="-fx-background-color: #b1afaf;">
+      <Pane id="title_label" prefHeight="446.0" prefWidth="734.0" style="-fx-background-color: #b1afaf; -fx-border-color: #030303;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="48.0" prefHeight="44.0" prefWidth="482.0" text="INGRESO DE USUARIO" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="14.0" prefHeight="44.0" prefWidth="482.0" text="LOGGIN USUARIO" textAlignment="CENTER">
                <font>
                   <Font name="Forte" size="30.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="310.0" layoutY="149.0" prefHeight="30.0" prefWidth="111.0" text="USER">
+            <Label alignment="CENTER" layoutX="311.0" layoutY="200.0" prefHeight="30.0" prefWidth="111.0" text="USER">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField id="user_box" fx:id="user_id" alignment="CENTER" layoutX="234.0" layoutY="185.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
-            <Label alignment="CENTER" layoutX="298.0" layoutY="236.0" prefHeight="36.0" prefWidth="137.0" text="PASWORD">
+            <TextField id="user_box" fx:id="user_id" alignment="CENTER" layoutX="235.0" layoutY="236.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
+            <Label alignment="CENTER" layoutX="299.0" layoutY="261.0" prefHeight="36.0" prefWidth="137.0" text="PASSWORD">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextField id="pasword_box" fx:id="password_id" alignment="CENTER" layoutX="235.0" layoutY="272.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
-            <Button fx:id="loggin_password" layoutX="293.0" layoutY="346.0" mnemonicParsing="false" onAction="#loggin" prefHeight="25.0" prefWidth="148.0" text="Login" />
+            <TextField id="pasword_box" fx:id="password_id" alignment="CENTER" layoutX="236.0" layoutY="297.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER PASSWORD" />
+            <Button fx:id="loggin_password" layoutX="284.0" layoutY="370.0" mnemonicParsing="false" onAction="#loggin" prefHeight="44.0" prefWidth="173.0" style="-fx-border-color: #030303;" text="Login">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
+            <Label alignment="CENTER" layoutX="313.0" layoutY="83.0" prefHeight="30.0" prefWidth="111.0" text="EQUIPO">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField id="user_box" fx:id="equipo_id" alignment="CENTER" layoutX="235.0" layoutY="119.0" prefHeight="25.0" prefWidth="263.0" promptText="INGRESE EL EQUIPO AL CUAL SE CONECTARA" />
+            <Label alignment="CENTER" layoutX="315.0" layoutY="144.0" prefHeight="30.0" prefWidth="111.0" text="PUERTO">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField id="user_box" fx:id="puerto_id" alignment="CENTER" layoutX="237.0" layoutY="180.0" prefHeight="25.0" prefWidth="263.0" promptText="INGRESE EL PUERTO" />
          </children>
       </Pane>
    </children>

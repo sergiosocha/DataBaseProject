@@ -128,7 +128,6 @@ public class ShowDatabasesController implements Initializable {
         this.Database.setCellValueFactory(new PropertyValueFactory("Database"));
 
         try {
-
             Statement statement = con.createStatement(); //Usa con previamente declarado en las variables para preparar el Statement
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");//Con el statement anterior en un nuevo objeto resulset preparamos el query
 
@@ -138,17 +137,14 @@ public class ShowDatabasesController implements Initializable {
                 String var = resultSet.getString("DataBase");
                 databases.add(st); //agregamos al oversableList los elementos st
             }
-
             dataBases_tableView.setItems(databases);//Traemos los items a la table view
             Database.setCellValueFactory(f->f.getValue().getDatabase());//damos formatos ala la columna o celdas dentro de la tabla
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
-
     @javafx.fxml.FXML
     public void selectDataBase(Event event) throws SQLException {
-
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
         String urlToSearch = url+searchDatabase;
@@ -166,18 +162,12 @@ public class ShowDatabasesController implements Initializable {
                 st.setTable(resultSet.getString("Tables_in_"+searchDatabase));
                 tables.add(st);
             }
-
             showTables_TableView.setItems(tables);
             showTables.setCellValueFactory(f->f.getValue().getTable());
 
         }catch (SQLException e){
             e.printStackTrace();
         }
-    }
-
-    @Deprecated
-    public void doModify(ActionEvent actionEvent) {
-
     }
 
     @javafx.fxml.FXML
@@ -245,7 +235,6 @@ public class ShowDatabasesController implements Initializable {
             this.typesComboBox.setValue(newTables.getType());
             this.nullCheckBox.setSelected(newTables.isNullable());
         }
-
     }
 
     public void setTablaFields(){
@@ -281,6 +270,8 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     public void doCreateTables(ActionEvent actionEvent) {
 
+
+
     }
 
     @javafx.fxml.FXML
@@ -299,8 +290,6 @@ public class ShowDatabasesController implements Initializable {
         nameCampoNewTable.setText("");
         nullCheckBox.setSelected(false);
         typesComboBox.setValue(String.valueOf(0));
-
-
     }
 
     @javafx.fxml.FXML
@@ -328,7 +317,6 @@ public class ShowDatabasesController implements Initializable {
                 alert.setContentText("CAMPO MODIFICADO");
                 alert.showAndWait();
             }
-
         }catch (Exception e){
             e.printStackTrace();
 
@@ -346,15 +334,6 @@ public class ShowDatabasesController implements Initializable {
                 "Date",
                 "DateTime"
         );
-    }
-
-    public void setTableFields(){
-        this.nameColumb.setCellValueFactory(new PropertyValueFactory<> ("name"));
-        this.typeColumb.setCellValueFactory(new PropertyValueFactory<>("type"));
-        this.nullColumb.setCellValueFactory(new PropertyValueFactory<> ("Null"));
-        this.extraColumb.setCellValueFactory(new PropertyValueFactory<> ("extra"));
-
-
     }
 
 
