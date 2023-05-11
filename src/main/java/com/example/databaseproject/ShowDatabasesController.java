@@ -1,9 +1,7 @@
 package com.example.databaseproject;
 
-import com.example.databaseproject.modelo.Database;
-import com.example.databaseproject.modelo.Table;
-import com.example.databaseproject.modelo.User;
-import com.example.databaseproject.modelo.newTable;
+import com.example.databaseproject.modelo.*;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javax.swing.*;
 
 public class ShowDatabasesController implements Initializable {
@@ -77,6 +76,7 @@ public class ShowDatabasesController implements Initializable {
     private Button newFieldButton;
 
     private ObservableList<newTable> newTables;
+    private ObservableList<tablesView> dinamicTables;
 
     String url = "jdbc:mysql://localhost:3306/";
     String username = "root";
@@ -89,6 +89,11 @@ public class ShowDatabasesController implements Initializable {
     private int myIndex;
     Connection con;
     PreparedStatement pst;
+    @javafx.fxml.FXML
+    private TableView<ObservableList<String>> showTablesData;
+
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -324,6 +329,14 @@ public class ShowDatabasesController implements Initializable {
     }
 
 
+    public void showTablesInformation(){
+
+
+
+
+    }
+
+
     public void fillComboBoxes(){
         typesComboBox.getItems().addAll(
                 "Int",
@@ -337,4 +350,54 @@ public class ShowDatabasesController implements Initializable {
     }
 
 
+    @javafx.fxml.FXML
+    public void selectTable(Event event) throws SQLException {
+        Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
+        String searchDatabase = doSelected.getDatabase().getValue();
+        String urlToSearch = url+searchDatabase;
+
+        System.out.println("URL DATA BASE" + "       " + urlToSearch);
+
+        Table doTableSelected = this.showTables_TableView.getSelectionModel().getSelectedItem();
+        String searchTableData = doTableSelected.getTable().getValue();
+
+        System.out.println("TABLE TO SHOW DATA  " + searchTableData);
+
+        Connection connection = DriverManager.getConnection(urlToSearch,username, password);
+
+
+        Statement stmt = connection.createStatement( );
+
+        ResultSet rs = stmt.executeQuery("Select * FROM "+ searchTableData);
+
+
+
+        ResultSetMetaData dataTable = rs.getMetaData();
+        int numeroColumnasDinamicas = dataTable.getColumnCount();
+
+        for (int i = 1; i <= numeroColumnasDinamicas; i++){
+            final int j = 1;
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
+            column.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().get(j - 1)));
+            showTablesData.getColumns().add(column);
+        }
+
+        ObservableList<String> data = FXCollections.observableArrayList();
+        while(rs.next()){
+
+            for (int i = 1; i <= numeroColumnasDinamicas; i++) {
+                data.add(rs.getString(i));
+                System.out.print(rs.getString(i) + " | ");
+            }
+            System.out.println(" ");
+
+            showTablesData.getItems().add(data);
+        }
+
+        rs.close();
+        stmt.close();
+        connection.close();
+
+
+    }
 }
