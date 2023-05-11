@@ -352,6 +352,10 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void selectTable(Event event) throws SQLException {
+
+        showTablesData.getColumns().clear();
+        showTablesData.getItems().clear();
+
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
         String urlToSearch = url+searchDatabase;
@@ -388,11 +392,12 @@ public class ShowDatabasesController implements Initializable {
             for (int i = 1; i <= numeroColumnasDinamicas; i++) {
                 data.add(rs.getString(i));
                 System.out.print(rs.getString(i) + " | ");
-            }
-            System.out.println(" ");
 
+            }
             showTablesData.getItems().add(data);
+
         }
+
 
         rs.close();
         stmt.close();
