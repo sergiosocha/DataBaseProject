@@ -13,9 +13,9 @@
 
 <AnchorPane prefHeight="415.0" prefWidth="667.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.ShowDatabasesController">
    <children>
-      <Pane fx:id="ShowDatabasesPane" layoutX="14.0" layoutY="14.0" prefHeight="399.0" prefWidth="649.0">
+      <Pane fx:id="ShowDatabasesPane" layoutX="7.0" layoutY="7.0" prefHeight="650.0" prefWidth="962.0">
          <children>
-            <Button fx:id="cerrarsesion_button" layoutX="506.0" layoutY="358.0" mnemonicParsing="false" onAction="#cerrarsesion_button" prefHeight="27.0" prefWidth="129.0" text="cerrar sesion">
+            <Button fx:id="cerrarsesion_button" layoutX="819.0" layoutY="609.0" mnemonicParsing="false" onAction="#cerrarsesion_button" prefHeight="27.0" prefWidth="129.0" text="cerrar sesion">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -30,7 +30,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TableView fx:id="showTables_TableView" layoutX="414.0" layoutY="24.0" prefHeight="289.0" prefWidth="221.0">
+            <TableView fx:id="showTables_TableView" layoutX="414.0" layoutY="24.0" onMouseClicked="#selectTable" prefHeight="289.0" prefWidth="221.0">
               <columns>
                 <TableColumn fx:id="showTables" prefWidth="220.0" text="Tablas" />
               </columns>
@@ -50,6 +50,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <TableView fx:id="showTablesData" layoutX="16.0" layoutY="325.0" prefHeight="289.0" prefWidth="616.0" />
          </children>
       </Pane>
       <Pane fx:id="createTables_interface" prefHeight="415.0" prefWidth="667.0" style="-fx-background-color: #a8a4a3;" visible="false">

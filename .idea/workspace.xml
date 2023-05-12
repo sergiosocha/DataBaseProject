@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="last commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="dinamic tables">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +113,8 @@
       <workItem from="1683662861443" duration="7515000" />
       <workItem from="1683725488137" duration="657000" />
       <workItem from="1683738504233" duration="149000" />
-      <workItem from="1683746918722" duration="3478000" />
+      <workItem from="1683746918722" duration="3088000" />
+      <workItem from="1683841546268" duration="9405000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -234,14 +235,42 @@
       <option name="project" value="LOCAL" />
       <updated>1683669767769</updated>
     </task>
-    <task id="LOCAL-00018" summary="last commit">
-      <created>1683750238232</created>
+    <task id="LOCAL-00018" summary="NEW FEATURES ON SELECT TABLE">
+      <created>1683844767987</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1683750238232</updated>
+      <updated>1683844767987</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="new features on SelectionTable">
+      <created>1683845088303</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683845088303</updated>
+    </task>
+    <task id="LOCAL-00020" summary="dinamic tables">
+      <created>1683849879676</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1683849879676</updated>
+    </task>
+    <task id="LOCAL-00021" summary="dinamic tables">
+      <created>1683850205742</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1683850205742</updated>
+    </task>
+    <task id="LOCAL-00022" summary="dinamic tables">
+      <created>1683850733079</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1683850733079</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +301,9 @@
     <MESSAGE value="NEW TABLES INTERFACE / NEW FEATURES&#10;&#10;ERRORS: &#10;1. TABLE OF PARAMETERS&#10;2. ERROR IN CREATE FIELD BUTTON" />
     <MESSAGE value="ERROR ON TABLE FIXED" />
     <MESSAGE value="CRUD ON TABLES INTERFACE" />
-    <MESSAGE value="last commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="last commit" />
+    <MESSAGE value="NEW FEATURES ON SELECT TABLE" />
+    <MESSAGE value="new features on SelectionTable" />
+    <MESSAGE value="dinamic tables" />
+    <option name="LAST_COMMIT_MESSAGE" value="dinamic tables" />
   </component>
 </project>
