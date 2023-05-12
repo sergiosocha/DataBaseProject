@@ -92,8 +92,8 @@ public class ShowDatabasesController implements Initializable {
     PreparedStatement pst;
     @javafx.fxml.FXML
     private TableView<ObservableList<String>> showTablesData;
-
-
+    @javafx.fxml.FXML
+    private ComboBox<String> dataBasesComboBox;
 
 
     @Override
@@ -129,11 +129,13 @@ public class ShowDatabasesController implements Initializable {
     }
 
     public void tableDataBases(){
+
         Connection(); //Trae la funcion Connection para poder usarla en el CreateStatement para luego prepara la consulta
         ObservableList<Database> databases = FXCollections.observableArrayList();
         this.Database.setCellValueFactory(new PropertyValueFactory("Database"));
 
         try {
+
             Statement statement = con.createStatement(); //Usa con previamente declarado en las variables para preparar el Statement
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");//Con el statement anterior en un nuevo objeto resulset preparamos el query
 
@@ -142,9 +144,12 @@ public class ShowDatabasesController implements Initializable {
                 st.setDatabase(resultSet.getString("Database"));//Usamos St para dar formato a los datos que obtenemos
                 String var = resultSet.getString("DataBase");
                 databases.add(st); //agregamos al oversableList los elementos st
+                dataBasesComboBox.getItems().add(var);
+
             }
             dataBases_tableView.setItems(databases);//Traemos los items a la table view
             Database.setCellValueFactory(f->f.getValue().getDatabase());//damos formatos ala la columna o celdas dentro de la tabla
+
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -178,8 +183,11 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     public void doCreate(ActionEvent actionEvent) {
 
+
         String newDataBase = JOptionPane.showInputDialog("Ingrese el nombre de la base de datos: ");
         try {
+
+            dataBasesComboBox.getItems().removeAll();
             Connection connection = DriverManager.getConnection(url,username, password);
             pst = connection.prepareStatement("CREATE DATABASE "+newDataBase);
             pst.executeUpdate();
@@ -303,7 +311,7 @@ public class ShowDatabasesController implements Initializable {
             String newName = this.nameCampoNewTable.getText();
             String type = this.typesComboBox.getValue();
             boolean isNullable = nullCheckBox.isSelected();
-            String extra = "sigue faltando esto kbron";
+            String extra = "sigue faltando";
             newTable overwriteField = new newTable(newName,type,isNullable,extra);
             if(!this.newTables.contains(overwriteField)){
 
@@ -339,7 +347,6 @@ public class ShowDatabasesController implements Initializable {
         );
     }
 
-
     @javafx.fxml.FXML
     public void selectTable(Event event) throws SQLException {
 
@@ -369,9 +376,9 @@ public class ShowDatabasesController implements Initializable {
             final int j = i;
             TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
             column.setCellValueFactory(cellData -> {
-                ObservableList<String> rowValues = cellData.getValue();
-                if (rowValues != null && rowValues.size() >= j) {
-                    return new SimpleStringProperty(rowValues.get(j - 1));
+                ObservableList<String> valorCelda = cellData.getValue();
+                if (valorCelda != null && valorCelda.size() >= j) {
+                    return new SimpleStringProperty(valorCelda.get(j - 1));
                 } else {
                     return new SimpleStringProperty("");
                 }
@@ -386,12 +393,9 @@ public class ShowDatabasesController implements Initializable {
                 data.add(rs.getString(i));
                 //System.out.print(rs.getString(i) + " | ");
             }
-
             datosTable.add(data);
             //System.out.println(" ");
             showTablesData.getItems().add(data);
-
-
         }
         showTablesData.setItems(datosTable);
 

@@ -51,6 +51,7 @@
                </font>
             </Button>
             <TableView fx:id="showTablesData" layoutX="16.0" layoutY="325.0" prefHeight="289.0" prefWidth="616.0" />
+            <ComboBox fx:id="dataBasesComboBox" layoutX="649.0" layoutY="39.0" prefHeight="50.0" prefWidth="195.0" promptText="Bases De Datos" />
          </children>
       </Pane>
       <Pane fx:id="createTables_interface" prefHeight="415.0" prefWidth="667.0" style="-fx-background-color: #a8a4a3;" visible="false">
