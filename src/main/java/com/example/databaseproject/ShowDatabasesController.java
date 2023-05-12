@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import javax.swing.*;
@@ -169,7 +170,6 @@ public class ShowDatabasesController implements Initializable {
             }
             showTables_TableView.setItems(tables);
             showTables.setCellValueFactory(f->f.getValue().getTable());
-
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -275,8 +275,6 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     public void doCreateTables(ActionEvent actionEvent) {
 
-
-
     }
 
     @javafx.fxml.FXML
@@ -368,10 +366,7 @@ public class ShowDatabasesController implements Initializable {
         System.out.println("TABLE TO SHOW DATA  " + searchTableData);
 
         Connection connection = DriverManager.getConnection(urlToSearch,username, password);
-
-
         Statement stmt = connection.createStatement( );
-
         ResultSet rs = stmt.executeQuery("Select * FROM "+ searchTableData);
 
 
@@ -380,23 +375,45 @@ public class ShowDatabasesController implements Initializable {
         int numeroColumnasDinamicas = dataTable.getColumnCount();
 
         for (int i = 1; i <= numeroColumnasDinamicas; i++){
-            final int j = 1;
+
+            final int j = i;
             TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
-            column.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().get(j - 1)));
+            column.setCellValueFactory(cellData -> {
+                ObservableList<String> rowValues = cellData.getValue();
+                if (rowValues != null && rowValues.size() >= j) {
+                    return new SimpleStringProperty(rowValues.get(j - 1));
+                } else {
+                    return new SimpleStringProperty("");
+                }
+            });
             showTablesData.getColumns().add(column);
         }
+           /*
+            final int j = 0;
 
-        ObservableList<String> data = FXCollections.observableArrayList();
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
+            column.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().get(j-1)));
+            showTablesData.getColumns().add(column);
+        }*/
+
+        ObservableList<ObservableList<String>> datosTable = FXCollections.observableArrayList();
         while(rs.next()){
-
+            ObservableList<String> data = FXCollections.observableArrayList();
             for (int i = 1; i <= numeroColumnasDinamicas; i++) {
-                data.add(rs.getString(i));
-                System.out.print(rs.getString(i) + " | ");
 
+                data.add(rs.getString(i));
+
+                System.out.print(rs.getString(i) + " | ");
             }
+            datosTable.add(data);
+            System.out.println(" ");
             showTablesData.getItems().add(data);
 
+
         }
+        showTablesData.setItems(datosTable);
+
+
 
 
         rs.close();

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="NEW FEATURES ON SELECT TABLE">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new features on SelectionTable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
     </list>
@@ -115,7 +115,7 @@
       <workItem from="1683725488137" duration="657000" />
       <workItem from="1683738504233" duration="149000" />
       <workItem from="1683746918722" duration="3088000" />
-      <workItem from="1683841546268" duration="3369000" />
+      <workItem from="1683841546268" duration="7948000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -243,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683844767987</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="new features on SelectionTable">
+      <created>1683845088303</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683845088303</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +282,7 @@
     <MESSAGE value="ERROR ON TABLE FIXED" />
     <MESSAGE value="CRUD ON TABLES INTERFACE" />
     <MESSAGE value="NEW FEATURES ON SELECT TABLE" />
-    <option name="LAST_COMMIT_MESSAGE" value="NEW FEATURES ON SELECT TABLE" />
+    <MESSAGE value="new features on SelectionTable" />
+    <option name="LAST_COMMIT_MESSAGE" value="new features on SelectionTable" />
   </component>
 </project>
