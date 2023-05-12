@@ -350,12 +350,12 @@ public class ShowDatabasesController implements Initializable {
         String searchDatabase = doSelected.getDatabase().getValue();
         String urlToSearch = url+searchDatabase;
 
-        System.out.println("URL DATA BASE" + "       " + urlToSearch);
+        //System.out.println("URL DATA BASE" + "       " + urlToSearch);
 
         Table doTableSelected = this.showTables_TableView.getSelectionModel().getSelectedItem();
         String searchTableData = doTableSelected.getTable().getValue();
 
-        System.out.println("TABLE TO SHOW DATA  " + searchTableData);
+        //System.out.println("TABLE TO SHOW DATA  " + searchTableData);
 
         Connection connection = DriverManager.getConnection(urlToSearch,username, password);
         Statement stmt = connection.createStatement( );
@@ -383,13 +383,12 @@ public class ShowDatabasesController implements Initializable {
         while(rs.next()){
             ObservableList<String> data = FXCollections.observableArrayList();
             for (int i = 1; i <= numeroColumnasDinamicas; i++) {
-
                 data.add(rs.getString(i));
-
-                System.out.print(rs.getString(i) + " | ");
+                //System.out.print(rs.getString(i) + " | ");
             }
+
             datosTable.add(data);
-            System.out.println(" ");
+            //System.out.println(" ");
             showTablesData.getItems().add(data);
 
 
