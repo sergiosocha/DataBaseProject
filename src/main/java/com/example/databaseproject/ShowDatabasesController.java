@@ -212,7 +212,6 @@ public class ShowDatabasesController implements Initializable {
         }catch (SQLException e){
             e.printStackTrace();
         }
-
     }
 
     @javafx.fxml.FXML
