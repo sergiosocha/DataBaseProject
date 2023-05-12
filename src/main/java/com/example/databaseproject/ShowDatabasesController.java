@@ -327,13 +327,6 @@ public class ShowDatabasesController implements Initializable {
     }
 
 
-    public void showTablesInformation(){
-
-
-
-
-    }
-
 
     public void fillComboBoxes(){
         typesComboBox.getItems().addAll(
@@ -369,8 +362,6 @@ public class ShowDatabasesController implements Initializable {
         Statement stmt = connection.createStatement( );
         ResultSet rs = stmt.executeQuery("Select * FROM "+ searchTableData);
 
-
-
         ResultSetMetaData dataTable = rs.getMetaData();
         int numeroColumnasDinamicas = dataTable.getColumnCount();
 
@@ -388,13 +379,6 @@ public class ShowDatabasesController implements Initializable {
             });
             showTablesData.getColumns().add(column);
         }
-           /*
-            final int j = 0;
-
-            TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
-            column.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().get(j-1)));
-            showTablesData.getColumns().add(column);
-        }*/
 
         ObservableList<ObservableList<String>> datosTable = FXCollections.observableArrayList();
         while(rs.next()){
@@ -412,14 +396,6 @@ public class ShowDatabasesController implements Initializable {
 
         }
         showTablesData.setItems(datosTable);
-
-
-
-
-        rs.close();
-        stmt.close();
-        connection.close();
-
 
     }
 }
