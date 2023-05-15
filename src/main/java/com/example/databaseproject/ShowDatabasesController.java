@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import javax.swing.*;
@@ -66,6 +67,8 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private TableColumn<newTable, String>  nullColumb;
     @javafx.fxml.FXML
+    private TableColumn<newTable, String> defaultColumb;
+    @javafx.fxml.FXML
     private Button createTableButton;
     @javafx.fxml.FXML
     private Button deleteFieldButton;
@@ -95,7 +98,10 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private TextField defaultValueTextField;
     @javafx.fxml.FXML
-    private ComboBox extraValueComboBox;
+    private ComboBox<String> extraValueComboBox;
+    @javafx.fxml.FXML
+    private TextField nameTableTextField;
+    private boolean nullable;
 
 
     @Deprecated
@@ -250,44 +256,63 @@ public class ShowDatabasesController implements Initializable {
         if(newTables != null){
             this.nameCampoNewTable.setText(newTables.getName());
             this.typesComboBox.setValue(newTables.getType());
-            this.nullCheckBox.setSelected(newTables.isNullable());
+            this.nullCheckBox.setSelected("NULL".equals(newTables.isNullable()));
         }
+    }
+
+    public String isNullable() {
+        return this.nullable ? "NULL" : "NOT NULL";
     }
 
     public void setTablaFields(){
         //DAMOS FORMATO ALAS CELDAS DE LA TABLA INTERFAZ CREACION NEW TABLE
         nameColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getName()));
         typeColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getType()));
-        nullColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().isNullable() ? "NULL" : "NOT NULL"));
+        nullColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().isNullable()));
         extraColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getExtra()));
+        defaultColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getDefault()));
     }
 
     @javafx.fxml.FXML
     public void doCreateField(ActionEvent actionEvent) {
-        try{
-            String name = nameCampoNewTable.getText();
-            boolean isNullable = nullCheckBox.isSelected();
-            String type = typesComboBox.getValue();
-            String extra = "ESTO FALTA KBRON";
 
-            newTable tableData = new newTable(name, type, isNullable, extra);
+
+        try{
+            String Default= "";
+            String name = nameCampoNewTable.getText();
+            String selected  =nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
+
+
+            String type = typesComboBox.getValue();
+            String extra = extraValueComboBox.getValue() != null ? extraValueComboBox.getValue() : "";
+            String defaultValue = defaultValueTextField.getText();
+
+            if (!defaultValue.isEmpty()) {
+                Default = "DEFAULT " + defaultValue;
+            }
+
+
+
+            newTable tableData = new newTable(name, type, selected, extra,Default );
             newTables.add(tableData);
             fieldTables.setItems(newTables);
             fieldTables.refresh();
 
             nameCampoNewTable.setText("");
             nullCheckBox.setSelected(false);
-            typesComboBox.setValue(String.valueOf(0));
+            typesComboBox.setValue(String.valueOf(""));
+            extraValueComboBox.setValue(String.valueOf(""));
+            defaultValueTextField.setText("");
+
+
+
 
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    @javafx.fxml.FXML
-    public void doCreateTables(ActionEvent actionEvent) {
 
-    }
 
     @javafx.fxml.FXML
     public void doDeleteField(ActionEvent actionEvent) {
@@ -305,6 +330,8 @@ public class ShowDatabasesController implements Initializable {
         nameCampoNewTable.setText("");
         nullCheckBox.setSelected(false);
         typesComboBox.setValue(String.valueOf(0));
+        extraValueComboBox.setValue(String.valueOf(0));
+        defaultValueTextField.setText("");
     }
 
     @javafx.fxml.FXML
@@ -315,9 +342,11 @@ public class ShowDatabasesController implements Initializable {
         try {
             String newName = this.nameCampoNewTable.getText();
             String type = this.typesComboBox.getValue();
-            boolean isNullable = nullCheckBox.isSelected();
-            String extra = "sigue faltando";
-            newTable overwriteField = new newTable(newName,type,isNullable,extra);
+            String selected  =nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
+            String extra = this.extraValueComboBox.getValue();
+            String defaultValue = this.defaultValueTextField.getText();
+
+            newTable overwriteField = new newTable(newName,type,selected,extra, defaultValue);
             if(!this.newTables.contains(overwriteField)){
 
                 newTables.setName(overwriteField.getName());
@@ -332,11 +361,92 @@ public class ShowDatabasesController implements Initializable {
                 alert.setContentText("CAMPO MODIFICADO");
                 alert.showAndWait();
             }
+
+            nameCampoNewTable.setText("");
+            nullCheckBox.setSelected(false);
+            typesComboBox.setValue(String.valueOf(""));
+            extraValueComboBox.setValue(String.valueOf(""));
+            defaultValueTextField.setText("");
+
         }catch (Exception e){
             e.printStackTrace();
 
         }
     }
+
+    @javafx.fxml.FXML
+    public void doCreateTables(ActionEvent actionEvent) {
+        int size = newTables.size();
+
+        String query = "";
+        for (int i = 0; i < newTables.size(); i++) {
+            newTable table = newTables.get(i);
+            System.out.print(table);
+
+            String selected  =nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
+
+
+            query = query.concat(String.valueOf(newTables.get(i)));
+            if (i < newTables.size() - 1) {
+                query = query.concat(", ");
+                System.out.print(", ");
+            } else {
+                query = query.concat("");
+                System.out.print(";");
+            }
+        }
+
+
+        System.out.println("");
+        System.out.println(nameTableTextField.getText() + " " + query);
+
+
+        String dataBase = dataBaseSelected.getText();
+        try{
+            String urlToCreate = url+dataBase;
+            System.out.println(urlToCreate);
+            System.out.println();
+            Connection connection = DriverManager.getConnection(urlToCreate,username, password);
+
+            pst = connection.prepareStatement("CREATE TABLE " + nameTableTextField.getText() + "(  " + query  +" )");
+            System.out.println("CREATE TABLE " + nameTableTextField.getText() + "(  " + query  +" )");
+            pst.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        /*
+
+        Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
+        String searchDatabase = doSelected.getDatabase().getValue();
+        String urlToSearch = url+searchDatabase;
+
+        dataBaseSelected.setText(searchDatabase);
+
+        ObservableList<Table> tables = FXCollections.observableArrayList();
+        this.showTables.setCellValueFactory(new PropertyValueFactory("Table"));
+
+        try {
+            Connection connection = DriverManager.getConnection(urlToSearch,username, password);
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SHOW TABLES");
+            while (resultSet.next()){
+                Table st = new Table();
+                st.setTable(resultSet.getString("Tables_in_"+searchDatabase));
+                tables.add(st);
+            }
+            showTables_TableView.setItems(tables);
+            showTables.setCellValueFactory(f->f.getValue().getTable());
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+         */
+
+
+    }
+
 
 
 
@@ -344,13 +454,25 @@ public class ShowDatabasesController implements Initializable {
         typesComboBox.getItems().addAll(
                 "Int",
                 "Float",
-                "Char",
+                "VarChar(100)",
                 "Boolean",
                 "Time",
                 "Date",
                 "DateTime"
         );
+
+        extraValueComboBox.getItems().addAll(
+                "AUTO_INCREMENT",
+                "ON UPDATE",
+               "CURRENT_TIMESTAMP",
+                "UNSIGNED"
+        )
+        ;
+
+
     }
+
+
 
     @javafx.fxml.FXML
     public void selectTable(Event event) throws SQLException {
@@ -403,6 +525,18 @@ public class ShowDatabasesController implements Initializable {
             showTablesData.getItems().add(data);
         }
         showTablesData.setItems(datosTable);
+
+    }
+
+    @javafx.fxml.FXML
+    public void doChooseType(ActionEvent actionEvent) {
+       if(typesComboBox.getValue().equals("Int")){
+            int defaultValue = 0;
+            defaultValueTextField.setText(String.valueOf(defaultValue));
+        } else {
+            String defaultValue = "";
+            defaultValueTextField.setText(defaultValue);
+        }
 
     }
 }

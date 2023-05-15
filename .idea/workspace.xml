@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="dinamic tables">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/fonts/OxfordStreet.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new features on create new tables, css added to files and scene builder">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/fonts/Cocogoose_Pro-trial.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/fonts/Roboto-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/styleSDB.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/wallpaper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/walppaper.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/newTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/modelo/newTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/hello-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +49,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/sergi/Desktop/REPOSITORIOS/DataBaseProject/src/main/java/com/example/databaseproject&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sergi/Downloads/ProyectoPrograPR1/ProyectoPrograPR1/ProjectoProgramacionPr&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sergio-Pc/Desktop/repositorios_proyectos/DataBaseProject/src/main/resources/com/example/databaseproject/images&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -55,8 +59,12 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sergio-Pc\Desktop\repositorios_proyectos\DataBaseProject\src\main\resources\com\example\databaseproject\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Sergio-Pc\Desktop\repositorios_proyectos\DataBaseProject\src\main\resources\com\example\databaseproject\fonts" />
+      <recent name="C:\Users\Sergio-Pc\Desktop\repositorios_proyectos\DataBaseProject\src\main\resources\images" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.databaseproject" />
@@ -126,7 +134,9 @@
       <workItem from="1683841546268" duration="9405000" />
       <workItem from="1683928993591" duration="2109000" />
       <workItem from="1684023671873" duration="1876000" />
-      <workItem from="1684078114796" duration="6852000" />
+      <workItem from="1684078114796" duration="7123000" />
+      <workItem from="1684169574993" duration="3471000" />
+      <workItem from="1684178583186" duration="11775000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -282,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683850733079</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="new features on create new tables, css added to files and scene builder">
+      <created>1684116126171</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1684116126171</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,6 +333,7 @@
     <MESSAGE value="NEW FEATURES ON SELECT TABLE" />
     <MESSAGE value="new features on SelectionTable" />
     <MESSAGE value="dinamic tables" />
-    <option name="LAST_COMMIT_MESSAGE" value="dinamic tables" />
+    <MESSAGE value="new features on create new tables, css added to files and scene builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="new features on create new tables, css added to files and scene builder" />
   </component>
 </project>

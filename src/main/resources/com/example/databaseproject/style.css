@@ -1,5 +1,12 @@
 
 
+@font-face {
+    -fx-font-family: 'Roboto Light';
+    src: url('fonts/Roboto-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+
+}
 .loggin_password{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
     -fx-border-radius: 10;
@@ -10,6 +17,12 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 0, 0);
     -fx-border-radius: 10;
     -fx-background-radius: 10;
+}
+
+.titlesFonts{
+    -fx-font-family: "Roboto Light";
+    -fx-font-size: 18;
+
 }
 .Pane{
     -fx-border-radius: 10;
@@ -44,6 +57,7 @@
     -fx-cursor: hand;
     -fx-animation: colorchange 10s;
 }
+
 
 @keyframes colorchange {
     0%   { -fx-background-color:  #8ebdb6 ; }
