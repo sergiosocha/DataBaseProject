@@ -1,0 +1,52 @@
+
+
+.loggin_password{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+
+}
+.titles{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 10, 0, 0, 0);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.Pane{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: #3e838c ;
+    -fx-background-color: #063940;
+    -fx-effect: dropshadow(three-pass-box, rgba(62,131,140,0.6), 10, 0, 0, 0);
+
+}
+
+.text-field{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+
+}
+.textTitles{
+    -fx-border-color: #063940;
+    -fx-effect: dropshadow(three-pass-box, rgba(25,94,99,0.6), 10, 0, 0, 0);
+
+}
+.loggin_password:hover {
+    -fx-background-color: green;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 10 20 10 20;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    -fx-cursor: hand;
+    -fx-animation: colorchange 10s;
+}
+
+@keyframes colorchange {
+    0%   { -fx-background-color:  #8ebdb6 ; }
+    50%  { -fx-background-color: #3e838c; }
+    100% { -fx-background-color: #195e63; }
+}

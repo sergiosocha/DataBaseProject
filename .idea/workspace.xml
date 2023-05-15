@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="last commit">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="dinamic tables">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/fonts/OxfordStreet.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/hello-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +55,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sergio-Pc\Desktop\repositorios_proyectos\DataBaseProject\src\main\resources\com\example\databaseproject\fonts" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.databaseproject" />
     </key>
@@ -119,6 +125,8 @@
       <workItem from="1683746918722" duration="3088000" />
       <workItem from="1683841546268" duration="9405000" />
       <workItem from="1683928993591" duration="2109000" />
+      <workItem from="1684023671873" duration="1876000" />
+      <workItem from="1684078114796" duration="6852000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>

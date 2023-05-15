@@ -66,8 +66,6 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private TableColumn<newTable, String>  nullColumb;
     @javafx.fxml.FXML
-    private TextField varCharacters;
-    @javafx.fxml.FXML
     private Button createTableButton;
     @javafx.fxml.FXML
     private Button deleteFieldButton;
@@ -93,9 +91,14 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private TableView<ObservableList<String>> showTablesData;
     @javafx.fxml.FXML
-    private ComboBox<String> dataBasesComboBox;
+    private Label dataBaseSelected;
+    @javafx.fxml.FXML
+    private TextField defaultValueTextField;
+    @javafx.fxml.FXML
+    private ComboBox extraValueComboBox;
 
 
+    @Deprecated
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelaTabla();
@@ -144,7 +147,7 @@ public class ShowDatabasesController implements Initializable {
                 st.setDatabase(resultSet.getString("Database"));//Usamos St para dar formato a los datos que obtenemos
                 String var = resultSet.getString("DataBase");
                 databases.add(st); //agregamos al oversableList los elementos st
-                dataBasesComboBox.getItems().add(var);
+
 
             }
             dataBases_tableView.setItems(databases);//Traemos los items a la table view
@@ -159,6 +162,8 @@ public class ShowDatabasesController implements Initializable {
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
         String urlToSearch = url+searchDatabase;
+
+        dataBaseSelected.setText(searchDatabase);
 
         ObservableList<Table> tables = FXCollections.observableArrayList();
         this.showTables.setCellValueFactory(new PropertyValueFactory("Table"));
@@ -187,7 +192,7 @@ public class ShowDatabasesController implements Initializable {
         String newDataBase = JOptionPane.showInputDialog("Ingrese el nombre de la base de datos: ");
         try {
 
-            dataBasesComboBox.getItems().removeAll();
+
             Connection connection = DriverManager.getConnection(url,username, password);
             pst = connection.prepareStatement("CREATE DATABASE "+newDataBase);
             pst.executeUpdate();

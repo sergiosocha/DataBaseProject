@@ -15,57 +15,56 @@
    <children>
       <Pane fx:id="ShowDatabasesPane" layoutX="7.0" layoutY="7.0" prefHeight="650.0" prefWidth="962.0">
          <children>
-            <Button fx:id="cerrarsesion_button" layoutX="819.0" layoutY="609.0" mnemonicParsing="false" onAction="#cerrarsesion_button" prefHeight="27.0" prefWidth="129.0" text="cerrar sesion">
+            <Button fx:id="cerrarsesion_button" layoutX="819.0" layoutY="614.0" mnemonicParsing="false" onAction="#cerrarsesion_button" prefHeight="27.0" prefWidth="129.0" text="cerrar sesion">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TableView fx:id="dataBases_tableView" layoutX="14.0" layoutY="24.0" onMouseClicked="#selectDataBase" prefHeight="281.0" prefWidth="221.0">
+            <TableView fx:id="dataBases_tableView" layoutX="182.0" layoutY="24.0" onMouseClicked="#selectDataBase" prefHeight="281.0" prefWidth="221.0">
               <columns>
                 <TableColumn fx:id="Database" prefWidth="220.0" text="Bases De Datos" />
               </columns>
             </TableView>
-            <Button fx:id="update_button" layoutX="260.0" layoutY="24.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" text="Actualizar">
+            <Button fx:id="update_button" layoutX="428.0" layoutY="24.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" text="Actualizar">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TableView fx:id="showTables_TableView" layoutX="414.0" layoutY="24.0" onMouseClicked="#selectTable" prefHeight="289.0" prefWidth="221.0">
+            <TableView fx:id="showTables_TableView" layoutX="582.0" layoutY="24.0" onMouseClicked="#selectTable" prefHeight="289.0" prefWidth="221.0">
               <columns>
                 <TableColumn fx:id="showTables" prefWidth="220.0" text="Tablas" />
               </columns>
             </TableView>
-            <Button fx:id="create_button" layoutX="260.0" layoutY="155.0" mnemonicParsing="false" onAction="#doCreate" prefHeight="27.0" prefWidth="129.0" text="Create">
+            <Button fx:id="create_button" layoutX="428.0" layoutY="155.0" mnemonicParsing="false" onAction="#doCreate" prefHeight="27.0" prefWidth="129.0" text="Create">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="delete_button" layoutX="260.0" layoutY="278.0" mnemonicParsing="false" onAction="#doDelete" prefHeight="27.0" prefWidth="129.0" text="Delete">
+            <Button fx:id="delete_button" layoutX="428.0" layoutY="278.0" mnemonicParsing="false" onAction="#doDelete" prefHeight="27.0" prefWidth="129.0" text="Delete">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="createNewTable_button" layoutX="260.0" layoutY="92.0" mnemonicParsing="false" onAction="#doCreateNewTable" prefHeight="27.0" prefWidth="129.0" text="Create New Table">
+            <Button fx:id="createNewTable_button" layoutX="428.0" layoutY="92.0" mnemonicParsing="false" onAction="#doCreateNewTable" prefHeight="27.0" prefWidth="129.0" text="Create New Table">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TableView fx:id="showTablesData" layoutX="16.0" layoutY="325.0" prefHeight="289.0" prefWidth="616.0" />
-            <ComboBox fx:id="dataBasesComboBox" layoutX="649.0" layoutY="39.0" prefHeight="50.0" prefWidth="195.0" promptText="Bases De Datos" />
+            <TableView fx:id="showTablesData" layoutX="184.0" layoutY="325.0" prefHeight="289.0" prefWidth="616.0" />
          </children>
       </Pane>
-      <Pane fx:id="createTables_interface" prefHeight="415.0" prefWidth="667.0" style="-fx-background-color: #a8a4a3;" visible="false">
+      <Pane fx:id="createTables_interface" prefHeight="657.0" prefWidth="969.0" style="-fx-background-color: #a8a4a3;" visible="false">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="14.0" prefHeight="50.0" prefWidth="483.0" style="-fx-border-color: #000000;" text="CREATE TABLES" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="243.0" layoutY="42.0" prefHeight="50.0" prefWidth="483.0" style="-fx-border-color: #000000;" text="CREATE TABLES" textAlignment="CENTER">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <Button fx:id="volverShowTables_Button" layoutX="514.0" layoutY="381.0" mnemonicParsing="false" onAction="#doVolver" prefHeight="27.0" prefWidth="123.0" text="Volver" />
-            <TextField fx:id="nameCampoNewTable" layoutX="36.0" layoutY="74.0" prefHeight="35.0" prefWidth="171.0" promptText="Ingrese el nombre del campo" />
-            <ComboBox fx:id="typesComboBox" layoutX="370.0" layoutY="74.0" prefHeight="35.0" prefWidth="195.0" promptText="Escoger el tipo" />
-            <CheckBox fx:id="nullCheckBox" alignment="CENTER" layoutX="227.0" layoutY="74.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0" style="-fx-border-color: #000000;" text="NULL" textAlignment="CENTER" />
-            <TableView fx:id="fieldTables" layoutX="31.0" layoutY="185.0" onMouseClicked="#selectField" prefHeight="181.0" prefWidth="607.0">
+            <Button fx:id="volverShowTables_Button" layoutX="664.0" layoutY="499.0" mnemonicParsing="false" onAction="#doVolver" prefHeight="27.0" prefWidth="123.0" text="Volver" />
+            <TextField fx:id="nameCampoNewTable" layoutX="186.0" layoutY="192.0" prefHeight="35.0" prefWidth="171.0" promptText="Ingrese el nombre del campo" />
+            <ComboBox fx:id="typesComboBox" layoutX="453.0" layoutY="192.0" prefHeight="35.0" prefWidth="129.0" promptText="Escoger el tipo" />
+            <CheckBox fx:id="nullCheckBox" alignment="CENTER" layoutX="377.0" layoutY="192.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="63.0" style="-fx-border-color: #000000;" text="NULL" textAlignment="CENTER" />
+            <TableView fx:id="fieldTables" layoutX="181.0" layoutY="303.0" onMouseClicked="#selectField" prefHeight="181.0" prefWidth="607.0">
               <columns>
                 <TableColumn fx:id="nameColumb" prefWidth="181.0" text="NOMBRE" />
                 <TableColumn fx:id="typeColumb" prefWidth="109.0" text="TIPO" />
@@ -73,23 +72,27 @@
                   <TableColumn fx:id="nullColumb" prefWidth="146.0" text="NULL" />
               </columns>
             </TableView>
-            <Button fx:id="newFieldButton" layoutX="36.0" layoutY="136.0" mnemonicParsing="false" onAction="#doCreateField" prefHeight="35.0" prefWidth="171.0" text=" Agregar Campo">
+            <Button fx:id="newFieldButton" layoutX="186.0" layoutY="254.0" mnemonicParsing="false" onAction="#doCreateField" prefHeight="35.0" prefWidth="171.0" text=" Agregar Campo">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TextField fx:id="varCharacters" layoutX="593.0" layoutY="74.0" prefHeight="35.0" prefWidth="35.0" />
-            <Button fx:id="createTableButton" layoutX="197.0" layoutY="379.0" mnemonicParsing="false" onAction="#doCreateTables" prefHeight="27.0" prefWidth="211.0" text="Crear Tabla" />
-            <Button fx:id="deleteFieldButton" layoutX="292.0" layoutY="137.0" mnemonicParsing="false" onAction="#doDeleteField" prefHeight="35.0" prefWidth="129.0" text="Eliminar Campo">
+            <Button fx:id="createTableButton" layoutX="347.0" layoutY="497.0" mnemonicParsing="false" onAction="#doCreateTables" prefHeight="27.0" prefWidth="211.0" text="Crear Tabla" />
+            <Button fx:id="deleteFieldButton" layoutX="442.0" layoutY="255.0" mnemonicParsing="false" onAction="#doDeleteField" prefHeight="35.0" prefWidth="129.0" text="Eliminar Campo">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="modifyFieldButton" layoutX="485.0" layoutY="136.0" mnemonicParsing="false" onAction="#doModifyField" prefHeight="35.0" prefWidth="152.0" text="Modificar Campo">
+            <Button fx:id="modifyFieldButton" layoutX="635.0" layoutY="254.0" mnemonicParsing="false" onAction="#doModifyField" prefHeight="35.0" prefWidth="152.0" text="Modificar Campo">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Label fx:id="dataBaseSelected" layoutX="518.0" layoutY="104.0" prefHeight="35.0" prefWidth="171.0" style="-fx-border-color: #000000;" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="104.0" prefHeight="35.0" prefWidth="171.0" style="-fx-border-color: #000000;" text="BASE DE DATOS" textAlignment="CENTER" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="158.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #000000;" text="VALOR POR DEFECTO" textAlignment="CENTER" />
+            <TextField fx:id="defaultValueTextField" layoutX="613.0" layoutY="158.0" prefHeight="27.0" prefWidth="152.0" promptText="ingrese valor por defecto" />
+            <ComboBox fx:id="extraValueComboBox" layoutX="625.0" layoutY="192.0" prefHeight="35.0" prefWidth="129.0" promptText="Extra" />
          </children>
       </Pane>
    </children>
