@@ -415,36 +415,6 @@ public class ShowDatabasesController implements Initializable {
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-        /*
-
-        Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
-        String searchDatabase = doSelected.getDatabase().getValue();
-        String urlToSearch = url+searchDatabase;
-
-        dataBaseSelected.setText(searchDatabase);
-
-        ObservableList<Table> tables = FXCollections.observableArrayList();
-        this.showTables.setCellValueFactory(new PropertyValueFactory("Table"));
-
-        try {
-            Connection connection = DriverManager.getConnection(urlToSearch,username, password);
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery("SHOW TABLES");
-            while (resultSet.next()){
-                Table st = new Table();
-                st.setTable(resultSet.getString("Tables_in_"+searchDatabase));
-                tables.add(st);
-            }
-            showTables_TableView.setItems(tables);
-            showTables.setCellValueFactory(f->f.getValue().getTable());
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-         */
-
-
     }
 
 
