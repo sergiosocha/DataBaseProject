@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="fix code">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="Css updated">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/fadedWallpaper.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/styleSDB.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/styleSDB.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +43,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_directory_selection": "C:/Users/sergi/Desktop/REPOSITORIOS/DataBaseProject/src/main/java/com/example/databaseproject",
-    "last_opened_file_path": "C:/Users/Sergio-Pc/Desktop/repositorios_proyectos/DataBaseProject/src/main/resources/com/example/databaseproject/images",
+    "last_opened_file_path": "C:/Users/Sergio-Pc/Desktop/repositorios_proyectos/DataBaseProject/src/main/resources/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -56,6 +59,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sergio-Pc\Desktop\repositorios_proyectos\DataBaseProject\src\main\resources\images" />
       <recent name="C:\Users\Sergio-Pc\Desktop\repositorios_proyectos\DataBaseProject\src\main\resources\com\example\databaseproject\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -133,6 +137,8 @@
       <workItem from="1684078114796" duration="7123000" />
       <workItem from="1684169574993" duration="3471000" />
       <workItem from="1684178583186" duration="13065000" />
+      <workItem from="1684264189104" duration="2132000" />
+      <workItem from="1684270994025" duration="4616000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>

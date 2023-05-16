@@ -17,6 +17,7 @@
     -fx-background-radius: 10;
     -fx-border-color: #000000 ;
     -fx-background-color: #3e838c;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 2, 5, 3, 3);
 
 }
 
@@ -31,4 +32,53 @@
 .tablesViews{
     -fx-border-radius: 10;
     -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 2, 5, 3, 3);
+}
+
+.tablesViewsCreateInterface{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 6, 5, 4, 4);
+
+}
+.menuOptions-bar{
+    -fx-background-color: #094149;
+    -fx-border-color: #000000 ;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 3, 3, 3, 3);
+}
+
+.container{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10 ;
+    -fx-border-color: grey;
+    -fx-background-color: #063940;
+    -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.8), 2, 5, 3, 3);
+}
+.titlesDataBaseSelected{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10 ;
+    -fx-border-color: #000000;
+    -fx-background-color: #8ebdb6;
+    -fx-font-size: 14;
+}
+
+.buttons{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10 ;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 2, 5, 1, 1);
+}
+
+.backgroundOptions{
+    -fx-background-color: rgba(10, 92, 105, 0.65);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.8), 2, 5, 3, 3);
+}
+
+.options{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: white ;
+    -fx-background-color: #577c78;
+
 }
