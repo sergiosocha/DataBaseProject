@@ -1,0 +1,19 @@
+.background {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: #3e838c;
+    -fx-background-color: #195e63;
+}
+
+.background_create_tables {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: #3e838c;
+    -fx-background-color: #195e63;
+}
+
+
+.tablesViews{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new feature&#10;comboBox to choose database &#10;&#10;&#10;to do:&#10;Create table function" />
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new features on create new tables, css added to files and scene builder">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +40,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/sergi/Desktop/REPOSITORIOS/DataBaseProject/src/main/java/com/example/databaseproject&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sergi/Downloads/ProyectoPrograPR1/ProyectoPrograPR1/ProjectoProgramacionPr&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sergio-Pc/Desktop/repositorios_proyectos/DataBaseProject/src/main/resources/com/example/databaseproject/images&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -47,6 +50,13 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sergio-Pc\Desktop\repositorios_proyectos\DataBaseProject\src\main\resources\com\example\databaseproject\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sergio-Pc\Desktop\repositorios_proyectos\DataBaseProject\src\main\resources\com\example\databaseproject\fonts" />
+      <recent name="C:\Users\Sergio-Pc\Desktop\repositorios_proyectos\DataBaseProject\src\main\resources\images" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.databaseproject" />
     </key>
@@ -113,7 +123,11 @@
       <workItem from="1683738504233" duration="149000" />
       <workItem from="1683746918722" duration="3088000" />
       <workItem from="1683841546268" duration="9405000" />
-      <workItem from="1683928993591" duration="2735000" />
+      <workItem from="1683928993591" duration="2109000" />
+      <workItem from="1684023671873" duration="1876000" />
+      <workItem from="1684078114796" duration="7123000" />
+      <workItem from="1684169574993" duration="3471000" />
+      <workItem from="1684178583186" duration="13065000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -269,14 +283,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683850733079</updated>
     </task>
-    <task id="LOCAL-00023" summary="new feature&#10;comboBox to choose database &#10;&#10;&#10;to do:&#10;Create table function">
-      <created>1683933021084</created>
+    <task id="LOCAL-00023" summary="new features on create new tables, css added to files and scene builder">
+      <created>1684116126171</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1683933021084</updated>
+      <updated>1684116126171</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="new features on create new tables, css added to files and scene builder">
+      <created>1684191500180</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1684191500180</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,7 +331,7 @@
     <MESSAGE value="NEW FEATURES ON SELECT TABLE" />
     <MESSAGE value="new features on SelectionTable" />
     <MESSAGE value="dinamic tables" />
-    <MESSAGE value="new feature&#10;comboBox to choose database &#10;&#10;&#10;to do:&#10;Create table function" />
-    <option name="LAST_COMMIT_MESSAGE" value="new feature&#10;comboBox to choose database &#10;&#10;&#10;to do:&#10;Create table function" />
+    <MESSAGE value="new features on create new tables, css added to files and scene builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="new features on create new tables, css added to files and scene builder" />
   </component>
 </project>

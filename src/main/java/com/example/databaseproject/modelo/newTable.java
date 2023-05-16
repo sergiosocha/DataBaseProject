@@ -14,21 +14,24 @@ public class newTable {
     */
     private String name;
     private String type;
-    private boolean isNullable;
+    private String isNullable;
     private String extra;
+    private String Default;
 
     public newTable(){
         this.name="";
         this.type="";
-        this.isNullable = false;
+        this.isNullable = "";
         this.extra = "";
+        this.Default = "";
     }
 
-    public newTable(String name, String type, boolean isNullable, String extra) {
+    public newTable(String name, String type, String isNullable, String extra, String Default) {
         this.name = name;
         this.type = type;
         this.isNullable = isNullable;
         this.extra = extra;
+        this.Default = Default;
     }
 
     public String getName() {
@@ -39,7 +42,7 @@ public class newTable {
         return type;
     }
 
-    public boolean isNullable() {
+    public String isNullable() {
         return isNullable;
     }
 
@@ -55,53 +58,24 @@ public class newTable {
         this.type = type;
     }
 
-    public void setNullable(boolean nullable) {
+    public void setNullable(String nullable) {
         isNullable = nullable;
     }
 
     public void setExtra(String extra) {
         this.extra = extra;
     }
-    /*
-    public newTable(){
-        name = new SimpleStringProperty(this, "name");
-        type = new SimpleStringProperty(this, "type");
-        Null = new SimpleStringProperty(this, "Null");
-        extra = new SimpleStringProperty(this, "extra");
+
+    public String getDefault() {
+        return Default;
     }
 
-    public StringProperty getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name.set(name);
-    }
-    public StringProperty getType() {
-        return type;
+    public void setDefault(String aDefault) {
+        Default = aDefault;
     }
 
-    public void setType(String type) {
-        this.type.set(type);
+    @Override
+    public String toString() {
+        return this.name + " " +this.type + " " + this.isNullable + " " + this.Default +  " " + this.extra;
     }
-
-    public StringProperty getNull() {
-        return Null;
-    }
-
-    public void setNull(String Null) {
-        this.Null.set(Null);
-    }
-
-    public StringProperty getExtra() {
-        return extra;
-    }
-
-    public void setExtra(String extra) {
-        this.extra.set(extra);
-    }
-
-*/
-
-
-
 }
