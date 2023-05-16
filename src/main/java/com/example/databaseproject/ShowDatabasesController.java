@@ -87,8 +87,6 @@ public class ShowDatabasesController implements Initializable {
     private Button create_button;
     @javafx.fxml.FXML
     private Button delete_button;
-
-    private int myIndex;
     Connection con;
     PreparedStatement pst;
     @javafx.fxml.FXML
@@ -109,6 +107,8 @@ public class ShowDatabasesController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelaTabla();
         tableDataBases();
+        fillComboBoxes();
+
     }
     public void Connection(){
         try{
@@ -131,15 +131,13 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void update_buttonAction(ActionEvent actionEvent) {
-
         modelaTabla();
         tableDataBases();
-
     }
 
     public void tableDataBases(){
 
-        Connection(); //Trae la funcion Connection para poder usarla en el CreateStatement para luego prepara la consulta
+        Connection(); //Trae la función Connection para poder usarla en el CreateStatement para luego prepara la consulta
         ObservableList<Database> databases = FXCollections.observableArrayList();
         this.Database.setCellValueFactory(new PropertyValueFactory("Database"));
 
@@ -172,7 +170,7 @@ public class ShowDatabasesController implements Initializable {
         dataBaseSelected.setText(searchDatabase);
 
         ObservableList<Table> tables = FXCollections.observableArrayList();
-        this.showTables.setCellValueFactory(new PropertyValueFactory("Table"));
+        this.showTables.setCellValueFactory(new PropertyValueFactory<>("Table"));
 
         try {
             Connection connection = DriverManager.getConnection(urlToSearch,username, password);
@@ -235,7 +233,7 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void doCreateNewTable(ActionEvent actionEvent) {
-        fillComboBoxes();
+
         this.createTables_interface.setVisible(true);
         this.ShowDatabasesPane.setVisible(false);
 
@@ -291,8 +289,6 @@ public class ShowDatabasesController implements Initializable {
                 Default = "DEFAULT " + defaultValue;
             }
 
-
-
             newTable tableData = new newTable(name, type, selected, extra,Default );
             newTables.add(tableData);
             fieldTables.setItems(newTables);
@@ -303,9 +299,6 @@ public class ShowDatabasesController implements Initializable {
             typesComboBox.setValue(String.valueOf(""));
             extraValueComboBox.setValue(String.valueOf(""));
             defaultValueTextField.setText("");
-
-
-
 
         }catch (Exception e){
             e.printStackTrace();
@@ -382,9 +375,7 @@ public class ShowDatabasesController implements Initializable {
         for (int i = 0; i < newTables.size(); i++) {
             newTable table = newTables.get(i);
             System.out.print(table);
-
             String selected  =nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
-
 
             query = query.concat(String.valueOf(newTables.get(i)));
             if (i < newTables.size() - 1) {
@@ -395,11 +386,8 @@ public class ShowDatabasesController implements Initializable {
                 System.out.print(";");
             }
         }
-
-
         System.out.println("");
         System.out.println(nameTableTextField.getText() + " " + query);
-
 
         String dataBase = dataBaseSelected.getText();
         try{
@@ -412,42 +400,24 @@ public class ShowDatabasesController implements Initializable {
             System.out.println("CREATE TABLE " + nameTableTextField.getText() + "(  " + query  +" )");
             pst.executeUpdate();
 
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Info");
+            alert.setContentText("SE HA CREADO LA TABLA "+ nameTableTextField.getText() + " EN " + dataBase );
+            alert.showAndWait();
+
+            nameCampoNewTable.setText("");
+            nullCheckBox.setSelected(false);
+            typesComboBox.setValue(String.valueOf(""));
+            extraValueComboBox.setValue(String.valueOf(""));
+            defaultValueTextField.setText("");
+
+
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-        /*
-
-        Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
-        String searchDatabase = doSelected.getDatabase().getValue();
-        String urlToSearch = url+searchDatabase;
-
-        dataBaseSelected.setText(searchDatabase);
-
-        ObservableList<Table> tables = FXCollections.observableArrayList();
-        this.showTables.setCellValueFactory(new PropertyValueFactory("Table"));
-
-        try {
-            Connection connection = DriverManager.getConnection(urlToSearch,username, password);
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery("SHOW TABLES");
-            while (resultSet.next()){
-                Table st = new Table();
-                st.setTable(resultSet.getString("Tables_in_"+searchDatabase));
-                tables.add(st);
-            }
-            showTables_TableView.setItems(tables);
-            showTables.setCellValueFactory(f->f.getValue().getTable());
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-         */
-
-
     }
-
-
 
 
     public void fillComboBoxes(){
@@ -466,13 +436,8 @@ public class ShowDatabasesController implements Initializable {
                 "ON UPDATE",
                "CURRENT_TIMESTAMP",
                 "UNSIGNED"
-        )
-        ;
-
-
+        );
     }
-
-
 
     @javafx.fxml.FXML
     public void selectTable(Event event) throws SQLException {
@@ -525,7 +490,6 @@ public class ShowDatabasesController implements Initializable {
             showTablesData.getItems().add(data);
         }
         showTablesData.setItems(datosTable);
-
     }
 
     @javafx.fxml.FXML

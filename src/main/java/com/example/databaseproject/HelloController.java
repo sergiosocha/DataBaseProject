@@ -22,6 +22,8 @@ public class HelloController {
     private Button loggin_password;
     public String user = "";
     public String password = "";
+    public String port = "";
+    public String address = "";
     @FXML
     private TextField equipo_id;
     @FXML
@@ -29,9 +31,14 @@ public class HelloController {
 
     @FXML
     public void loggin(ActionEvent actionEvent) {
+
         this.userM = new User();
         user = user_id.getText();
         password = password_id.getText();
+        port =puerto_id.getText();
+        address=equipo_id.getText();
+
+        System.out.println("jdbc:mysql://"+address+":"+port+"/");
         try {
             conexion(user,password);
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("show_databases.fxml"));
@@ -50,6 +57,7 @@ public class HelloController {
 
     public void conexion (String username, String password){
         String url = "jdbc:mysql://localhost:3306/";
+
         try{
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
