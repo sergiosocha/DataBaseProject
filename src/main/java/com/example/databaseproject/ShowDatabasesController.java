@@ -137,7 +137,7 @@ public class ShowDatabasesController implements Initializable {
 
     public void tableDataBases(){
 
-        Connection(); //Trae la funcion Connection para poder usarla en el CreateStatement para luego prepara la consulta
+        Connection(); //Trae la función Connection para poder usarla en el CreateStatement para luego prepara la consulta
         ObservableList<Database> databases = FXCollections.observableArrayList();
         this.Database.setCellValueFactory(new PropertyValueFactory("Database"));
 
@@ -170,7 +170,7 @@ public class ShowDatabasesController implements Initializable {
         dataBaseSelected.setText(searchDatabase);
 
         ObservableList<Table> tables = FXCollections.observableArrayList();
-        this.showTables.setCellValueFactory(new PropertyValueFactory("Table"));
+        this.showTables.setCellValueFactory(new PropertyValueFactory<>("Table"));
 
         try {
             Connection connection = DriverManager.getConnection(urlToSearch,username, password);
