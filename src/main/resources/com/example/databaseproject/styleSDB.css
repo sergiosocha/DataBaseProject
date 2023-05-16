@@ -12,6 +12,21 @@
     -fx-background-color: #195e63;
 }
 
+.containers_buttons{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: #000000 ;
+    -fx-background-color: #3e838c;
+
+}
+
+.containers_titles{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10 ;
+    -fx-border-color: #000000;
+    -fx-background-color: #3e838c;
+}
+
 
 .tablesViews{
     -fx-border-radius: 10;

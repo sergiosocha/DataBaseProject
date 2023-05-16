@@ -382,9 +382,7 @@ public class ShowDatabasesController implements Initializable {
         for (int i = 0; i < newTables.size(); i++) {
             newTable table = newTables.get(i);
             System.out.print(table);
-
             String selected  =nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
-
 
             query = query.concat(String.valueOf(newTables.get(i)));
             if (i < newTables.size() - 1) {
@@ -395,11 +393,8 @@ public class ShowDatabasesController implements Initializable {
                 System.out.print(";");
             }
         }
-
-
         System.out.println("");
         System.out.println(nameTableTextField.getText() + " " + query);
-
 
         String dataBase = dataBaseSelected.getText();
         try{
@@ -411,6 +406,20 @@ public class ShowDatabasesController implements Initializable {
             pst = connection.prepareStatement("CREATE TABLE " + nameTableTextField.getText() + "(  " + query  +" )");
             System.out.println("CREATE TABLE " + nameTableTextField.getText() + "(  " + query  +" )");
             pst.executeUpdate();
+
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Info");
+            alert.setContentText("SE HA CREADO LA TABLA "+ nameTableTextField.getText() + " EN " + dataBase );
+            alert.showAndWait();
+
+            nameCampoNewTable.setText("");
+            nullCheckBox.setSelected(false);
+            typesComboBox.setValue(String.valueOf(""));
+            extraValueComboBox.setValue(String.valueOf(""));
+            defaultValueTextField.setText("");
+
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -495,7 +504,6 @@ public class ShowDatabasesController implements Initializable {
             showTablesData.getItems().add(data);
         }
         showTablesData.setItems(datosTable);
-
     }
 
     @javafx.fxml.FXML
