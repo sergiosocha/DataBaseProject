@@ -109,6 +109,7 @@ public class ShowDatabasesController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelaTabla();
         tableDataBases();
+        fillComboBoxes();
     }
     public void Connection(){
         try{
@@ -235,7 +236,7 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void doCreateNewTable(ActionEvent actionEvent) {
-        fillComboBoxes();
+
         this.createTables_interface.setVisible(true);
         this.ShowDatabasesPane.setVisible(false);
 
@@ -291,8 +292,6 @@ public class ShowDatabasesController implements Initializable {
                 Default = "DEFAULT " + defaultValue;
             }
 
-
-
             newTable tableData = new newTable(name, type, selected, extra,Default );
             newTables.add(tableData);
             fieldTables.setItems(newTables);
@@ -303,9 +302,6 @@ public class ShowDatabasesController implements Initializable {
             typesComboBox.setValue(String.valueOf(""));
             extraValueComboBox.setValue(String.valueOf(""));
             defaultValueTextField.setText("");
-
-
-
 
         }catch (Exception e){
             e.printStackTrace();
@@ -427,8 +423,6 @@ public class ShowDatabasesController implements Initializable {
     }
 
 
-
-
     public void fillComboBoxes(){
         typesComboBox.getItems().addAll(
                 "Int",
@@ -445,13 +439,8 @@ public class ShowDatabasesController implements Initializable {
                 "ON UPDATE",
                "CURRENT_TIMESTAMP",
                 "UNSIGNED"
-        )
-        ;
-
-
+        );
     }
-
-
 
     @javafx.fxml.FXML
     public void selectTable(Event event) throws SQLException {
