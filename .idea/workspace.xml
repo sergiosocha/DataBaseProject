@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new features on create new tables, css added to files and scene builder">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="Css updated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +124,7 @@
       <workItem from="1684023671873" duration="1876000" />
       <workItem from="1684078114796" duration="7123000" />
       <workItem from="1684169574993" duration="3471000" />
-      <workItem from="1684178583186" duration="13065000" />
+      <workItem from="1684178583186" duration="13174000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -297,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684191500180</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Css updated">
+      <created>1684201820199</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1684201820199</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,6 +336,7 @@
     <MESSAGE value="new features on SelectionTable" />
     <MESSAGE value="dinamic tables" />
     <MESSAGE value="new features on create new tables, css added to files and scene builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="new features on create new tables, css added to files and scene builder" />
+    <MESSAGE value="Css updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Css updated" />
   </component>
 </project>
