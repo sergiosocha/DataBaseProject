@@ -30,4 +30,19 @@ public class User {
     public void setPassword(String password) {
         this.password.set(password);
     }
+
+    /*
+    private String user;
+    private String password;
+
+    public User(){
+    this.user = "";
+    this.password=""
+    }
+
+    public User(String user, String password){
+    this.user = user;
+    this.password = password;
+    }
+     */
 }

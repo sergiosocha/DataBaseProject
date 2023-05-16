@@ -87,8 +87,6 @@ public class ShowDatabasesController implements Initializable {
     private Button create_button;
     @javafx.fxml.FXML
     private Button delete_button;
-
-    private int myIndex;
     Connection con;
     PreparedStatement pst;
     @javafx.fxml.FXML
@@ -110,6 +108,7 @@ public class ShowDatabasesController implements Initializable {
         modelaTabla();
         tableDataBases();
         fillComboBoxes();
+
     }
     public void Connection(){
         try{
@@ -132,10 +131,8 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void update_buttonAction(ActionEvent actionEvent) {
-
         modelaTabla();
         tableDataBases();
-
     }
 
     public void tableDataBases(){
