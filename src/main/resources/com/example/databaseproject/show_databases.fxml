@@ -7,65 +7,21 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="656.0" prefWidth="918.0" style="-fx-background-radius: 20;" styleClass="background" stylesheets="@styleSDB.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.ShowDatabasesController">
+<AnchorPane prefHeight="655.0" prefWidth="992.0" style="-fx-background-radius: 20;" styleClass="background" stylesheets="@styleSDB.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.ShowDatabasesController">
    <children>
-      <ImageView fitHeight="780.0" fitWidth="1009.0" layoutX="-1.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="820.0" fitWidth="1001.0" layoutX="3.0" layoutY="-132.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/wallpaper.jpg" />
+            <Image url="@../../../images/fadedWallpaper.jpg" />
          </image>
       </ImageView>
-      <Pane fx:id="createTables_interface" prefHeight="657.0" prefWidth="969.0" styleClass="background_create_tables" stylesheets="@styleSDB.css" visible="false">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="243.0" layoutY="42.0" prefHeight="50.0" prefWidth="483.0" style="-fx-border-color: #000000;" text="CREATE TABLES" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="104.0" prefHeight="35.0" prefWidth="171.0" style="-fx-border-color: #000000;" text="BASE DE DATOS" textAlignment="CENTER" textFill="#e8e8e8" />
-            <Label fx:id="dataBaseSelected" alignment="CENTER" layoutX="518.0" layoutY="104.0" prefHeight="35.0" prefWidth="171.0" style="-fx-border-color: #000000;" text="Select Data Base" textFill="WHITE" />
-            <Button fx:id="volverShowTables_Button" layoutX="664.0" layoutY="560.0" mnemonicParsing="false" onAction="#doVolver" prefHeight="27.0" prefWidth="123.0" text="Volver" />
-            <TextField fx:id="nameCampoNewTable" layoutX="186.0" layoutY="253.0" prefHeight="35.0" prefWidth="171.0" promptText="Ingrese el nombre del campo" />
-            <ComboBox fx:id="typesComboBox" layoutX="453.0" layoutY="253.0" onAction="#doChooseType" prefHeight="35.0" prefWidth="129.0" promptText="Escoger el tipo" />
-            <CheckBox fx:id="nullCheckBox" alignment="CENTER" layoutX="377.0" layoutY="253.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="63.0" style="-fx-border-color: #000000;" text="NULL" textAlignment="CENTER" textFill="WHITE" />
-            <TableView fx:id="fieldTables" layoutX="181.0" layoutY="364.0" onMouseClicked="#selectField" prefHeight="181.0" prefWidth="607.0">
-              <columns>
-                <TableColumn fx:id="nameColumb" prefWidth="121.0" text="NOMBRE" />
-                <TableColumn fx:id="typeColumb" prefWidth="89.0" text="TIPO" />
-                  <TableColumn fx:id="extraColumb" minWidth="0.0" prefWidth="144.0" text="EXTRA" />
-                  <TableColumn fx:id="nullColumb" prefWidth="174.0" text="NULL" />
-                  <TableColumn fx:id="defaultColumb" prefWidth="75.0" text="DEFAULT" />
-              </columns>
-            </TableView>
-            <Button fx:id="newFieldButton" layoutX="186.0" layoutY="315.0" mnemonicParsing="false" onAction="#doCreateField" prefHeight="35.0" prefWidth="171.0" text=" Agregar Campo">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="createTableButton" layoutX="347.0" layoutY="558.0" mnemonicParsing="false" onAction="#doCreateTables" prefHeight="27.0" prefWidth="211.0" text="Crear Tabla" />
-            <Button fx:id="deleteFieldButton" layoutX="442.0" layoutY="316.0" mnemonicParsing="false" onAction="#doDeleteField" prefHeight="35.0" prefWidth="129.0" text="Eliminar Campo">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="modifyFieldButton" layoutX="635.0" layoutY="315.0" mnemonicParsing="false" onAction="#doModifyField" prefHeight="35.0" prefWidth="152.0" text="Modificar Campo">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="219.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #000000;" text="VALOR POR DEFECTO" textAlignment="CENTER" textFill="WHITE" />
-            <TextField fx:id="defaultValueTextField" layoutX="613.0" layoutY="219.0" prefHeight="27.0" prefWidth="152.0" />
-            <ComboBox fx:id="extraValueComboBox" layoutX="625.0" layoutY="253.0" prefHeight="35.0" prefWidth="129.0" promptText="Extra" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="272.0" layoutY="156.0" prefHeight="35.0" prefWidth="171.0" style="-fx-border-color: #000000;" text="NOMBRE TABLA" textAlignment="CENTER" textFill="#e8e8e8" />
-            <TextField fx:id="nameTableTextField" layoutX="518.0" layoutY="156.0" prefHeight="35.0" prefWidth="164.0" />
-         </children>
-      </Pane>
-      <Pane fx:id="ShowDatabasesPane" layoutX="4.0" layoutY="4.0" prefHeight="650.0" prefWidth="962.0" stylesheets="@styleSDB.css">
+      <Pane fx:id="ShowDatabasesPane" layoutX="4.0" layoutY="15.0" prefHeight="650.0" prefWidth="962.0" stylesheets="@styleSDB.css">
          <children>
             <TableView fx:id="dataBases_tableView" layoutX="288.0" layoutY="14.0" onMouseClicked="#selectDataBase" prefHeight="281.0" prefWidth="221.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="tablesViews" stylesheets="@styleSDB.css">
               <columns>
@@ -78,9 +34,9 @@
               </columns>
             </TableView>
             <TableView id="tableViews" fx:id="showTablesData" layoutX="290.0" layoutY="315.0" prefHeight="289.0" prefWidth="616.0" styleClass="tablesViews" stylesheets="@styleSDB.css" />
-            <Pane layoutX="14.0" layoutY="16.0" prefHeight="598.0" prefWidth="243.0" style="-fx-background-color: #8ebdb6; -fx-background-radius: 20; -fx-border-color: #063940; -fx-border-radius: 20;">
+            <Pane layoutX="31.0" layoutY="16.0" prefHeight="598.0" prefWidth="230.0" styleClass="container" stylesheets="@styleSDB.css">
                <children>
-                  <Pane layoutX="22.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
+                  <Pane layoutX="16.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
                      <children>
                         <Button fx:id="create_button" layoutX="36.0" layoutY="32.0" mnemonicParsing="false" onAction="#doCreate" prefHeight="27.0" prefWidth="129.0" text="Create">
                            <font>
@@ -105,18 +61,81 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Pane layoutX="23.0" layoutY="299.0" prefHeight="200.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
+                  <Pane layoutX="15.0" layoutY="299.0" prefHeight="200.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
                      <children>
                         <Button fx:id="createNewTable_button" layoutX="36.0" layoutY="47.0" mnemonicParsing="false" onAction="#doCreateNewTable" prefHeight="27.0" prefWidth="129.0" text="Create New Table">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
+                        <Button fx:id="deleteTableButton" layoutX="36.0" layoutY="88.0" mnemonicParsing="false" onAction="#onDeleteTable" prefHeight="27.0" prefWidth="129.0" text="Delete Table">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </children>
                   </Pane>
-                  <Label alignment="CENTER" layoutX="73.0" layoutY="285.0" prefHeight="27.0" prefWidth="101.0" styleClass="containers_titles" stylesheets="@styleSDB.css" text="Tables" />
+                  <Label alignment="CENTER" layoutX="65.0" layoutY="286.0" prefHeight="27.0" prefWidth="101.0" styleClass="containers_titles" stylesheets="@styleSDB.css" text="Tables" />
                </children>
             </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="createTables_interface" prefHeight="671.0" prefWidth="1006.0" styleClass="background_create_tables" stylesheets="@styleSDB.css" visible="false">
+         <children>
+            <Pane layoutX="260.0" layoutY="30.0" prefHeight="598.0" prefWidth="726.0" styleClass="backgroundOptions">
+               <children>
+                  <TableView fx:id="fieldTables" layoutX="60.0" layoutY="289.0" onMouseClicked="#selectField" prefHeight="259.0" prefWidth="607.0" styleClass="tablesViewsCreateInterface">
+                    <columns>
+                      <TableColumn fx:id="nameColumb" prefWidth="121.0" text="NOMBRE" />
+                      <TableColumn fx:id="typeColumb" prefWidth="89.0" text="TIPO" />
+                        <TableColumn fx:id="extraColumb" minWidth="0.0" prefWidth="144.0" text="EXTRA" />
+                        <TableColumn fx:id="nullColumb" prefWidth="174.0" text="NULL" />
+                        <TableColumn fx:id="defaultColumb" prefWidth="78.0" text="DEFAULT" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="defaultValueTextField" layoutX="300.0" layoutY="226.0" prefHeight="27.0" prefWidth="152.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="623.0" prefWidth="221.0" styleClass="containers_buttons">
+               <children>
+                  <Button fx:id="newFieldButton" layoutX="25.0" layoutY="237.0" mnemonicParsing="false" onAction="#doCreateField" prefHeight="35.0" prefWidth="171.0" styleClass="buttons" text=" Agregar Campo">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="deleteFieldButton" layoutX="23.0" layoutY="294.0" mnemonicParsing="false" onAction="#doDeleteField" prefHeight="35.0" prefWidth="171.0" styleClass="buttons" text="Eliminar Campo">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="modifyFieldButton" layoutX="25.0" layoutY="346.0" mnemonicParsing="false" onAction="#doModifyField" prefHeight="35.0" prefWidth="171.0" styleClass="buttons" text="Modificar Campo">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="createTableButton" layoutX="11.0" layoutY="463.0" mnemonicParsing="false" onAction="#doCreateTables" prefHeight="43.0" prefWidth="200.0" styleClass="buttons" text="Crear Tabla" />
+                  <Button fx:id="volverShowTables_Button" layoutX="49.0" layoutY="582.0" mnemonicParsing="false" onAction="#doVolver" prefHeight="27.0" prefWidth="123.0" styleClass="buttons" text="Volver" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="21.0" prefHeight="35.0" prefWidth="171.0" style="-fx-border-color: #000000;" styleClass="titlesDataBaseSelected" stylesheets="@styleSDB.css" text="BASE DE DATOS" textAlignment="CENTER" textFill="#e8e8e8" />
+                  <Label fx:id="dataBaseSelected" alignment="CENTER" layoutX="23.0" layoutY="69.0" prefHeight="35.0" prefWidth="171.0" styleClass="titlesDataBaseSelected" text="Select Data Base" textFill="WHITE" />
+               </children>
+            </Pane>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="332.0" layoutY="41.0" prefHeight="50.0" prefWidth="616.0" style="-fx-border-color: #000000; -fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #8ebdb6;" text="CREATE TABLES" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameCampoNewTable" layoutX="637.0" layoutY="156.0" prefHeight="35.0" prefWidth="237.0" promptText="Ingrese el nombre del campo" />
+            <ComboBox fx:id="typesComboBox" layoutX="703.0" layoutY="202.0" onAction="#doChooseType" prefHeight="35.0" prefWidth="171.0" promptText="Escoger el tipo" />
+            <CheckBox fx:id="nullCheckBox" alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="202.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="123.0" style="-fx-border-color: #000000;" text="IS NULL" textAlignment="JUSTIFY" textFill="WHITE">
+               <effect>
+                  <Blend />
+               </effect></CheckBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="249.0" prefHeight="35.0" prefWidth="129.0" styleClass="options" text="VALOR POR DEFECTO" textAlignment="CENTER" textFill="WHITE" />
+            <ComboBox fx:id="extraValueComboBox" layoutX="745.0" layoutY="253.0" prefHeight="35.0" prefWidth="129.0" promptText="Extra" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="104.0" prefHeight="35.0" prefWidth="171.0" styleClass="options" text="NOMBRE TABLA" textAlignment="CENTER" textFill="#e8e8e8" />
+            <TextField fx:id="nameTableTextField" layoutX="636.0" layoutY="104.0" prefHeight="35.0" prefWidth="237.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="156.0" prefHeight="35.0" prefWidth="171.0" styleClass="options" text="NOMBRE CAMPO" textAlignment="CENTER" textFill="#e8e8e8" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="536.0" layoutY="202.0" prefHeight="35.0" prefWidth="152.0" styleClass="options" text="SELECCIONE TIPO" textAlignment="CENTER" textFill="#e8e8e8" />
          </children>
       </Pane>
    </children>

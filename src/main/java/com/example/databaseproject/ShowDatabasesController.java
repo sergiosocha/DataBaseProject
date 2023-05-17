@@ -100,7 +100,9 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private TextField nameTableTextField;
     private boolean nullable;
-
+    User userLogged;
+    @javafx.fxml.FXML
+    private Button deleteTableButton;
 
     @Deprecated
     @Override
@@ -108,6 +110,11 @@ public class ShowDatabasesController implements Initializable {
         modelaTabla();
         tableDataBases();
         fillComboBoxes();
+
+        this.userLogged = new User();
+
+
+
 
     }
     public void Connection(){
@@ -133,6 +140,12 @@ public class ShowDatabasesController implements Initializable {
     public void update_buttonAction(ActionEvent actionEvent) {
         modelaTabla();
         tableDataBases();
+
+        String usuario = userLogged.getUser();
+        String password = userLogged.getPassword();
+        System.out.println("user  "+usuario );
+        System.out.println("password  " + password);
+
     }
 
     public void tableDataBases(){
@@ -412,6 +425,7 @@ public class ShowDatabasesController implements Initializable {
             typesComboBox.setValue(String.valueOf(""));
             extraValueComboBox.setValue(String.valueOf(""));
             defaultValueTextField.setText("");
+            nameTableTextField.setText("");
 
 
         }catch (SQLException e){
@@ -502,5 +516,36 @@ public class ShowDatabasesController implements Initializable {
             defaultValueTextField.setText(defaultValue);
         }
 
+    }
+
+    @javafx.fxml.FXML
+    public void onDeleteTable(ActionEvent actionEvent) {
+
+        Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
+        String searchDatabase = doSelected.getDatabase().getValue();
+        String urlToSearch = url+searchDatabase;
+
+        //System.out.println("URL DATA BASE" + "       " + urlToSearch);
+
+        Table doTableSelected = this.showTables_TableView.getSelectionModel().getSelectedItem();
+        String searchTableData = doTableSelected.getTable().getValue();
+
+        //System.out.println("TABLE TO SHOW DATA  " + searchTableData);
+
+
+        try {
+            Connection connection = DriverManager.getConnection(urlToSearch,username, password);
+
+            pst = connection.prepareStatement("DROP TABLE "+ searchTableData);
+            pst.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("DELETE");
+            alert.setContentText("TABLE "+ searchDatabase +" WAS DELETED");
+            alert.showAndWait();
+            showTables_TableView.refresh();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }
