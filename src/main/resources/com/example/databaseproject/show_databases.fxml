@@ -68,6 +68,11 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
+                        <Button fx:id="deleteTableButton" layoutX="36.0" layoutY="88.0" mnemonicParsing="false" onAction="#onDeleteTable" prefHeight="27.0" prefWidth="129.0" text="Delete Table">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </children>
                   </Pane>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="286.0" prefHeight="27.0" prefWidth="101.0" styleClass="containers_titles" stylesheets="@styleSDB.css" text="Tables" />

@@ -20,24 +20,33 @@ public class HelloController {
     private TextField user_id;
     @FXML
     private Button loggin_password;
-    public String user = "";
-    public String password = "";
+
     public String port = "";
     public String address = "";
     @FXML
     private TextField equipo_id;
     @FXML
     private TextField puerto_id;
+    User newUseer;
 
     @FXML
     public void loggin(ActionEvent actionEvent) {
+        newUseer = new User();
+        userM = new User();
 
-        this.userM = new User();
-        user = user_id.getText();
-        password = password_id.getText();
-        port =puerto_id.getText();
-        address=equipo_id.getText();
+        String user = user_id.getText();
+        String password = password_id.getText();
+        port = puerto_id.getText();
+        address = equipo_id.getText();
 
+        userM.setUser(user);
+        userM.setPassword(password);
+
+        // Aquí se crea una instancia de User y se asigna a userM
+
+        User userLogged = new User(userM.getUser(), userM.getPassword());
+
+        System.out.println(userLogged);
         System.out.println("jdbc:mysql://"+address+":"+port+"/");
         try {
             conexion(user,password);
