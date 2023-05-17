@@ -138,5 +138,6 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="536.0" layoutY="202.0" prefHeight="35.0" prefWidth="152.0" styleClass="options" text="SELECCIONE TIPO" textAlignment="CENTER" textFill="#e8e8e8" />
          </children>
       </Pane>
+      <Pane fx:id="querysPane" prefHeight="685.0" prefWidth="1006.0" style="-fx-background-color: #000000;" visible="false" />
    </children>
 </AnchorPane>

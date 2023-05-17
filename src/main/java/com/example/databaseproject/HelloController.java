@@ -42,7 +42,7 @@ public class HelloController {
         userM.setUser(user);
         userM.setPassword(password);
 
-        // Aquí se crea una instancia de User y se asigna a userM
+
 
         User userLogged = new User(userM.getUser(), userM.getPassword());
 

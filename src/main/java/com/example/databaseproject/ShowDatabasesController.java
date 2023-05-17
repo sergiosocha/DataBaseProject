@@ -103,6 +103,8 @@ public class ShowDatabasesController implements Initializable {
     User userLogged;
     @javafx.fxml.FXML
     private Button deleteTableButton;
+    @javafx.fxml.FXML
+    private Pane querysPane;
 
     @Deprecated
     @Override
@@ -112,7 +114,6 @@ public class ShowDatabasesController implements Initializable {
         fillComboBoxes();
 
         this.userLogged = new User();
-
 
 
 
@@ -317,9 +318,6 @@ public class ShowDatabasesController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
-
     @javafx.fxml.FXML
     public void doDeleteField(ActionEvent actionEvent) {
         newTable newTables = this.fieldTables.getSelectionModel().getSelectedItem();
@@ -354,7 +352,6 @@ public class ShowDatabasesController implements Initializable {
 
             newTable overwriteField = new newTable(newName,type,selected,extra, defaultValue);
             if(!this.newTables.contains(overwriteField)){
-
                 newTables.setName(overwriteField.getName());
                 newTables.setType(overwriteField.getType());
                 newTables.setNullable(overwriteField.isNullable());
