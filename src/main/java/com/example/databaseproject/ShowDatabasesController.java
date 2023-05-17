@@ -310,8 +310,8 @@ public class ShowDatabasesController implements Initializable {
 
             nameCampoNewTable.setText("");
             nullCheckBox.setSelected(false);
-            typesComboBox.setValue(String.valueOf(""));
-            extraValueComboBox.setValue(String.valueOf(""));
+            typesComboBox.setValue("");
+            extraValueComboBox.setValue("");
             defaultValueTextField.setText("");
 
         }catch (Exception e){
