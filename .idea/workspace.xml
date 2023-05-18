@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="Fixed loggin on the same window, loggin method working">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +138,7 @@
       <workItem from="1684290031408" duration="21000" />
       <workItem from="1684324093683" duration="296000" />
       <workItem from="1684350605661" duration="4419000" />
-      <workItem from="1684374559528" duration="692000" />
+      <workItem from="1684374559528" duration="1427000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -370,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684375044612</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="update">
+      <created>1684375325400</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1684375325400</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,8 +418,8 @@
     <MESSAGE value="fix code" />
     <MESSAGE value="Css updated" />
     <MESSAGE value="Function Delete Tables" />
-    <MESSAGE value="update" />
     <MESSAGE value="Fixed loggin on the same window, loggin method working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed loggin on the same window, loggin method working" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

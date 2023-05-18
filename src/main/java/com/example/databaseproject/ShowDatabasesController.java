@@ -141,18 +141,20 @@ public class ShowDatabasesController implements Initializable {
         String password = password_id.getText();
         port = puerto_id.getText();
         address = equipo_id.getText();
-        User userDate = new User(address,port, user, password);
+        //User userDate = new User(address,port, user, password);
 
 
         userLogged.setUser(user);
         userLogged.setPassword(password);
         userLogged.setAddress(address);
         userLogged.setPort(port);
+
+
         System.out.println();
-        System.out.println("jdbc:mysql://" + address + ":" + port + "/");
+        System.out.println("jdbc:mysql://" + userLogged.getAddress() + ":" + userLogged.getPort() + "/");
 
         try {
-            Connection connection = getConnection(userDate);
+            Connection connection = getConnection(userLogged);
             if (connection != null) {
 
                 mainMenuPane.setVisible(true);
@@ -192,6 +194,9 @@ public class ShowDatabasesController implements Initializable {
         alert.showAndWait();
     }
     public void Connection(){
+
+        //String newUrl =  "jdbc:mysql://" + userLogged.getAddress() + ":" + userLogged.getPort() + "/";
+        System.out.println("NEW URL   : ");
         try{
             con = DriverManager.getConnection(url,username, password);
         }catch (SQLException ex){
@@ -217,8 +222,14 @@ public class ShowDatabasesController implements Initializable {
 
         String usuario = userLogged.getUser();
         String password = userLogged.getPassword();
+        String port = userLogged.getPort();
+        String addres = userLogged.getAddress();
+
         System.out.println("user  "+usuario );
         System.out.println("password  " + password);
+        System.out.println("ADDRES  " + addres);
+        System.out.println("port  " + port);
+
 
     }
 
