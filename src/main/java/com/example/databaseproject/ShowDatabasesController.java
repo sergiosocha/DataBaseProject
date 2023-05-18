@@ -81,8 +81,8 @@ public class ShowDatabasesController implements Initializable {
     private ObservableList<tablesView> dinamicTables;
 
     String url = "jdbc:mysql://localhost:3306/";
-    String username = "root";
-    String password = "12345";
+    //String username = "root";
+    //String password = "12345";
     @javafx.fxml.FXML
     private Button create_button;
     @javafx.fxml.FXML
@@ -127,9 +127,9 @@ public class ShowDatabasesController implements Initializable {
     @Deprecated
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        modelaTabla();
-        tableDataBases();
-        fillComboBoxes();
+
+
+
 
         this.userLogged = new User();
     }
@@ -158,6 +158,9 @@ public class ShowDatabasesController implements Initializable {
             if (connection != null) {
 
                 mainMenuPane.setVisible(true);
+                tableDataBases();
+                fillComboBoxes();
+                modelaTabla();
 
 
             } else {
@@ -174,7 +177,7 @@ public class ShowDatabasesController implements Initializable {
 
 
 
-    private Connection getConnection(User userData) {
+    public Connection getConnection(User userData) {
         String url = "jdbc:mysql://" + userData.getAddress() + ":" + userData.getPort() + "/";
 
         try {
@@ -195,10 +198,11 @@ public class ShowDatabasesController implements Initializable {
     }
     public void Connection(){
 
-        //String newUrl =  "jdbc:mysql://" + userLogged.getAddress() + ":" + userLogged.getPort() + "/";
-        System.out.println("NEW URL   : ");
+        String newUrl =  "jdbc:mysql://" + userLogged.getAddress() + ":" + userLogged.getPort() + "/";
+        System.out.println("NEW URL   : " + newUrl);
+
         try{
-            con = DriverManager.getConnection(url,username, password);
+            con = DriverManager.getConnection(newUrl,userLogged.getUser(), userLogged.getPassword());
         }catch (SQLException ex){
             ex.printStackTrace();
         }
@@ -271,7 +275,7 @@ public class ShowDatabasesController implements Initializable {
         this.showTables.setCellValueFactory(new PropertyValueFactory<>("Table"));
 
         try {
-            Connection connection = DriverManager.getConnection(urlToSearch,username, password);
+            Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
             Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SHOW TABLES");
@@ -295,7 +299,7 @@ public class ShowDatabasesController implements Initializable {
         try {
 
 
-            Connection connection = DriverManager.getConnection(url,username, password);
+            Connection connection = DriverManager.getConnection(url,userLogged.getUser(), userLogged.getPassword());
             pst = connection.prepareStatement("CREATE DATABASE "+newDataBase);
             pst.executeUpdate();
 
@@ -315,7 +319,7 @@ public class ShowDatabasesController implements Initializable {
         String searchDatabase = doSelected.getDatabase().getValue();
 
         try {
-            Connection connection = DriverManager.getConnection(url,username, password);
+            Connection connection = DriverManager.getConnection(url,userLogged.getUser(), userLogged.getPassword());
             pst = connection.prepareStatement("DROP DATABASE "+searchDatabase);
             pst.executeUpdate();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -488,7 +492,7 @@ public class ShowDatabasesController implements Initializable {
             String urlToCreate = url+dataBase;
             System.out.println(urlToCreate);
             System.out.println();
-            Connection connection = DriverManager.getConnection(urlToCreate,username, password);
+            Connection connection = DriverManager.getConnection(urlToCreate,userLogged.getUser(), userLogged.getPassword());
 
             pst = connection.prepareStatement("CREATE TABLE " + nameTableTextField.getText() + "(  " + query  +" )");
             System.out.println("CREATE TABLE " + nameTableTextField.getText() + "(  " + query  +" )");
@@ -551,7 +555,7 @@ public class ShowDatabasesController implements Initializable {
 
         //System.out.println("TABLE TO SHOW DATA  " + searchTableData);
 
-        Connection connection = DriverManager.getConnection(urlToSearch,username, password);
+        Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
         Statement stmt = connection.createStatement( );
         ResultSet rs = stmt.executeQuery("Select * FROM "+ searchTableData);
 
@@ -615,7 +619,7 @@ public class ShowDatabasesController implements Initializable {
 
 
         try {
-            Connection connection = DriverManager.getConnection(urlToSearch,username, password);
+            Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
 
             pst = connection.prepareStatement("DROP TABLE "+ searchTableData);
             pst.executeUpdate();
