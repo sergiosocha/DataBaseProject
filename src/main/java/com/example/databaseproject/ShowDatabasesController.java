@@ -122,6 +122,8 @@ public class ShowDatabasesController implements Initializable {
     String port;
 
 
+
+
     @Deprecated
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -139,8 +141,13 @@ public class ShowDatabasesController implements Initializable {
         String password = password_id.getText();
         port = puerto_id.getText();
         address = equipo_id.getText();
-
         User userDate = new User(address,port, user, password);
+
+
+        userLogged.setUser(user);
+        userLogged.setPassword(password);
+        userLogged.setAddress(address);
+        userLogged.setPort(port);
         System.out.println();
         System.out.println("jdbc:mysql://" + address + ":" + port + "/");
 
