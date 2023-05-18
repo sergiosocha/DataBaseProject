@@ -105,6 +105,22 @@ public class ShowDatabasesController implements Initializable {
     private Button deleteTableButton;
     @javafx.fxml.FXML
     private Pane querysPane;
+    @javafx.fxml.FXML
+    private TextField user_id;
+    @javafx.fxml.FXML
+    private TextField equipo_id;
+    @javafx.fxml.FXML
+    private TextField puerto_id;
+    @javafx.fxml.FXML
+    private PasswordField password_id;
+    @javafx.fxml.FXML
+    private Button loggin_password;
+    @javafx.fxml.FXML
+    private Pane mainMenuPane;
+
+    String address;
+    String port;
+
 
     @Deprecated
     @Override
@@ -114,9 +130,59 @@ public class ShowDatabasesController implements Initializable {
         fillComboBoxes();
 
         this.userLogged = new User();
+    }
+
+    //_CLASE LOGGIN__//
+    @javafx.fxml.FXML
+    public void loggin(ActionEvent actionEvent) {
+        String user = user_id.getText();
+        String password = password_id.getText();
+        port = puerto_id.getText();
+        address = equipo_id.getText();
+
+        User userDate = new User(address,port, user, password);
+        System.out.println();
+        System.out.println("jdbc:mysql://" + address + ":" + port + "/");
+
+        try {
+            Connection connection = getConnection(userDate);
+            if (connection != null) {
+
+                mainMenuPane.setVisible(true);
+
+
+            } else {
+                showConnectionErrorAlert();
+                user_id.setText("");
+                password_id.setText("");
+                puerto_id.setText("");
+                equipo_id.setText("");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 
+    private Connection getConnection(User userData) {
+        String url = "jdbc:mysql://" + userData.getAddress() + ":" + userData.getPort() + "/";
+
+        try {
+            return DriverManager.getConnection(url, userData.getUser(), userData.getPassword());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private void showConnectionErrorAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error de conexión");
+        alert.setHeaderText("No se pudo establecer la conexión a MySQL");
+        alert.setContentText("Por favor, verifica los datos de conexión e intenta nuevamente.");
+        alert.showAndWait();
     }
     public void Connection(){
         try{
@@ -545,4 +611,5 @@ public class ShowDatabasesController implements Initializable {
             e.printStackTrace();
         }
     }
+
 }

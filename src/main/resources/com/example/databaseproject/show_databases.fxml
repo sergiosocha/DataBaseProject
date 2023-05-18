@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -14,68 +16,139 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="655.0" prefWidth="992.0" style="-fx-background-radius: 20;" styleClass="background" stylesheets="@styleSDB.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.ShowDatabasesController">
+<AnchorPane prefHeight="640.0" prefWidth="964.0" style="-fx-background-radius: 20;" styleClass="background" stylesheets="@styleSDB.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.ShowDatabasesController">
    <children>
-      <ImageView fitHeight="820.0" fitWidth="1001.0" layoutX="3.0" layoutY="-132.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/fadedWallpaper.jpg" />
-         </image>
-      </ImageView>
-      <Pane fx:id="ShowDatabasesPane" layoutX="4.0" layoutY="15.0" prefHeight="650.0" prefWidth="962.0" stylesheets="@styleSDB.css">
+      <Pane id="background" layoutX="10.0" layoutY="10.0" prefHeight="549.0" prefWidth="794.0" style="-fx-background-color: #ece1c3; -fx-border-color: #030303;" styleClass="Pane" stylesheets="@style.css">
          <children>
-            <TableView fx:id="dataBases_tableView" layoutX="288.0" layoutY="14.0" onMouseClicked="#selectDataBase" prefHeight="281.0" prefWidth="221.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="tablesViews" stylesheets="@styleSDB.css">
-              <columns>
-                <TableColumn fx:id="Database" prefWidth="220.0" text="Bases De Datos" />
-              </columns>
-            </TableView>
-            <TableView fx:id="showTables_TableView" layoutX="688.0" layoutY="14.0" onMouseClicked="#selectTable" prefHeight="289.0" prefWidth="221.0" styleClass="tablesViews" stylesheets="@styleSDB.css">
-              <columns>
-                <TableColumn fx:id="showTables" prefWidth="220.0" text="Tablas" />
-              </columns>
-            </TableView>
-            <TableView id="tableViews" fx:id="showTablesData" layoutX="290.0" layoutY="315.0" prefHeight="289.0" prefWidth="616.0" styleClass="tablesViews" stylesheets="@styleSDB.css" />
-            <Pane layoutX="31.0" layoutY="16.0" prefHeight="598.0" prefWidth="230.0" styleClass="container" stylesheets="@styleSDB.css">
+            <ImageView fitHeight="840.0" fitWidth="1081.0" layoutX="-39.0" layoutY="-80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/wallpaper.jpg" />
+               </image>
+            </ImageView>
+            <Pane id="pane" layoutX="332.0" layoutY="98.0" prefHeight="354.0" prefWidth="308.0" styleClass="Pane" stylesheets="@style.css">
                <children>
-                  <Pane layoutX="16.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
-                     <children>
-                        <Button fx:id="create_button" layoutX="36.0" layoutY="32.0" mnemonicParsing="false" onAction="#doCreate" prefHeight="27.0" prefWidth="129.0" text="Create">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="update_button" layoutX="36.0" layoutY="87.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" text="Update">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="delete_button" layoutX="36.0" layoutY="143.0" mnemonicParsing="false" onAction="#doDelete" prefHeight="27.0" prefWidth="129.0" text="Delete">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </Pane>
-                  <Label alignment="CENTER" layoutX="72.0" layoutY="14.0" prefHeight="27.0" prefWidth="101.0" styleClass="containers_titles" stylesheets="@styleSDB.css" text="DataBases" />
-                  <Button fx:id="cerrarsesion_button" layoutX="60.0" layoutY="541.0" mnemonicParsing="false" onAction="#cerrarsesion_button" prefHeight="43.0" prefWidth="123.0" text="cerrar sesion">
+                  <Label alignment="CENTER" layoutX="125.0" layoutY="217.0" prefHeight="25.0" prefWidth="64.0" stylesheets="@style.css" text="USER" textFill="WHITE">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="18.0" />
                      </font>
-                  </Button>
-                  <Pane layoutX="15.0" layoutY="299.0" prefHeight="200.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
+                     <styleClass>
+                        <String fx:value="textTitles" />
+                        <String fx:value="titlesFonts" />
+                     </styleClass>
+                  </Label>
+                  <Label id="titles" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="31.0" prefHeight="46.0" prefWidth="239.0" style="-fx-border-color: #000000; -fx-background-color: #3e838c;" stylesheets="@style.css" text="LOGGIN" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Cooper Black" size="31.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="titles" />
+                        <String fx:value="titlesFonts" />
+                     </styleClass>
+                  </Label>
+                  <TextField id="user_box" fx:id="user_id" alignment="CENTER" layoutX="26.0" layoutY="246.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
+                  <Label alignment="CENTER" layoutX="105.0" layoutY="279.0" prefHeight="25.0" prefWidth="104.0" stylesheets="@style.css" text="PASSWORD" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="textTitles" />
+                        <String fx:value="titlesFonts" />
+                     </styleClass>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="101.0" layoutY="87.0" prefHeight="30.0" prefWidth="111.0" stylesheets="@style.css" text="EQUIPO" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="textTitles" />
+                        <String fx:value="titlesFonts" />
+                     </styleClass>
+                  </Label>
+                  <TextField id="user_box" fx:id="equipo_id" alignment="CENTER" layoutX="25.0" layoutY="127.0" prefHeight="25.0" prefWidth="263.0" promptText="INGRESE EL EQUIPO AL CUAL SE CONECTARA" />
+                  <Label alignment="CENTER" layoutX="101.0" layoutY="152.0" prefHeight="25.0" prefWidth="111.0" stylesheets="@style.css" text="PUERTO" textFill="#ebebeb">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="textTitles" />
+                        <String fx:value="titlesFonts" />
+                     </styleClass>
+                  </Label>
+                  <TextField id="user_box" fx:id="puerto_id" alignment="CENTER" layoutX="23.0" layoutY="181.0" prefHeight="25.0" prefWidth="263.0" promptText="INGRESE EL PUERTO" />
+                  <PasswordField fx:id="password_id" alignment="CENTER" layoutX="25.0" layoutY="308.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER PASSWORD" />
+               </children>
+            </Pane>
+            <Button id="loggin_password" fx:id="loggin_password" layoutX="386.0" layoutY="481.0" mnemonicParsing="false" onAction="#loggin" prefHeight="25.0" prefWidth="128.0" style="-fx-border-color: #030303; -fx-background-color: #8ebdb6;" styleClass="loggin_password" stylesheets="@style.css" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="mainMenuPane" prefHeight="685.0" prefWidth="1006.0" visible="false">
+         <children>
+            <ImageView fitHeight="820.0" fitWidth="1001.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/fadedWallpaper.jpg" />
+               </image>
+            </ImageView>
+            <Pane fx:id="ShowDatabasesPane" prefHeight="650.0" prefWidth="962.0" stylesheets="@styleSDB.css">
+               <children>
+                  <TableView fx:id="dataBases_tableView" layoutX="288.0" layoutY="14.0" onMouseClicked="#selectDataBase" prefHeight="281.0" prefWidth="221.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="tablesViews" stylesheets="@styleSDB.css">
+                    <columns>
+                      <TableColumn fx:id="Database" prefWidth="220.0" text="Bases De Datos" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="showTables_TableView" layoutX="688.0" layoutY="14.0" onMouseClicked="#selectTable" prefHeight="289.0" prefWidth="221.0" styleClass="tablesViews" stylesheets="@styleSDB.css">
+                    <columns>
+                      <TableColumn fx:id="showTables" prefWidth="220.0" text="Tablas" />
+                    </columns>
+                  </TableView>
+                  <TableView id="tableViews" fx:id="showTablesData" layoutX="290.0" layoutY="315.0" prefHeight="289.0" prefWidth="616.0" styleClass="tablesViews" stylesheets="@styleSDB.css" />
+                  <Pane layoutX="31.0" layoutY="16.0" prefHeight="598.0" prefWidth="230.0" styleClass="container" stylesheets="@styleSDB.css">
                      <children>
-                        <Button fx:id="createNewTable_button" layoutX="36.0" layoutY="47.0" mnemonicParsing="false" onAction="#doCreateNewTable" prefHeight="27.0" prefWidth="129.0" text="Create New Table">
+                        <Pane layoutX="16.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
+                           <children>
+                              <Button fx:id="create_button" layoutX="36.0" layoutY="32.0" mnemonicParsing="false" onAction="#doCreate" prefHeight="27.0" prefWidth="129.0" text="Create">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="update_button" layoutX="36.0" layoutY="87.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" text="Update">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="delete_button" layoutX="36.0" layoutY="143.0" mnemonicParsing="false" onAction="#doDelete" prefHeight="27.0" prefWidth="129.0" text="Delete">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Label alignment="CENTER" layoutX="72.0" layoutY="14.0" prefHeight="27.0" prefWidth="101.0" styleClass="containers_titles" stylesheets="@styleSDB.css" text="DataBases" />
+                        <Button fx:id="cerrarsesion_button" layoutX="60.0" layoutY="541.0" mnemonicParsing="false" onAction="#cerrarsesion_button" prefHeight="43.0" prefWidth="123.0" text="cerrar sesion">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="deleteTableButton" layoutX="36.0" layoutY="88.0" mnemonicParsing="false" onAction="#onDeleteTable" prefHeight="27.0" prefWidth="129.0" text="Delete Table">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
+                        <Pane layoutX="15.0" layoutY="299.0" prefHeight="200.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
+                           <children>
+                              <Button fx:id="createNewTable_button" layoutX="36.0" layoutY="47.0" mnemonicParsing="false" onAction="#doCreateNewTable" prefHeight="27.0" prefWidth="129.0" text="Create New Table">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="deleteTableButton" layoutX="36.0" layoutY="88.0" mnemonicParsing="false" onAction="#onDeleteTable" prefHeight="27.0" prefWidth="129.0" text="Delete Table">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Label alignment="CENTER" layoutX="65.0" layoutY="286.0" prefHeight="27.0" prefWidth="101.0" styleClass="containers_titles" stylesheets="@styleSDB.css" text="Tables" />
                      </children>
                   </Pane>
-                  <Label alignment="CENTER" layoutX="65.0" layoutY="286.0" prefHeight="27.0" prefWidth="101.0" styleClass="containers_titles" stylesheets="@styleSDB.css" text="Tables" />
                </children>
             </Pane>
          </children>

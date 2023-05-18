@@ -31,15 +31,21 @@ public class User {
 
     private String user;
     private String password;
+    private String address;
+    private String port;
 
     public User(){
     this.user = "";
     this.password="";
+    this.address="";
+    this.port="";
     }
 
-    public User(String user, String password){
+    public User(String address, String port ,String user, String password){
     this.user = user;
     this.password = password;
+    this.address = address;
+    this.port = port;
     }
 
     public String getUser() {
@@ -56,5 +62,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 }

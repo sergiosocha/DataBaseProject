@@ -42,11 +42,6 @@ public class HelloController {
         userM.setUser(user);
         userM.setPassword(password);
 
-
-
-        User userLogged = new User(userM.getUser(), userM.getPassword());
-
-        System.out.println(userLogged);
         System.out.println("jdbc:mysql://"+address+":"+port+"/");
         try {
             conexion(user,password);
