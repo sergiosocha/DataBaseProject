@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new interface updates">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new interface updates, make querys works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
@@ -142,7 +142,7 @@
       <workItem from="1684374559528" duration="2400000" />
       <workItem from="1684447896760" duration="11000" />
       <workItem from="1684545743122" duration="3675000" />
-      <workItem from="1684607382035" duration="16166000" />
+      <workItem from="1684607382035" duration="16832000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -417,7 +417,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684619003806</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="new interface updates, make querys works">
+      <created>1684624934024</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1684624934024</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,7 +442,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Loggin interface, DataBaseConnection updating" />
     <MESSAGE value="Loggin interface working" />
     <MESSAGE value="Loggin interface, databases Interface, Model classes" />
     <MESSAGE value="fixed interface errors, table view" />
@@ -460,6 +466,7 @@
     <MESSAGE value="update" />
     <MESSAGE value="new interface" />
     <MESSAGE value="new interface updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="new interface updates" />
+    <MESSAGE value="new interface updates, make querys works" />
+    <option name="LAST_COMMIT_MESSAGE" value="new interface updates, make querys works" />
   </component>
 </project>

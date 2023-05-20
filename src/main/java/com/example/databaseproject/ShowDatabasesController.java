@@ -160,6 +160,10 @@ public class ShowDatabasesController implements Initializable {
     private TextField nameOfView;
     @javafx.fxml.FXML
     private ComboBox seleccionColumnas;
+    @javafx.fxml.FXML
+    private TextField limitTextField;
+    @javafx.fxml.FXML
+    private ComboBox tableSelectedComboBox1;
 
     @Deprecated
     @Override
@@ -606,7 +610,7 @@ public class ShowDatabasesController implements Initializable {
 
         seleccionColumnas.getItems().addAll(
                 "Elegir columna",
-                "*"
+                "Todas las Columnas"
         );
 
 
@@ -799,10 +803,11 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     public void updateQuery(ActionEvent actionEvent) throws SQLException {
         String allValues;
+        String querys;
+
         if(!andCheckBox.isSelected()){
             String table = tableSelectedComboBox.getValue();
             String column = columnasComboBox.getValue();
-
             String operadores = operadoresComboBox.getValue() ;
             String valor = valorTextField.getText();
 
@@ -813,10 +818,13 @@ public class ShowDatabasesController implements Initializable {
                 allValues = column;
             }
 
+            if(limitTextField.getText() != null ){
+                querys = "SELECT "+ allValues + " FROM " + table + " WHERE " + column + " " +  operadores + " " +  valor + " limit " + limitTextField.getText();
+            } else {
+                querys = "SELECT "+ allValues + " FROM " + table + " WHERE " + column + " " +  operadores + " " +  valor ;
+            }
 
-            String query = "SELECT "+ allValues + " FROM " + table + " WHERE " + column + " " +  operadores + " " +  valor ;
-            textFieldQuery.setText(query);
-
+            textFieldQuery.setText(querys);
         } else if(andCheckBox.isSelected()){
             String table = tableSelectedComboBox.getValue();
             String column = columnasComboBox.getValue();
@@ -824,13 +832,12 @@ public class ShowDatabasesController implements Initializable {
 
             String operadores = operadoresComboBox.getValue();
 
-            if(seleccionColumnas.getValue().equals("*"))
+            if(seleccionColumnas.getValue().equals("Todas las Columnas"))
             {
                 allValues = "*";
             } else{
                 allValues = column;
             }
-
             String query = "SELECT "+ allValues + ", " + column2 + " FROM " + table + " WHERE " + column  + operadores + column2 ;
             textFieldQuery.setText(query);
         }

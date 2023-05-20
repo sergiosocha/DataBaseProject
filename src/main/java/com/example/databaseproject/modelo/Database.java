@@ -6,7 +6,6 @@ import javafx.beans.property.StringProperty;
 public class Database {
     public StringProperty Database;
 
-
     public Database(){
         Database = new SimpleStringProperty(this, "name");
     }
