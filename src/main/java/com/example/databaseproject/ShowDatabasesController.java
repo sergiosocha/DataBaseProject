@@ -120,8 +120,38 @@ public class ShowDatabasesController implements Initializable {
 
     String address;
     String port;
-
-
+    @javafx.fxml.FXML
+    private Button querysButton;
+    @javafx.fxml.FXML
+    private Label tableSelectedLabel;
+    @javafx.fxml.FXML
+    private ComboBox tableSelectedComboBox;
+    @javafx.fxml.FXML
+    private Label baseDatosLabel;
+    @javafx.fxml.FXML
+    private TableView tableViewQuerys;
+    @javafx.fxml.FXML
+    private Button createView;
+    @javafx.fxml.FXML
+    private Button executeQueryButton;
+    @javafx.fxml.FXML
+    private TextField textFieldQuery;
+    @javafx.fxml.FXML
+    private ComboBox columnasComboBox;
+    @javafx.fxml.FXML
+    private ComboBox operadoresComboBox;
+    @javafx.fxml.FXML
+    private TextField valorTextField;
+    @javafx.fxml.FXML
+    private CheckBox andCheckBox;
+    @javafx.fxml.FXML
+    private ComboBox columnasAndCB;
+    @javafx.fxml.FXML
+    private ComboBox operadoresAndCB;
+    @javafx.fxml.FXML
+    private TextField valorFieldAnd;
+    @javafx.fxml.FXML
+    private Button backMainbutton;
 
 
     @Deprecated
@@ -633,5 +663,26 @@ public class ShowDatabasesController implements Initializable {
             e.printStackTrace();
         }
     }
+    @javafx.fxml.FXML
+    public void onQueryButton(ActionEvent actionEvent) {
+        querysPane.setVisible(true);
+    }
+
+    @javafx.fxml.FXML
+    public void createViewQuery(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void executeQuery(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void backMain(ActionEvent actionEvent) {
+        mainMenuPane.setVisible(true);
+        createTables_interface.setVisible(false);
+        querysPane.setVisible(false);
+
+    }
+
 
 }
