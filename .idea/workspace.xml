@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new interface">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new interface updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
@@ -142,7 +142,7 @@
       <workItem from="1684374559528" duration="2400000" />
       <workItem from="1684447896760" duration="11000" />
       <workItem from="1684545743122" duration="3675000" />
-      <workItem from="1684607382035" duration="10358000" />
+      <workItem from="1684607382035" duration="16166000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -410,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684553741531</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="new interface updates">
+      <created>1684619003806</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1684619003806</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +435,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="New files, src, interface" />
     <MESSAGE value="Loggin interface, DataBaseConnection updating" />
     <MESSAGE value="Loggin interface working" />
     <MESSAGE value="Loggin interface, databases Interface, Model classes" />
@@ -453,6 +459,7 @@
     <MESSAGE value="Fixed loggin on the same window, loggin method working" />
     <MESSAGE value="update" />
     <MESSAGE value="new interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="new interface" />
+    <MESSAGE value="new interface updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="new interface updates" />
   </component>
 </project>

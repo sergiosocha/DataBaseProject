@@ -247,17 +247,24 @@
             <Pane layoutX="205.0" layoutY="110.0" prefHeight="563.0" prefWidth="787.0" style="-fx-border-color: #000000;">
                <children>
                   <TableView fx:id="tableViewQuerys" layoutX="199.0" layoutY="193.0" prefHeight="289.0" prefWidth="574.0" />
-                  <Button fx:id="createView" layoutX="394.0" layoutY="508.0" mnemonicParsing="false" onAction="#createViewQuery" prefHeight="35.0" prefWidth="128.0" text="VISTA" />
+                  <Button fx:id="createView" layoutX="578.0" layoutY="507.0" mnemonicParsing="false" onAction="#createViewQuery" prefHeight="35.0" prefWidth="128.0" text="VISTA" />
                   <Button fx:id="executeQueryButton" layoutX="418.0" layoutY="71.0" mnemonicParsing="false" onAction="#executeQuery" prefHeight="35.0" prefWidth="128.0" text="CONSULTA" />
-                  <TextField fx:id="textFieldQuery" layoutX="199.0" layoutY="23.0" prefHeight="37.0" prefWidth="565.0" />
-                  <ComboBox fx:id="columnasComboBox" layoutX="14.0" layoutY="14.0" onAction="#selectedComboBoxColumn" prefHeight="37.0" prefWidth="164.0" promptText="COLUMNAS" />
-                  <ComboBox fx:id="operadoresComboBox" layoutX="14.0" layoutY="60.0" prefHeight="37.0" prefWidth="164.0" promptText="OPERADORES" />
-                  <TextField fx:id="valorTextField" layoutX="14.0" layoutY="106.0" prefHeight="30.0" prefWidth="164.0" promptText="Ingrese Valor a filtrar" />
-                  <CheckBox fx:id="andCheckBox" alignment="CENTER" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" onAction="#andCheckBox" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" text="AND" textAlignment="CENTER" />
+                  <TextField fx:id="textFieldQuery" layoutX="208.0" layoutY="14.0" prefHeight="37.0" prefWidth="565.0" />
+                  <ComboBox fx:id="columnasComboBox" layoutX="14.0" layoutY="60.0" onAction="#selectedComboBoxColumn" prefHeight="37.0" prefWidth="164.0" promptText="COLUMNAS" />
+                  <ComboBox fx:id="operadoresComboBox" layoutX="14.0" layoutY="106.0" prefHeight="37.0" prefWidth="164.0" promptText="OPERADORES" />
+                  <TextField fx:id="valorTextField" layoutX="14.0" layoutY="163.0" prefHeight="30.0" prefWidth="164.0" promptText="Ingrese Valor a filtrar" />
+                  <CheckBox fx:id="andCheckBox" alignment="CENTER" layoutX="14.0" layoutY="232.0" mnemonicParsing="false" onAction="#andCheckBox" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" text="AND" textAlignment="CENTER" />
                   <ComboBox fx:id="columnasAndCB" layoutX="14.0" layoutY="267.0" prefHeight="37.0" prefWidth="164.0" promptText="COLUMNAS" visible="false" />
                   <ComboBox fx:id="operadoresAndCB" layoutX="14.0" layoutY="313.0" prefHeight="37.0" prefWidth="164.0" promptText="OPERADORES" visible="false" />
                   <TextField fx:id="valorFieldAnd" layoutX="14.0" layoutY="359.0" prefHeight="30.0" prefWidth="164.0" promptText="Ingrese Valor a filtrar" visible="false" />
-                  <Button fx:id="updateQuery" layoutX="14.0" layoutY="403.0" mnemonicParsing="false" onAction="#updateQuery" prefHeight="43.0" prefWidth="164.0" text="UPDATE QUERY" />
+                  <Button fx:id="updateQuery" layoutX="14.0" layoutY="439.0" mnemonicParsing="false" onAction="#updateQuery" prefHeight="43.0" prefWidth="164.0" text="UPDATE QUERY" />
+                  <TextField fx:id="nameOfView" layoutX="400.0" layoutY="507.0" prefHeight="35.0" prefWidth="164.0" promptText="ingrese nombre de la vista" />
+                  <Label alignment="CENTER" layoutX="199.0" layoutY="507.0" prefHeight="35.0" prefWidth="192.0" style="-fx-border-color: #000000;" text="NOMBRE DE LA VISTA" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="seleccionColumnas" layoutX="14.0" layoutY="14.0" onAction="#seleccionColumnasCB" prefHeight="37.0" prefWidth="164.0" promptText="SELECCIONE DATOS" />
                </children>
             </Pane>
             <Button fx:id="backMainbutton" layoutX="49.0" layoutY="561.0" mnemonicParsing="false" onAction="#backMain" prefHeight="35.0" prefWidth="128.0" text="VOLVER" />
