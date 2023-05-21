@@ -166,6 +166,16 @@ public class ShowDatabasesController implements Initializable {
     private ComboBox<String> tableSelectedComboBox1;
     @javafx.fxml.FXML
     private ComboBox<String> columnasAndCB2;
+    @javafx.fxml.FXML
+    private Pane paneConsultasAdicional;
+    @javafx.fxml.FXML
+    private Label labelTitleCBA;
+    @javafx.fxml.FXML
+    private Pane filtroAdicionalCheckBox;
+    @javafx.fxml.FXML
+    private CheckBox andCheckBox1;
+    @javafx.fxml.FXML
+    private TextField limitTextFieldAux;
 
     @Deprecated
     @Override
@@ -180,8 +190,6 @@ public class ShowDatabasesController implements Initializable {
         String password = password_id.getText();
         port = puerto_id.getText();
         address = equipo_id.getText();
-        //User userDate = new User(address,port, user, password);
-
 
         userLogged.setUser(user);
         userLogged.setPassword(password);
@@ -218,7 +226,6 @@ public class ShowDatabasesController implements Initializable {
 
     public Connection getConnection(User userData) {
         String url = "jdbc:mysql://" + userData.getAddress() + ":" + userData.getPort() + "/";
-
         try {
             return DriverManager.getConnection(url, userData.getUser(), userData.getPassword());
 
@@ -277,7 +284,6 @@ public class ShowDatabasesController implements Initializable {
     }
 
     public void tableDataBases(){
-
         Connection(); //Trae la función Connection para poder usarla en el CreateStatement para luego prepara la consulta
         ObservableList<Database> databases = FXCollections.observableArrayList();
         this.Database.setCellValueFactory(new PropertyValueFactory("Database"));
@@ -286,14 +292,11 @@ public class ShowDatabasesController implements Initializable {
 
             Statement statement = con.createStatement(); //Usa con previamente declarado en las variables para preparar el Statement
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");//Con el statement anterior en un nuevo objeto resulset preparamos el query
-
             while ( resultSet.next()){
                 Database st = new Database(); //Creamos un nuevo objeto de tipo DataBase en este caso st
                 st.setDatabase(resultSet.getString("Database"));//Usamos St para dar formato a los datos que obtenemos
                 String var = resultSet.getString("DataBase");
                 databases.add(st); //agregamos al oversableList los elementos st
-
-
             }
             dataBases_tableView.setItems(databases);//Traemos los items a la table view
             Database.setCellValueFactory(f->f.getValue().getDatabase());//damos formatos ala la columna o celdas dentro de la tabla
@@ -342,12 +345,8 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void doCreate(ActionEvent actionEvent) {
-
-
         String newDataBase = JOptionPane.showInputDialog("Ingrese el nombre de la base de datos: ");
         try {
-
-
             Connection connection = DriverManager.getConnection(url,userLogged.getUser(), userLogged.getPassword());
             pst = connection.prepareStatement("CREATE DATABASE "+newDataBase);
             pst.executeUpdate();
@@ -422,7 +421,6 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void doCreateField(ActionEvent actionEvent) {
-
 
         try{
             String Default= "";
@@ -823,9 +821,9 @@ public class ShowDatabasesController implements Initializable {
             }
 
             if(limitTextField.getText().equals("")){
-                querys = "SELECT "+ allValues + " FROM " + table + " WHERE " + column + " " +  operadores + " " +  valor ;
+                querys = "SELECT "+ allValues + " FROM " + table + " WHERE " + column + " " +  operadores + " " + "\"" +  valor + "\"" ;
             } else if(!limitTextField.getText().equals("")) {
-                querys = "SELECT "+ allValues + " FROM " + table + " WHERE " + column + " " +  operadores + " " +  valor + " limit " + limitTextField.getText();
+                querys = "SELECT "+ allValues + " FROM " + table + " WHERE " + column + " " +  operadores + " " + "\"" +  valor + "\"" + " limit " + limitTextField.getText();
             }
 
             textFieldQuery.setText(querys);
@@ -838,47 +836,83 @@ public class ShowDatabasesController implements Initializable {
             String operadores = operadoresComboBox.getValue() ;
 
             String filterColumn = "";
+            String valor = valorFieldAnd.getText();
 
-            String filter2 = valorFieldAnd.getText();
+
 
             if(seleccionColumnas.getValue().equals("Todas las Columnas"))
             {
                 allValues = "*";
+                String tableCompare = tableSelectedComboBox1.getValue();
+                if(operadoresAndCB.getValue() != null){
+                    if(!limitTextFieldAux.getText().equals("")){
+                        operadores2 = operadoresAndCB.getValue();
+                        filterColumn = columnasAndCB2.getValue();
+                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" + " limit " + limitTextFieldAux.getText() ;
+
+                    }else if(limitTextFieldAux.getText().equals("")){
+                        operadores2 = operadoresAndCB.getValue();
+                        filterColumn = columnasAndCB2.getValue();
+                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" ;
+
+                    }
+                }else if(operadoresAndCB.getValue() == null) {
+
+                    if(!limitTextFieldAux.getText().equals("")){
+                        operadores2 = operadoresAndCB.getValue();
+                        filterColumn = columnasAndCB2.getValue();
+                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\""  + " limit " + limitTextFieldAux.getText();
+                    }else if(limitTextFieldAux.getText().equals("")){
+                        operadores2 = operadoresAndCB.getValue();
+                        filterColumn = columnasAndCB2.getValue();
+                        operadores2 = "";
+                        querys = "SELECT " + table+"."+ allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 ;
+
+                    }
+
+                }
+                textFieldQuery.setText(querys);
             } else{
                 allValues = column;
+                String tableCompare = tableSelectedComboBox1.getValue();
+                if(!operadoresAndCB.getValue().equals(null)){
+                    operadores2 = operadoresAndCB.getValue();
+                    filterColumn = columnasAndCB2.getValue();
+                    querys = "SELECT " + table+ "." + column + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" ;
+
+                }else if(operadoresAndCB.getValue().equals(null)) {
+                    operadores2 = "";
+                    querys = "SELECT "+ table+ "." + column + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores2 + column2 ;
+
+                }
+                textFieldQuery.setText(querys);
             }
 
-            String tableCompare = tableSelectedComboBox1.getValue();
-            if(!operadoresAndCB.getValue().equals(null)){
-                 operadores2 = operadoresAndCB.getValue();
-                 filterColumn = columnasAndCB2.getValue();
-                querys = "SELECT " + table+ "." + column + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " +  filter2 ;
-
-            }else if(operadoresAndCB.getValue().equals(null)) {
-                operadores2 = "";
-                querys = "SELECT "+ allValues+ "." + column + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores2 + column2 ;
-
-            }
-            textFieldQuery.setText(querys);
         }
-
-
     }
 
     @javafx.fxml.FXML
     public void andCheckBox(ActionEvent actionEvent) {
         if(andCheckBox.isSelected()){
             columnasAndCB.setVisible(true);
-            operadoresAndCB.setVisible(true);
-            valorFieldAnd.setVisible(true);
             tableSelectedComboBox1.setVisible(true);
-            columnasAndCB2.setVisible(true);
+            paneConsultasAdicional.setVisible(true);
+            labelTitleCBA.setVisible(true);
+
+
+            valorTextField.setText("");
+            limitTextField.setText("");
+
         }else if(!andCheckBox.isSelected()){
             columnasAndCB.setVisible(false);
-            operadoresAndCB.setVisible(false);
-            valorFieldAnd.setVisible(false);
             tableSelectedComboBox1.setVisible(false);
-            columnasAndCB2.setVisible(false);
+            paneConsultasAdicional.setVisible(false);
+            labelTitleCBA.setVisible(false);
+
+
+            valorTextField.setText("");
+            limitTextField.setText("");
+
         }
     }
 
@@ -1016,6 +1050,22 @@ public class ShowDatabasesController implements Initializable {
 
         }catch (SQLException e){
             e.printStackTrace();
+        }
+
+    }
+
+    @javafx.fxml.FXML
+    public void andCheckBoxAdicional(ActionEvent actionEvent) {
+        if(andCheckBox1.isSelected()){
+            columnasAndCB2.setVisible(true);
+            operadoresAndCB.setVisible(true);
+            valorFieldAnd.setVisible(true);
+            limitTextFieldAux.setVisible(true);
+        }else if(!andCheckBox1.isSelected()){
+            columnasAndCB2.setVisible(false);
+            operadoresAndCB.setVisible(false);
+            valorFieldAnd.setVisible(false);
+            limitTextFieldAux.setVisible(false);
         }
 
     }

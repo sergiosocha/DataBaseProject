@@ -20,12 +20,12 @@
    <children>
       <Pane id="background" layoutX="10.0" layoutY="10.0" prefHeight="549.0" prefWidth="794.0" style="-fx-background-color: #ece1c3; -fx-border-color: #030303;" styleClass="Pane" stylesheets="@style.css">
          <children>
-            <ImageView fitHeight="840.0" fitWidth="1081.0" layoutX="-39.0" layoutY="-80.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="920.0" fitWidth="1218.0" layoutX="-39.0" layoutY="-80.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/wallpaper.jpg" />
                </image>
             </ImageView>
-            <Pane id="pane" layoutX="332.0" layoutY="98.0" prefHeight="354.0" prefWidth="308.0" styleClass="Pane" stylesheets="@style.css">
+            <Pane id="pane" layoutX="443.0" layoutY="144.0" prefHeight="354.0" prefWidth="308.0" styleClass="Pane" stylesheets="@style.css">
                <children>
                   <Label alignment="CENTER" layoutX="125.0" layoutY="217.0" prefHeight="25.0" prefWidth="64.0" stylesheets="@style.css" text="USER" textFill="WHITE">
                      <font>
@@ -78,7 +78,7 @@
                   <PasswordField fx:id="password_id" alignment="CENTER" layoutX="25.0" layoutY="308.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER PASSWORD" />
                </children>
             </Pane>
-            <Button id="loggin_password" fx:id="loggin_password" layoutX="422.0" layoutY="452.0" mnemonicParsing="false" onAction="#loggin" prefHeight="25.0" prefWidth="128.0" style="-fx-border-color: #030303; -fx-background-color: #8ebdb6;" styleClass="loggin_password" stylesheets="@style.css" text="Login" textFill="WHITE">
+            <Button id="loggin_password" fx:id="loggin_password" layoutX="533.0" layoutY="498.0" mnemonicParsing="false" onAction="#loggin" prefHeight="25.0" prefWidth="128.0" style="-fx-border-color: #030303; -fx-background-color: #8ebdb6;" styleClass="loggin_password" stylesheets="@style.css" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -87,12 +87,12 @@
       </Pane>
       <Pane fx:id="mainMenuPane" prefHeight="685.0" prefWidth="1006.0" visible="false">
          <children>
-            <ImageView fitHeight="820.0" fitWidth="1001.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="893.0" fitWidth="1150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/fadedWallpaper.jpg" />
                </image>
             </ImageView>
-            <Pane fx:id="ShowDatabasesPane" prefHeight="650.0" prefWidth="962.0" stylesheets="@styleSDB.css">
+            <Pane fx:id="ShowDatabasesPane" layoutX="77.0" layoutY="35.0" prefHeight="650.0" prefWidth="962.0" stylesheets="@styleSDB.css">
                <children>
                   <TableView fx:id="dataBases_tableView" layoutX="288.0" layoutY="14.0" onMouseClicked="#selectDataBase" prefHeight="281.0" prefWidth="221.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="tablesViews" stylesheets="@styleSDB.css">
                     <columns>
@@ -216,61 +216,86 @@
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="536.0" layoutY="202.0" prefHeight="35.0" prefWidth="152.0" styleClass="options" text="SELECCIONE TIPO" textAlignment="CENTER" textFill="#e8e8e8" />
          </children>
       </Pane>
-      <Pane fx:id="querysPane" prefHeight="685.0" prefWidth="1006.0" style="-fx-background-color: #3e838c; -fx-border-color: #000000;" visible="false">
+      <Pane fx:id="querysPane" layoutX="-25.0" prefHeight="778.0" prefWidth="1150.0" style="-fx-background-color: #3e838c; -fx-border-color: #000000;" styleClass="background" stylesheets="@querys.css" visible="false">
          <children>
-            <Label alignment="CENTER" layoutX="216.0" layoutY="23.0" prefHeight="66.0" prefWidth="574.0" style="-fx-border-color: #000000;" text="CONSULTAS" textFill="WHITE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="31.0" layoutY="235.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" text="TABLA SELECIONADA" textFill="WHITE">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label fx:id="tableSelectedLabel" alignment="CENTER" layoutX="31.0" layoutY="277.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" textFill="WHITE">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="tableSelectedComboBox" layoutX="31.0" layoutY="192.0" onAction="#showTableSelected" prefHeight="35.0" prefWidth="164.0" promptText="SELECCIONA TABLA" />
-            <Label fx:id="baseDatosLabel" alignment="CENTER" layoutX="31.0" layoutY="151.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" textFill="WHITE">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="31.0" layoutY="111.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" text="BASE DE DATOS" textFill="WHITE">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Pane layoutX="205.0" layoutY="110.0" prefHeight="563.0" prefWidth="787.0" style="-fx-border-color: #000000;">
+            <Pane layoutX="31.0" layoutY="105.0" prefHeight="629.0" prefWidth="200.0" style="-fx-border-color: #000000;" styleClass="container" stylesheets="@querys.css">
                <children>
-                  <TableView fx:id="tableViewQuerys" layoutX="199.0" layoutY="193.0" prefHeight="289.0" prefWidth="574.0" />
-                  <Button fx:id="createView" layoutX="578.0" layoutY="507.0" mnemonicParsing="false" onAction="#createViewQuery" prefHeight="35.0" prefWidth="128.0" text="VISTA" />
-                  <Button fx:id="executeQueryButton" layoutX="418.0" layoutY="71.0" mnemonicParsing="false" onAction="#executeQuery" prefHeight="35.0" prefWidth="128.0" text="CONSULTA" />
-                  <TextField fx:id="textFieldQuery" layoutX="208.0" layoutY="14.0" prefHeight="37.0" prefWidth="565.0" />
-                  <ComboBox fx:id="columnasComboBox" layoutX="14.0" layoutY="60.0" onAction="#selectedComboBoxColumn" prefHeight="37.0" prefWidth="164.0" promptText="COLUMNAS" />
-                  <ComboBox fx:id="operadoresComboBox" layoutX="14.0" layoutY="106.0" prefHeight="37.0" prefWidth="164.0" promptText="OPERADORES" />
-                  <TextField fx:id="valorTextField" layoutX="14.0" layoutY="163.0" prefHeight="30.0" prefWidth="164.0" promptText="Ingrese Valor a filtrar" />
-                  <CheckBox fx:id="andCheckBox" alignment="CENTER" layoutX="14.0" layoutY="232.0" mnemonicParsing="false" onAction="#andCheckBox" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" text="AND" textAlignment="CENTER" />
-                  <ComboBox fx:id="columnasAndCB" layoutX="14.0" layoutY="329.0" prefHeight="37.0" prefWidth="164.0" promptText="COLUMNAS" visible="false" />
-                  <ComboBox fx:id="operadoresAndCB" layoutX="14.0" layoutY="378.0" onAction="#operadoresAndCB" prefHeight="37.0" prefWidth="164.0" promptText="OPERADORES ADICIONALES" visible="false" />
-                  <TextField fx:id="valorFieldAnd" layoutX="14.0" layoutY="467.0" prefHeight="30.0" prefWidth="164.0" promptText="Ingrese Valor a filtrar" visible="false" />
-                  <Button fx:id="updateQuery" layoutX="14.0" layoutY="503.0" mnemonicParsing="false" onAction="#updateQuery" prefHeight="43.0" prefWidth="164.0" text="UPDATE QUERY" />
-                  <TextField fx:id="nameOfView" layoutX="400.0" layoutY="507.0" prefHeight="35.0" prefWidth="164.0" promptText="ingrese nombre de la vista" />
-                  <Label alignment="CENTER" layoutX="199.0" layoutY="507.0" prefHeight="35.0" prefWidth="192.0" style="-fx-border-color: #000000;" text="NOMBRE DE LA VISTA" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="18.0" layoutY="25.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="containers_titles" text="BASE DE DATOS" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="seleccionColumnas" layoutX="14.0" layoutY="14.0" onAction="#seleccionColumnasCB" prefHeight="37.0" prefWidth="164.0" promptText="SELECCIONE DATOS" />
-                  <TextField fx:id="limitTextField" layoutX="14.0" layoutY="200.0" prefHeight="25.0" prefWidth="164.0" promptText="Ingrese limite" />
-                  <ComboBox fx:id="tableSelectedComboBox1" layoutX="14.0" layoutY="282.0" onAction="#showTableSelected2" prefHeight="35.0" prefWidth="164.0" promptText="SELECCIONA TABLA" visible="false" />
-                  <ComboBox fx:id="columnasAndCB2" layoutX="14.0" layoutY="415.0" prefHeight="37.0" prefWidth="164.0" promptText="COLUMNAS FILTRO" visible="false" />
+                  <Label fx:id="baseDatosLabel" alignment="CENTER" layoutX="18.0" layoutY="76.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="titlesDataBaseSelected" textFill="#070707">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tableSelectedLabel" alignment="CENTER" layoutX="18.0" layoutY="229.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="containers_titles" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="18.0" layoutY="172.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="titlesDataBaseSelected" text="TABLA SELECIONADA" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="tableSelectedComboBox" layoutX="18.0" layoutY="129.0" onAction="#showTableSelected" prefHeight="35.0" prefWidth="164.0" promptText="SELECCIONA TABLA" />
+                  <Button fx:id="backMainbutton" layoutX="36.0" layoutY="570.0" mnemonicParsing="false" onAction="#backMain" prefHeight="35.0" prefWidth="128.0" styleClass="buttons" text="VOLVER" />
                </children>
             </Pane>
-            <Button fx:id="backMainbutton" layoutX="49.0" layoutY="561.0" mnemonicParsing="false" onAction="#backMain" prefHeight="35.0" prefWidth="128.0" text="VOLVER" />
-         </children></Pane>
+            <Label alignment="CENTER" layoutX="252.0" layoutY="23.0" prefHeight="66.0" prefWidth="646.0" styleClass="containers_titles" stylesheets="@querys.css" text="CONSULTAS" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Pane fx:id="filtroAdicionalCheckBox" layoutX="247.0" layoutY="111.0" prefHeight="623.0" prefWidth="887.0" style="-fx-border-color: #000000;" styleClass="container">
+               <children>
+                  <TableView fx:id="tableViewQuerys" layoutX="342.0" layoutY="282.0" prefHeight="281.0" prefWidth="515.0" />
+                  <Button fx:id="createView" layoutX="728.0" layoutY="567.0" mnemonicParsing="false" onAction="#createViewQuery" prefHeight="35.0" prefWidth="128.0" styleClass="buttons" text="VISTA" />
+                  <Button fx:id="executeQueryButton" layoutX="542.0" layoutY="98.0" mnemonicParsing="false" onAction="#executeQuery" prefHeight="35.0" prefWidth="128.0" styleClass="buttons" text="CONSULTA" />
+                  <TextField fx:id="textFieldQuery" layoutX="342.0" layoutY="33.0" prefHeight="37.0" prefWidth="528.0" promptText="INGRESE LA CONSULTA EN LENGUAGE SQL" style="-fx-border-radius: 20;" />
+                  <CheckBox fx:id="andCheckBox" alignment="CENTER" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" onAction="#andCheckBox" prefHeight="35.0" prefWidth="123.0" styleClass="containers_buttons" text="AND" textAlignment="CENTER" textFill="WHITE" />
+                  <Button fx:id="updateQuery" layoutX="95.0" layoutY="585.0" mnemonicParsing="false" onAction="#updateQuery" prefHeight="35.0" prefWidth="141.0" styleClass="buttons" text="UPDATE QUERY" />
+                  <TextField fx:id="nameOfView" layoutX="556.0" layoutY="567.0" prefHeight="35.0" prefWidth="164.0" promptText="ingrese nombre de la vista" />
+                  <Label alignment="CENTER" layoutX="342.0" layoutY="567.0" prefHeight="35.0" prefWidth="192.0" style="-fx-border-color: #000000;" text="NOMBRE DE LA VISTA" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="17.0" layoutY="33.0" prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: #000000;" styleClass="containers_buttons">
+                     <children>
+                        <Label alignment="CENTER" layoutX="73.0" layoutY="-18.0" prefHeight="37.0" prefWidth="152.0" styleClass="containers_titles" text="Consulta Basica" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="columnasComboBox" layoutX="7.0" layoutY="27.0" onAction="#selectedComboBoxColumn" prefHeight="37.0" prefWidth="123.0" promptText="COLUMNAS" />
+                        <ComboBox fx:id="seleccionColumnas" layoutX="131.0" layoutY="27.0" onAction="#seleccionColumnasCB" prefHeight="37.0" prefWidth="152.0" promptText="SELECCIONE DATOS" />
+                        <ComboBox fx:id="operadoresComboBox" layoutX="7.0" layoutY="74.0" prefHeight="37.0" prefWidth="276.0" promptText="OPERADORES" />
+                        <TextField fx:id="valorTextField" layoutX="7.0" layoutY="119.0" prefHeight="30.0" prefWidth="276.0" promptText="Ingrese Valor a filtrar" />
+                        <TextField fx:id="limitTextField" layoutX="7.0" layoutY="161.0" prefHeight="25.0" prefWidth="276.0" promptText="Ingrese limite" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneConsultasAdicional" layoutX="13.0" layoutY="312.0" prefHeight="259.0" prefWidth="308.0" style="-fx-border-color: #000000;" styleClass="containers_buttons" visible="false">
+                     <children>
+                        <ComboBox fx:id="tableSelectedComboBox1" layoutX="14.0" layoutY="28.0" onAction="#showTableSelected2" prefHeight="35.0" prefWidth="276.0" promptText="SELECCIONA TABLA 2" visible="false" />
+                        <ComboBox fx:id="columnasAndCB2" layoutX="14.0" layoutY="102.0" prefHeight="30.0" prefWidth="276.0" promptText="COLUMNA FILTRO ADICIONAL" visible="false" />
+                        <TextField fx:id="valorFieldAnd" layoutX="14.0" layoutY="189.0" prefHeight="30.0" prefWidth="276.0" promptText="Ingrese Valor a filtrar" visible="false" />
+                        <ComboBox fx:id="columnasAndCB" layoutX="15.0" layoutY="68.0" prefHeight="30.0" prefWidth="276.0" promptText="COLUMNA  A COMPARAR" visible="false" />
+                        <ComboBox fx:id="operadoresAndCB" layoutX="14.0" layoutY="143.0" onAction="#operadoresAndCB" prefHeight="37.0" prefWidth="276.0" promptText="OPERADORES" visible="false" />
+                        <Label fx:id="labelTitleCBA" alignment="CENTER" layoutX="21.0" layoutY="-18.0" prefHeight="37.0" prefWidth="263.0" styleClass="containers_titles" text="Consulta Dos Tablas" textFill="WHITE" visible="false">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="limitTextFieldAux" layoutX="14.0" layoutY="226.0" prefHeight="25.0" prefWidth="276.0" promptText="Ingrese limite" visible="false" />
+                     </children>
+                  </Pane>
+                  <CheckBox fx:id="andCheckBox1" alignment="CENTER" layoutX="167.0" layoutY="247.0" mnemonicParsing="false" onAction="#andCheckBoxAdicional" prefHeight="35.0" prefWidth="152.0" styleClass="containers_buttons" text="FILTRO ADICIONAL" textAlignment="CENTER" textFill="WHITE" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

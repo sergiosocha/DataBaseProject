@@ -5,13 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class newTable {
-    /*
-    public StringProperty name;
-    public StringProperty type;
-    public StringProperty Null;
-    public StringProperty extra;
 
-    */
     private String name;
     private String type;
     private String isNullable;

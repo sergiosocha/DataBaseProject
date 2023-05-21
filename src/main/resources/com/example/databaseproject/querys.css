@@ -1,0 +1,21 @@
+.container{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10 ;
+    -fx-border-color: grey;
+    -fx-background-color: #063940;
+    -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.8), 2, 5, 3, 3);
+}
+
+.containers_titles{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10 ;
+    -fx-border-color: #000000;
+    -fx-background-color: #3e838c;
+}
+
+.background {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: #3e838c;
+    -fx-background-color: #195e63;
+}
