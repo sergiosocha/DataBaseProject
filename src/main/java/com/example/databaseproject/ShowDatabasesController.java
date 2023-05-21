@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -63,11 +64,11 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private TableColumn<newTable, String> nameColumb;
     @javafx.fxml.FXML
-    private TableColumn<newTable, String>  typeColumb;
+    private TableColumn<newTable, String> typeColumb;
     @javafx.fxml.FXML
-    private TableColumn<newTable, String>  extraColumb;
+    private TableColumn<newTable, String> extraColumb;
     @javafx.fxml.FXML
-    private TableColumn<newTable, String>  nullColumb;
+    private TableColumn<newTable, String> nullColumb;
     @javafx.fxml.FXML
     private TableColumn<newTable, String> defaultColumb;
     @javafx.fxml.FXML
@@ -127,7 +128,7 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private Label tableSelectedLabel;
     @javafx.fxml.FXML
-    private ComboBox<String>  tableSelectedComboBox;
+    private ComboBox<String> tableSelectedComboBox;
     @javafx.fxml.FXML
     private Label baseDatosLabel;
     @javafx.fxml.FXML
@@ -139,17 +140,17 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private TextField textFieldQuery;
     @javafx.fxml.FXML
-    private ComboBox<String>  columnasComboBox;
+    private ComboBox<String> columnasComboBox;
     @javafx.fxml.FXML
-    private ComboBox<String>  operadoresComboBox;
+    private ComboBox<String> operadoresComboBox;
     @javafx.fxml.FXML
     private TextField valorTextField;
     @javafx.fxml.FXML
     private CheckBox andCheckBox;
     @javafx.fxml.FXML
-    private ComboBox<String>  columnasAndCB;
+    private ComboBox<String> columnasAndCB;
     @javafx.fxml.FXML
-    private ComboBox<String>  operadoresAndCB;
+    private ComboBox<String> operadoresAndCB;
     @javafx.fxml.FXML
     private TextField valorFieldAnd;
     @javafx.fxml.FXML
@@ -178,6 +179,16 @@ public class ShowDatabasesController implements Initializable {
     private TextField limitTextFieldAux;
     @javafx.fxml.FXML
     private ComboBox<String> dbFilterCB;
+    @javafx.fxml.FXML
+    private Button modifyButton;
+    @javafx.fxml.FXML
+    private ComboBox<String> modifyCellDataCB;
+    @javafx.fxml.FXML
+    private Button deletePrueba;
+    @javafx.fxml.FXML
+    private TextField oldCamp;
+    @javafx.fxml.FXML
+    private TextField modifyField;
 
     @Deprecated
     @Override
@@ -225,7 +236,6 @@ public class ShowDatabasesController implements Initializable {
     }
 
 
-
     public Connection getConnection(User userData) {
         String url = "jdbc:mysql://" + userData.getAddress() + ":" + userData.getPort() + "/";
         try {
@@ -244,14 +254,15 @@ public class ShowDatabasesController implements Initializable {
         alert.setContentText("Por favor, verifica los datos de conexión e intenta nuevamente.");
         alert.showAndWait();
     }
-    public void Connection(){
 
-        String newUrl =  "jdbc:mysql://" + userLogged.getAddress() + ":" + userLogged.getPort() + "/";
+    public void Connection() {
+
+        String newUrl = "jdbc:mysql://" + userLogged.getAddress() + ":" + userLogged.getPort() + "/";
         System.out.println("NEW URL   : " + newUrl);
 
-        try{
-            con = DriverManager.getConnection(newUrl,userLogged.getUser(), userLogged.getPassword());
-        }catch (SQLException ex){
+        try {
+            con = DriverManager.getConnection(newUrl, userLogged.getUser(), userLogged.getPassword());
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
@@ -260,7 +271,7 @@ public class ShowDatabasesController implements Initializable {
     public void cerrarsesion_button(ActionEvent actionEvent) {
     }
 
-    public void modelaTabla(){
+    public void modelaTabla() {
         this.databases = FXCollections.observableArrayList();
         this.Tables = FXCollections.observableArrayList();
 
@@ -277,7 +288,7 @@ public class ShowDatabasesController implements Initializable {
         String port = userLogged.getPort();
         String addres = userLogged.getAddress();
 
-        System.out.println("user  "+usuario );
+        System.out.println("user  " + usuario);
         System.out.println("password  " + password);
         System.out.println("ADDRES  " + addres);
         System.out.println("port  " + port);
@@ -285,7 +296,7 @@ public class ShowDatabasesController implements Initializable {
 
     }
 
-    public void tableDataBases(){
+    public void tableDataBases() {
         Connection(); //Trae la función Connection para poder usarla en el CreateStatement para luego prepara la consulta
         ObservableList<Database> databases = FXCollections.observableArrayList();
         this.Database.setCellValueFactory(new PropertyValueFactory("Database"));
@@ -294,47 +305,45 @@ public class ShowDatabasesController implements Initializable {
 
             Statement statement = con.createStatement(); //Usa con previamente declarado en las variables para preparar el Statement
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");//Con el statement anterior en un nuevo objeto resulset preparamos el query
-            while ( resultSet.next()){
+            while (resultSet.next()) {
                 Database st = new Database(); //Creamos un nuevo objeto de tipo DataBase en este caso st
                 st.setDatabase(resultSet.getString("Database"));//Usamos St para dar formato a los datos que obtenemos
                 String var = resultSet.getString("DataBase");
                 databases.add(st); //agregamos al oversableList los elementos st
             }
             dataBases_tableView.setItems(databases);//Traemos los items a la table view
-
-
-           ObservableList<String> dataBaseNames = FXCollections.observableArrayList();
+            ObservableList<String> dataBaseNames = FXCollections.observableArrayList();
 
             for (Database db : dataBases_tableView.getItems()) {
                 dataBaseNames.add(String.valueOf(db.getDatabase().getValue()));
             }
 
-
             dbFilterCB.setItems(dataBaseNames);
-            Database.setCellValueFactory(f->f.getValue().getDatabase());//damos formatos ala la columna o celdas dentro de la tabla
+            Database.setCellValueFactory(f -> f.getValue().getDatabase());//damos formatos ala la columna o celdas dentro de la tabla
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     @javafx.fxml.FXML
     public void selectDataBase(Event event) throws SQLException {
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
-        String urlToSearch = url+searchDatabase;
+        String urlToSearch = url + searchDatabase;
 
         dataBaseSelected.setText(searchDatabase);
         ObservableList<Table> tables = FXCollections.observableArrayList();
         this.showTables.setCellValueFactory(new PropertyValueFactory<>("Table"));
 
         try {
-            Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
+            Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
             Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SHOW TABLES");
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Table st = new Table();
-                st.setTable(resultSet.getString("Tables_in_"+searchDatabase));
+                st.setTable(resultSet.getString("Tables_in_" + searchDatabase));
                 tables.add(st);
 
             }
@@ -348,9 +357,9 @@ public class ShowDatabasesController implements Initializable {
 
             tableSelectedComboBox.setItems(tableNames);
             tableSelectedComboBox1.setItems(tableNames);
-            showTables.setCellValueFactory(f->f.getValue().getTable());
+            showTables.setCellValueFactory(f -> f.getValue().getTable());
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -359,36 +368,37 @@ public class ShowDatabasesController implements Initializable {
     public void doCreate(ActionEvent actionEvent) {
         String newDataBase = JOptionPane.showInputDialog("Ingrese el nombre de la base de datos: ");
         try {
-            Connection connection = DriverManager.getConnection(url,userLogged.getUser(), userLogged.getPassword());
-            pst = connection.prepareStatement("CREATE DATABASE "+newDataBase);
+            Connection connection = DriverManager.getConnection(url, userLogged.getUser(), userLogged.getPassword());
+            pst = connection.prepareStatement("CREATE DATABASE " + newDataBase);
             pst.executeUpdate();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("CREATE");
-            alert.setContentText("DATA BASE "+ newDataBase +" WAS CREATED");
+            alert.setContentText("DATA BASE " + newDataBase + " WAS CREATED");
             alert.showAndWait();
             tableDataBases();
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     @javafx.fxml.FXML
     public void doDelete(ActionEvent actionEvent) {
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
 
         try {
-            Connection connection = DriverManager.getConnection(url,userLogged.getUser(), userLogged.getPassword());
-            pst = connection.prepareStatement("DROP DATABASE "+searchDatabase);
+            Connection connection = DriverManager.getConnection(url, userLogged.getUser(), userLogged.getPassword());
+            pst = connection.prepareStatement("DROP DATABASE " + searchDatabase);
             pst.executeUpdate();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("DELETE");
-            alert.setContentText("DATA BASE "+ searchDatabase +" WAS DELETED");
+            alert.setContentText("DATA BASE " + searchDatabase + " WAS DELETED");
             alert.showAndWait();
             tableDataBases();
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -411,7 +421,7 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     public void selectField(Event event) {
         newTable newTables = this.fieldTables.getSelectionModel().getSelectedItem();
-        if(newTables != null){
+        if (newTables != null) {
             this.nameCampoNewTable.setText(newTables.getName());
             this.typesComboBox.setValue(newTables.getType());
             this.nullCheckBox.setSelected("NULL".equals(newTables.isNullable()));
@@ -422,7 +432,7 @@ public class ShowDatabasesController implements Initializable {
         return this.nullable ? "NULL" : "NOT NULL";
     }
 
-    public void setTablaFields(){
+    public void setTablaFields() {
         //DAMOS FORMATO ALAS CELDAS DE LA TABLA INTERFAZ CREACION NEW TABLE
         nameColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getName()));
         typeColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getType()));
@@ -434,11 +444,10 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     public void doCreateField(ActionEvent actionEvent) {
 
-        try{
-            String Default= "";
+        try {
+            String Default = "";
             String name = nameCampoNewTable.getText();
-            String selected  =nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
-
+            String selected = nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
 
             String type = typesComboBox.getValue();
             String extra = extraValueComboBox.getValue() != null ? extraValueComboBox.getValue() : "";
@@ -448,7 +457,7 @@ public class ShowDatabasesController implements Initializable {
                 Default = "DEFAULT " + defaultValue;
             }
 
-            newTable tableData = new newTable(name, type, selected, extra,Default );
+            newTable tableData = new newTable(name, type, selected, extra, Default);
             newTables.add(tableData);
             fieldTables.setItems(newTables);
             fieldTables.refresh();
@@ -459,10 +468,11 @@ public class ShowDatabasesController implements Initializable {
             extraValueComboBox.setValue("");
             defaultValueTextField.setText("");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @javafx.fxml.FXML
     public void doDeleteField(ActionEvent actionEvent) {
         newTable newTables = this.fieldTables.getSelectionModel().getSelectedItem();
@@ -491,12 +501,12 @@ public class ShowDatabasesController implements Initializable {
         try {
             String newName = this.nameCampoNewTable.getText();
             String type = this.typesComboBox.getValue();
-            String selected  =nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
+            String selected = nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
             String extra = this.extraValueComboBox.getValue();
             String defaultValue = this.defaultValueTextField.getText();
 
-            newTable overwriteField = new newTable(newName,type,selected,extra, defaultValue);
-            if(!this.newTables.contains(overwriteField)){
+            newTable overwriteField = new newTable(newName, type, selected, extra, defaultValue);
+            if (!this.newTables.contains(overwriteField)) {
                 newTables.setName(overwriteField.getName());
                 newTables.setType(overwriteField.getType());
                 newTables.setNullable(overwriteField.isNullable());
@@ -516,7 +526,7 @@ public class ShowDatabasesController implements Initializable {
             extraValueComboBox.setValue(String.valueOf(""));
             defaultValueTextField.setText("");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
@@ -530,7 +540,7 @@ public class ShowDatabasesController implements Initializable {
         for (int i = 0; i < newTables.size(); i++) {
             newTable table = newTables.get(i);
             System.out.print(table);
-            String selected  =nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
+            String selected = nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
 
             query = query.concat(String.valueOf(newTables.get(i)));
             if (i < newTables.size() - 1) {
@@ -545,21 +555,21 @@ public class ShowDatabasesController implements Initializable {
         System.out.println(nameTableTextField.getText() + " " + query);
 
         String dataBase = dataBaseSelected.getText();
-        try{
-            String urlToCreate = url+dataBase;
+        try {
+            String urlToCreate = url + dataBase;
             System.out.println(urlToCreate);
             System.out.println();
-            Connection connection = DriverManager.getConnection(urlToCreate,userLogged.getUser(), userLogged.getPassword());
+            Connection connection = DriverManager.getConnection(urlToCreate, userLogged.getUser(), userLogged.getPassword());
 
-            pst = connection.prepareStatement("CREATE TABLE " + nameTableTextField.getText() + "(  " + query  +" )");
-            System.out.println("CREATE TABLE " + nameTableTextField.getText() + "(  " + query  +" )");
+            pst = connection.prepareStatement("CREATE TABLE " + nameTableTextField.getText() + "(  " + query + " )");
+            System.out.println("CREATE TABLE " + nameTableTextField.getText() + "(  " + query + " )");
             pst.executeUpdate();
 
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setTitle("Info");
-            alert.setContentText("SE HA CREADO LA TABLA "+ nameTableTextField.getText() + " EN " + dataBase );
+            alert.setContentText("SE HA CREADO LA TABLA " + nameTableTextField.getText() + " EN " + dataBase);
             alert.showAndWait();
 
             nameCampoNewTable.setText("");
@@ -570,12 +580,12 @@ public class ShowDatabasesController implements Initializable {
             nameTableTextField.setText("");
 
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void fillComboBoxes(){
+    public void fillComboBoxes() {
         typesComboBox.getItems().addAll(
                 "Int",
                 "Float",
@@ -589,12 +599,12 @@ public class ShowDatabasesController implements Initializable {
         extraValueComboBox.getItems().addAll(
                 "AUTO_INCREMENT",
                 "ON UPDATE",
-               "CURRENT_TIMESTAMP",
+                "CURRENT_TIMESTAMP",
                 "UNSIGNED"
         );
 
         operadoresComboBox.getItems().addAll(
-                ">" ,
+                ">",
                 "<",
                 ">=",
                 "=",
@@ -606,7 +616,7 @@ public class ShowDatabasesController implements Initializable {
         );
 
         operadoresAndCB.getItems().addAll(
-                ">" ,
+                ">",
                 "<",
                 ">=",
                 "=",
@@ -632,20 +642,20 @@ public class ShowDatabasesController implements Initializable {
 
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
-        String urlToSearch = url+searchDatabase;
+        String urlToSearch = url + searchDatabase;
 
 
         Table doTableSelected = this.showTables_TableView.getSelectionModel().getSelectedItem();
         String searchTableData = doTableSelected.getTable().getValue();
 
-        Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
-        Statement stmt = connection.createStatement( );
-        ResultSet rs = stmt.executeQuery("Select * FROM "+ searchTableData);
+        Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("Select * FROM " + searchTableData);
 
         ResultSetMetaData dataTable = rs.getMetaData();
         int numeroColumnasDinamicas = dataTable.getColumnCount();
 
-        for (int i = 1; i <= numeroColumnasDinamicas; i++){
+        for (int i = 1; i <= numeroColumnasDinamicas; i++) {
 
             final int j = i;
             TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
@@ -661,7 +671,7 @@ public class ShowDatabasesController implements Initializable {
         }
 
         ObservableList<ObservableList<String>> datosTable = FXCollections.observableArrayList();
-        while(rs.next()){
+        while (rs.next()) {
             ObservableList<String> data = FXCollections.observableArrayList();
             for (int i = 1; i <= numeroColumnasDinamicas; i++) {
                 data.add(rs.getString(i));
@@ -676,7 +686,7 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void doChooseType(ActionEvent actionEvent) {
-       if(typesComboBox.getValue().equals("Int")){
+        if (typesComboBox.getValue().equals("Int")) {
             int defaultValue = 0;
             defaultValueTextField.setText(String.valueOf(defaultValue));
         } else {
@@ -691,57 +701,57 @@ public class ShowDatabasesController implements Initializable {
 
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
-        String urlToSearch = url+searchDatabase;
+        String urlToSearch = url + searchDatabase;
 
         Table doTableSelected = this.showTables_TableView.getSelectionModel().getSelectedItem();
         String searchTableData = doTableSelected.getTable().getValue();
 
         try {
-            Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
+            Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
 
-            pst = connection.prepareStatement("DROP TABLE "+ searchTableData);
+            pst = connection.prepareStatement("DROP TABLE " + searchTableData);
             pst.executeUpdate();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("DELETE");
-            alert.setContentText("TABLE "+ searchDatabase +" WAS DELETED");
+            alert.setContentText("TABLE " + searchDatabase + " WAS DELETED");
             alert.showAndWait();
             showTables_TableView.refresh();
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     @javafx.fxml.FXML
     public void onQueryButton(ActionEvent actionEvent) throws SQLException {
 
         querysPane.setVisible(true);
 
     }
+
     @javafx.fxml.FXML
     public void showTableSelected(Event event) throws SQLException {
-        try{
+        try {
             tableViewQuerys.getColumns().clear();
             tableViewQuerys.getItems().clear();
 
             String doSelected = dbFilterCB.getValue();
-
-            String urlToSearch = url+doSelected;
-
+            String urlToSearch = url + doSelected;
             baseDatosLabel.setText(doSelected);
             String tableCBselected = this.tableSelectedComboBox.getValue();
 
-            System.out.println("Tabla Seleccionada  "+tableCBselected);
+            System.out.println("Tabla Seleccionada  " + tableCBselected);
 
             tableSelectedLabel.setText(tableCBselected);
 
-            Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
-            Statement stmt = connection.createStatement( );
-            ResultSet rs = stmt.executeQuery("Select * FROM "+ tableCBselected);
+            Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("Select * FROM " + tableCBselected);
 
             ResultSetMetaData dataTable = rs.getMetaData();
             int numeroColumnasDinamicas = dataTable.getColumnCount();
 
-            for (int i = 1; i <= numeroColumnasDinamicas; i++){
+            for (int i = 1; i <= numeroColumnasDinamicas; i++) {
 
                 final int j = i;
                 TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
@@ -765,10 +775,11 @@ public class ShowDatabasesController implements Initializable {
             }
 
             columnasComboBox.setItems(columnNames);
+            modifyCellDataCB.setItems(columnNames);
             //_____________________________________________________
 
             ObservableList<ObservableList<String>> datosTable = FXCollections.observableArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 ObservableList<String> data = FXCollections.observableArrayList();
                 for (int i = 1; i <= numeroColumnasDinamicas; i++) {
                     data.add(rs.getString(i));
@@ -780,11 +791,12 @@ public class ShowDatabasesController implements Initializable {
             }
             tableViewQuerys.setItems(datosTable);
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
+
     @javafx.fxml.FXML
     public void createViewQuery(ActionEvent actionEvent) {
         String viewQuery = "CREATE VIEW " + nameOfView.getText() + " AS " + textFieldQuery.getText();
@@ -792,9 +804,10 @@ public class ShowDatabasesController implements Initializable {
         System.out.println(viewQuery);
     }
 
-    public  void selectedFilter2 (){
+    public void selectedFilter2() {
 
     }
+
     @javafx.fxml.FXML
     public void backMain(ActionEvent actionEvent) {
         mainMenuPane.setVisible(true);
@@ -802,6 +815,7 @@ public class ShowDatabasesController implements Initializable {
         querysPane.setVisible(false);
 
     }
+
     @javafx.fxml.FXML
     public void selectedComboBoxColumn(ActionEvent actionEvent) {
 
@@ -813,89 +827,86 @@ public class ShowDatabasesController implements Initializable {
         String querys = "";
 
 
-        if(!andCheckBox.isSelected()){
+        if (!andCheckBox.isSelected()) {
             String table = tableSelectedComboBox.getValue();
             String column = columnasComboBox.getValue();
-            String operadores = operadoresComboBox.getValue() ;
+            String operadores = operadoresComboBox.getValue();
             String valor = valorTextField.getText();
 
-            if(seleccionColumnas.getValue().equals("Todas las Columnas"))
-            {
+            if (seleccionColumnas.getValue().equals("Todas las Columnas")) {
                 allValues = "*";
-            } else{
+            } else {
                 allValues = column;
             }
 
-            if(operadoresComboBox.getValue() == null){
+            if (operadoresComboBox.getValue() == null) {
                 operadores = "";
-            } else if (!operadoresComboBox.getValue().equals("")){
+            } else if (!operadoresComboBox.getValue().equals("")) {
                 operadores = operadoresComboBox.getValue();
             }
 
-            if(limitTextField.getText().equals("")){
-                querys = "SELECT "+ allValues + " FROM " + table + " WHERE " + column + " " +  operadores + " " + "\"" +  valor + "\"" ;
-            } else if(!limitTextField.getText().equals("")) {
-                querys = "SELECT "+ allValues + " FROM " + table + " WHERE " + column + " " +  operadores + " " + "\"" +  valor + "\"" + " limit " + limitTextField.getText();
+            if (limitTextField.getText().equals("")) {
+                querys = "SELECT " + allValues + " FROM " + table + " WHERE " + column + " " + operadores + " " + "\"" + valor + "\"";
+            } else if (!limitTextField.getText().equals("")) {
+                querys = "SELECT " + allValues + " FROM " + table + " WHERE " + column + " " + operadores + " " + "\"" + valor + "\"" + " limit " + limitTextField.getText();
             }
 
             textFieldQuery.setText(querys);
-        } else if(andCheckBox.isSelected()){
+        } else if (andCheckBox.isSelected()) {
             String table = tableSelectedComboBox.getValue();
             String column = columnasComboBox.getValue();
             String column2 = columnasAndCB.getValue();
             String tableToCompare = tableSelectedComboBox1.getValue();
 
             String operadores2;
-            String operadores = operadoresComboBox.getValue() ;
+            String operadores = operadoresComboBox.getValue();
 
             String filterColumn = "";
             String valor = valorFieldAnd.getText();
 
 
-
-            if(seleccionColumnas.getValue().equals("Todas las Columnas"))
-            {
+            if (seleccionColumnas.getValue().equals("Todas las Columnas")) {
                 allValues = "*";
                 String tableCompare = tableSelectedComboBox1.getValue();
-                if(operadoresAndCB.getValue() != null){
-                    if(!limitTextFieldAux.getText().equals("")){
+                if (operadoresAndCB.getValue() != null) {
+                    if (!limitTextFieldAux.getText().equals("")) {
                         operadores2 = operadoresAndCB.getValue();
                         filterColumn = columnasAndCB2.getValue();
-                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + table+"."+column  + operadores + tableCompare+"."+column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" + " limit " + limitTextFieldAux.getText() ;
+                        querys = "SELECT " + table + "." + allValues + ", " + tableCompare + "." + column2 + " FROM " + table + "," + tableCompare + " WHERE " + table + "." + column + operadores + tableCompare + "." + column2 + " AND " + tableCompare + "." + filterColumn + operadores2 + " " + "\"" + valor + "\"" + " limit " + limitTextFieldAux.getText();
 
-                    }else if(limitTextFieldAux.getText().equals("")){
+                    } else if (limitTextFieldAux.getText().equals("")) {
                         operadores2 = operadoresAndCB.getValue();
                         filterColumn = columnasAndCB2.getValue();
-                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + table+"."+column  + operadores + tableCompare+"."+column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" ;
+                        querys = "SELECT " + table + "." + allValues + ", " + tableCompare + "." + column2 + " FROM " + table + "," + tableCompare + " WHERE " + table + "." + column + operadores + tableCompare + "." + column2 + " AND " + tableCompare + "." + filterColumn + operadores2 + " " + "\"" + valor + "\"";
 
                     }
-                }else if(operadoresAndCB.getValue() == null) {
+                } else if (operadoresAndCB.getValue() == null) {
 
-                    if(!limitTextFieldAux.getText().equals("")){
+                    if (!limitTextFieldAux.getText().equals("")) {
                         operadores2 = operadoresAndCB.getValue();
                         filterColumn = columnasAndCB2.getValue();
-                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + table+"."+column  + operadores + tableCompare+"."+column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\""  + " limit " + limitTextFieldAux.getText();
-                    }else if(limitTextFieldAux.getText().equals("")){
+                        querys = "SELECT " + table + "." + allValues + ", " + tableCompare + "." + column2 + " FROM " + table + "," + tableCompare + " WHERE " + table + "." + column + operadores + tableCompare + "." + column2 + " AND " + tableCompare + "." + filterColumn + operadores2 + " " + "\"" + valor + "\"" + " limit " + limitTextFieldAux.getText();
+                    } else if (limitTextFieldAux.getText().equals("")) {
                         operadores2 = operadoresAndCB.getValue();
                         filterColumn = columnasAndCB2.getValue();
                         operadores2 = "";
-                        querys = "SELECT " + table+"."+ allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + table+"."+column  + operadores + tableCompare+"."+ column2 ;
+                        querys = "SELECT " + table + "." + allValues + ", " + tableCompare + "." + column2 + " FROM " + table + "," + tableCompare + " WHERE " + table + "." + column + operadores + tableCompare + "." + column2;
 
                     }
 
                 }
                 textFieldQuery.setText(querys);
-            } else{
+            } else {
                 allValues = column;
                 String tableCompare = tableSelectedComboBox1.getValue();
-                if(!operadoresAndCB.getValue().equals(null)){
+                if (!operadoresAndCB.getValue().equals(null)) {
                     operadores2 = operadoresAndCB.getValue();
                     filterColumn = columnasAndCB2.getValue();
-                    querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" ;
+                    querys = "SELECT " + table + "." + allValues + ", " + tableCompare + "." + column2 + " FROM " + table + "," + tableCompare + " WHERE " + column + operadores + column2 + " AND " + tableCompare + "." + filterColumn + operadores2 + " " + "\"" + valor + "\"";
 
-                }else if(operadoresAndCB.getValue().equals(null)) {
+                } else if (operadoresAndCB.getValue().equals(null)) {
                     operadores2 = "";
-                    querys = "SELECT "+ table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores2 + column2 ;
+                    querys = "SELECT " + table + "." + allValues + ", " + tableCompare + "." + column2 + " FROM " + table + "," + tableCompare + " WHERE " + column + operadores2 + column2;
 
                 }
                 textFieldQuery.setText(querys);
@@ -906,7 +917,7 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void andCheckBox(ActionEvent actionEvent) {
-        if(andCheckBox.isSelected()){
+        if (andCheckBox.isSelected()) {
             columnasAndCB.setVisible(true);
             tableSelectedComboBox1.setVisible(true);
             paneConsultasAdicional.setVisible(true);
@@ -916,7 +927,7 @@ public class ShowDatabasesController implements Initializable {
             valorTextField.setText("");
             limitTextField.setText("");
 
-        }else if(!andCheckBox.isSelected()){
+        } else if (!andCheckBox.isSelected()) {
             columnasAndCB.setVisible(false);
             tableSelectedComboBox1.setVisible(false);
             paneConsultasAdicional.setVisible(false);
@@ -938,24 +949,24 @@ public class ShowDatabasesController implements Initializable {
 
         String doSelected = dbFilterCB.getValue();
 
-        String urlToSearch = url+doSelected;
+        String urlToSearch = url + doSelected;
 
         baseDatosLabel.setText(doSelected);
         String tableCBselected = this.tableSelectedComboBox.getValue();
 
-        System.out.println("Tabla Seleccionada  "+tableCBselected);
+        System.out.println("Tabla Seleccionada  " + tableCBselected);
 
         tableSelectedLabel.setText(tableCBselected);
 
-        Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
-        Statement stmt = connection.createStatement( );
+        Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
+        Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery(query + " ;");
 
 
         ResultSetMetaData dataTable = rs.getMetaData();
         int numeroColumnasDinamicas = dataTable.getColumnCount();
 
-        for (int i = 1; i <= numeroColumnasDinamicas; i++){
+        for (int i = 1; i <= numeroColumnasDinamicas; i++) {
 
             final int j = i;
             TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
@@ -972,7 +983,7 @@ public class ShowDatabasesController implements Initializable {
         }
 
         ObservableList<ObservableList<String>> datosTable = FXCollections.observableArrayList();
-        while(rs.next()){
+        while (rs.next()) {
             ObservableList<String> data = FXCollections.observableArrayList();
             for (int i = 1; i <= numeroColumnasDinamicas; i++) {
                 data.add(rs.getString(i));
@@ -1000,29 +1011,29 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void showTableSelected2(ActionEvent actionEvent) {
-        try{
+        try {
             tableViewQuerys.getColumns().clear();
             tableViewQuerys.getItems().clear();
 
             String doSelected = dbFilterCB.getValue();
 
-            String urlToSearch = url+doSelected;
+            String urlToSearch = url + doSelected;
 
             baseDatosLabel.setText(doSelected);
             String tableCBselected = this.tableSelectedComboBox1.getValue();
 
-            System.out.println("Tabla Seleccionada  "+tableCBselected);
+            System.out.println("Tabla Seleccionada  " + tableCBselected);
 
             tableSelectedLabel.setText(tableCBselected);
 
-            Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
-            Statement stmt = connection.createStatement( );
-            ResultSet rs = stmt.executeQuery("Select * FROM "+ tableCBselected);
+            Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("Select * FROM " + tableCBselected);
 
             ResultSetMetaData dataTable = rs.getMetaData();
             int numeroColumnasDinamicas = dataTable.getColumnCount();
 
-            for (int i = 1; i <= numeroColumnasDinamicas; i++){
+            for (int i = 1; i <= numeroColumnasDinamicas; i++) {
 
                 final int j = i;
                 TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
@@ -1049,7 +1060,7 @@ public class ShowDatabasesController implements Initializable {
             columnasAndCB2.setItems(columnNames);
 
             ObservableList<ObservableList<String>> datosTable = FXCollections.observableArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 ObservableList<String> data = FXCollections.observableArrayList();
                 for (int i = 1; i <= numeroColumnasDinamicas; i++) {
                     data.add(rs.getString(i));
@@ -1061,7 +1072,7 @@ public class ShowDatabasesController implements Initializable {
             }
             tableViewQuerys.setItems(datosTable);
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -1069,12 +1080,12 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void andCheckBoxAdicional(ActionEvent actionEvent) {
-        if(andCheckBox1.isSelected()){
+        if (andCheckBox1.isSelected()) {
             columnasAndCB2.setVisible(true);
             operadoresAndCB.setVisible(true);
             valorFieldAnd.setVisible(true);
             limitTextFieldAux.setVisible(true);
-        }else if(!andCheckBox1.isSelected()){
+        } else if (!andCheckBox1.isSelected()) {
             columnasAndCB2.setVisible(false);
             operadoresAndCB.setVisible(false);
             valorFieldAnd.setVisible(false);
@@ -1086,39 +1097,158 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     public void dbFilterCB(ActionEvent actionEvent) {
         String doSelected = this.dbFilterCB.getValue();
-        String urlToSearch = url+doSelected;
+        String urlToSearch = url + doSelected;
 
         dataBaseSelected.setText(doSelected);
         ObservableList<Table> tables = FXCollections.observableArrayList();
         this.showTables.setCellValueFactory(new PropertyValueFactory<>("Table"));
 
         try {
-            Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
+            Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
             Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SHOW TABLES");
 
             ObservableList<String> tableNames = FXCollections.observableArrayList();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Table st = new Table();
 
-                st.setTable(resultSet.getString("Tables_in_"+doSelected));
+                st.setTable(resultSet.getString("Tables_in_" + doSelected));
                 tables.add(st);
-                tableNames.add(resultSet.getString("Tables_in_"+doSelected));
+                tableNames.add(resultSet.getString("Tables_in_" + doSelected));
 
             }
-
-
-/*
-            for (Table table : showTables_TableView.getItems()) {
-                tableNames.add(String.valueOf(table.getTable().getValue()));
-            }*/
 
             tableSelectedComboBox.setItems(tableNames);
             tableSelectedComboBox1.setItems(tableNames);
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void modifyQueryButton(ActionEvent actionEvent) {
+        String updateQuery = "";
+
+         try{
+        String newCamp = modifyField.getText();
+        String doSelected = this.dbFilterCB.getValue();
+        String urlToSearch = url + doSelected;
+        String table = tableSelectedComboBox.getValue();
+        String column = modifyCellDataCB.getValue();
+        String oldCamps = oldCamp.getText();
+        String newOldCamp = oldCamps.replaceAll("\\[|\\]", "");
+        String columnaUpdate = columnasComboBox.getValue();
+        String FilterValue = valorTextField.getText();
+
+
+        Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
+        Statement statement = connection.createStatement();
+
+        updateQuery = " UPDATE " + table + " SET " + column + " = " + "\"" + newCamp + "\"" + " WHERE " + columnaUpdate + "=" + FilterValue ;
+        pst = connection.prepareStatement(updateQuery+";");
+        System.out.println(updateQuery);
+        pst.executeUpdate();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("CREATE");
+        alert.setContentText("REGISTRO MODIFICADO");
+        alert.showAndWait();
+
+
+
+
         }catch (SQLException e){
             e.printStackTrace();
         }
+
+    }
+
+    @javafx.fxml.FXML
+    public void selectedFilterQuery(Event event) {
+        String registerSelected = String.valueOf(tableViewQuerys.getSelectionModel().getSelectedItem());
+        modifyField.setText(registerSelected.replaceAll("\\[|\\]", ""));
+        oldCamp.setText(registerSelected.replaceAll("\\[|\\]", ""));
+    }
+
+    @javafx.fxml.FXML
+    public void modifyCellDataCB(ActionEvent actionEvent) throws SQLException {
+        String allValues;
+        String querys;
+
+        String table = tableSelectedComboBox.getValue();
+        String column = modifyCellDataCB.getValue();
+        String baseColumn = columnasComboBox.getValue();
+        String operadores = operadoresComboBox.getValue();
+        String valor = valorTextField.getText();
+
+        if (operadoresComboBox.getValue() == null) {
+            operadores = "";
+        } else if (!operadoresComboBox.getValue().equals("")) {
+            operadores = operadoresComboBox.getValue();
+        }
+
+        querys = "SELECT " + column + " FROM " + table + " WHERE " + baseColumn + " " + operadores + " " + "\"" + valor + "\"";
+
+        String query = querys;
+
+        tableViewQuerys.getColumns().clear();
+        tableViewQuerys.getItems().clear();
+
+        String doSelected = dbFilterCB.getValue();
+
+        String urlToSearch = url + doSelected;
+
+        baseDatosLabel.setText(doSelected);
+        String tableCBselected = this.tableSelectedComboBox.getValue();
+
+        System.out.println("Tabla Seleccionada  " + tableCBselected);
+
+        tableSelectedLabel.setText(tableCBselected);
+
+
+        Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query + " ;");
+
+
+        ResultSetMetaData dataTable = rs.getMetaData();
+        int numeroColumnasDinamicas = dataTable.getColumnCount();
+        for (int i = 1; i <= numeroColumnasDinamicas; i++) {
+
+            final int j = i;
+            TableColumn<ObservableList<String>, String> newColumn = new TableColumn<>(dataTable.getColumnName(i));
+            newColumn.setCellValueFactory(cellData -> {
+                ObservableList<String> valorCelda = cellData.getValue();
+                if (valorCelda != null && valorCelda.size() >= j) {
+                    return new SimpleStringProperty(valorCelda.get(j - 1));
+                } else {
+                    return new SimpleStringProperty("");
+                }
+            });
+            tableViewQuerys.getColumns().add(newColumn);
+
+        }
+
+        ObservableList<ObservableList<String>> datosTable = FXCollections.observableArrayList();
+        while (rs.next()) {
+            ObservableList<String> data = FXCollections.observableArrayList();
+            for (int i = 1; i <= numeroColumnasDinamicas; i++) {
+                data.add(rs.getString(i));
+                System.out.print(rs.getString(i) + " | ");
+            }
+            datosTable.add(data);
+            //System.out.println(" ");
+            tableViewQuerys.getItems().add(data);
+        }
+
+        tableViewQuerys.setItems(datosTable);
+
+
+    }
+
+    @javafx.fxml.FXML
+    public void deletePrueba(ActionEvent actionEvent) {
     }
 }
