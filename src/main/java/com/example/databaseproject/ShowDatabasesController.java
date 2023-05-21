@@ -159,7 +159,7 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private TextField nameOfView;
     @javafx.fxml.FXML
-    private ComboBox seleccionColumnas;
+    private ComboBox<String> seleccionColumnas;
     @javafx.fxml.FXML
     private TextField limitTextField;
     @javafx.fxml.FXML
@@ -176,6 +176,8 @@ public class ShowDatabasesController implements Initializable {
     private CheckBox andCheckBox1;
     @javafx.fxml.FXML
     private TextField limitTextFieldAux;
+    @javafx.fxml.FXML
+    private ComboBox<String> dbFilterCB;
 
     @Deprecated
     @Override
@@ -299,6 +301,16 @@ public class ShowDatabasesController implements Initializable {
                 databases.add(st); //agregamos al oversableList los elementos st
             }
             dataBases_tableView.setItems(databases);//Traemos los items a la table view
+
+
+           ObservableList<String> dataBaseNames = FXCollections.observableArrayList();
+
+            for (Database db : dataBases_tableView.getItems()) {
+                dataBaseNames.add(String.valueOf(db.getDatabase().getValue()));
+            }
+
+
+            dbFilterCB.setItems(dataBaseNames);
             Database.setCellValueFactory(f->f.getValue().getDatabase());//damos formatos ala la columna o celdas dentro de la tabla
 
         }catch (SQLException e){
@@ -711,11 +723,11 @@ public class ShowDatabasesController implements Initializable {
             tableViewQuerys.getColumns().clear();
             tableViewQuerys.getItems().clear();
 
-            Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
-            String searchDatabase = doSelected.getDatabase().getValue();
-            String urlToSearch = url+searchDatabase;
+            String doSelected = dbFilterCB.getValue();
 
-            baseDatosLabel.setText(searchDatabase);
+            String urlToSearch = url+doSelected;
+
+            baseDatosLabel.setText(doSelected);
             String tableCBselected = this.tableSelectedComboBox.getValue();
 
             System.out.println("Tabla Seleccionada  "+tableCBselected);
@@ -831,6 +843,7 @@ public class ShowDatabasesController implements Initializable {
             String table = tableSelectedComboBox.getValue();
             String column = columnasComboBox.getValue();
             String column2 = columnasAndCB.getValue();
+            String tableToCompare = tableSelectedComboBox1.getValue();
 
             String operadores2;
             String operadores = operadoresComboBox.getValue() ;
@@ -848,12 +861,12 @@ public class ShowDatabasesController implements Initializable {
                     if(!limitTextFieldAux.getText().equals("")){
                         operadores2 = operadoresAndCB.getValue();
                         filterColumn = columnasAndCB2.getValue();
-                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" + " limit " + limitTextFieldAux.getText() ;
+                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + table+"."+column  + operadores + tableCompare+"."+column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" + " limit " + limitTextFieldAux.getText() ;
 
                     }else if(limitTextFieldAux.getText().equals("")){
                         operadores2 = operadoresAndCB.getValue();
                         filterColumn = columnasAndCB2.getValue();
-                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" ;
+                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + table+"."+column  + operadores + tableCompare+"."+column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" ;
 
                     }
                 }else if(operadoresAndCB.getValue() == null) {
@@ -861,12 +874,12 @@ public class ShowDatabasesController implements Initializable {
                     if(!limitTextFieldAux.getText().equals("")){
                         operadores2 = operadoresAndCB.getValue();
                         filterColumn = columnasAndCB2.getValue();
-                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\""  + " limit " + limitTextFieldAux.getText();
+                        querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + table+"."+column  + operadores + tableCompare+"."+column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\""  + " limit " + limitTextFieldAux.getText();
                     }else if(limitTextFieldAux.getText().equals("")){
                         operadores2 = operadoresAndCB.getValue();
                         filterColumn = columnasAndCB2.getValue();
                         operadores2 = "";
-                        querys = "SELECT " + table+"."+ allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 ;
+                        querys = "SELECT " + table+"."+ allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + table+"."+column  + operadores + tableCompare+"."+ column2 ;
 
                     }
 
@@ -878,11 +891,11 @@ public class ShowDatabasesController implements Initializable {
                 if(!operadoresAndCB.getValue().equals(null)){
                     operadores2 = operadoresAndCB.getValue();
                     filterColumn = columnasAndCB2.getValue();
-                    querys = "SELECT " + table+ "." + column + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" ;
+                    querys = "SELECT " + table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores + column2 + " AND "+ tableCompare+ "." +filterColumn + operadores2 +  " " + "\"" +  valor + "\"" ;
 
                 }else if(operadoresAndCB.getValue().equals(null)) {
                     operadores2 = "";
-                    querys = "SELECT "+ table+ "." + column + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores2 + column2 ;
+                    querys = "SELECT "+ table+ "." + allValues + ", " + tableCompare +"." +column2 +  " FROM " + table+ "," + tableCompare + " WHERE " + column  + operadores2 + column2 ;
 
                 }
                 textFieldQuery.setText(querys);
@@ -923,11 +936,11 @@ public class ShowDatabasesController implements Initializable {
         tableViewQuerys.getColumns().clear();
         tableViewQuerys.getItems().clear();
 
-        Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
-        String searchDatabase = doSelected.getDatabase().getValue();
-        String urlToSearch = url+searchDatabase;
+        String doSelected = dbFilterCB.getValue();
 
-        baseDatosLabel.setText(searchDatabase);
+        String urlToSearch = url+doSelected;
+
+        baseDatosLabel.setText(doSelected);
         String tableCBselected = this.tableSelectedComboBox.getValue();
 
         System.out.println("Tabla Seleccionada  "+tableCBselected);
@@ -991,11 +1004,11 @@ public class ShowDatabasesController implements Initializable {
             tableViewQuerys.getColumns().clear();
             tableViewQuerys.getItems().clear();
 
-            Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
-            String searchDatabase = doSelected.getDatabase().getValue();
-            String urlToSearch = url+searchDatabase;
+            String doSelected = dbFilterCB.getValue();
 
-            baseDatosLabel.setText(searchDatabase);
+            String urlToSearch = url+doSelected;
+
+            baseDatosLabel.setText(doSelected);
             String tableCBselected = this.tableSelectedComboBox1.getValue();
 
             System.out.println("Tabla Seleccionada  "+tableCBselected);
@@ -1068,5 +1081,44 @@ public class ShowDatabasesController implements Initializable {
             limitTextFieldAux.setVisible(false);
         }
 
+    }
+
+    @javafx.fxml.FXML
+    public void dbFilterCB(ActionEvent actionEvent) {
+        String doSelected = this.dbFilterCB.getValue();
+        String urlToSearch = url+doSelected;
+
+        dataBaseSelected.setText(doSelected);
+        ObservableList<Table> tables = FXCollections.observableArrayList();
+        this.showTables.setCellValueFactory(new PropertyValueFactory<>("Table"));
+
+        try {
+            Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SHOW TABLES");
+
+            ObservableList<String> tableNames = FXCollections.observableArrayList();
+            while (resultSet.next()){
+                Table st = new Table();
+
+                st.setTable(resultSet.getString("Tables_in_"+doSelected));
+                tables.add(st);
+                tableNames.add(resultSet.getString("Tables_in_"+doSelected));
+
+            }
+
+
+/*
+            for (Table table : showTables_TableView.getItems()) {
+                tableNames.add(String.valueOf(table.getTable().getValue()));
+            }*/
+
+            tableSelectedComboBox.setItems(tableNames);
+            tableSelectedComboBox1.setItems(tableNames);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }

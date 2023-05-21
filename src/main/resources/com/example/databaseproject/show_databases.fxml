@@ -226,23 +226,24 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="baseDatosLabel" alignment="CENTER" layoutX="18.0" layoutY="76.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="titlesDataBaseSelected" textFill="#070707">
+                  <Label fx:id="baseDatosLabel" alignment="CENTER" layoutX="18.0" layoutY="154.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="titlesDataBaseSelected" textFill="#070707">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tableSelectedLabel" alignment="CENTER" layoutX="18.0" layoutY="229.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="containers_titles" textFill="WHITE">
+                  <Label fx:id="tableSelectedLabel" alignment="CENTER" layoutX="18.0" layoutY="297.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="containers_titles" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="18.0" layoutY="172.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="titlesDataBaseSelected" text="TABLA SELECIONADA" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="18.0" layoutY="254.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="titlesDataBaseSelected" text="TABLA SELECIONADA" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="tableSelectedComboBox" layoutX="18.0" layoutY="129.0" onAction="#showTableSelected" prefHeight="35.0" prefWidth="164.0" promptText="SELECCIONA TABLA" />
+                  <ComboBox fx:id="tableSelectedComboBox" layoutX="18.0" layoutY="203.0" onAction="#showTableSelected" prefHeight="35.0" prefWidth="164.0" promptText="SELECCIONA TABLA" />
                   <Button fx:id="backMainbutton" layoutX="36.0" layoutY="570.0" mnemonicParsing="false" onAction="#backMain" prefHeight="35.0" prefWidth="128.0" styleClass="buttons" text="VOLVER" />
+                  <ComboBox fx:id="dbFilterCB" layoutX="18.0" layoutY="70.0" onAction="#dbFilterCB" prefHeight="43.0" prefWidth="164.0" promptText="BASE DE DATOS" />
                </children>
             </Pane>
             <Label alignment="CENTER" layoutX="252.0" layoutY="23.0" prefHeight="66.0" prefWidth="646.0" styleClass="containers_titles" stylesheets="@querys.css" text="CONSULTAS" textFill="WHITE">
