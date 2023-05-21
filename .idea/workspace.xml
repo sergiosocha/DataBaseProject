@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new interface updates, make querys works">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="querys interface">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
@@ -142,7 +142,7 @@
       <workItem from="1684374559528" duration="2400000" />
       <workItem from="1684447896760" duration="11000" />
       <workItem from="1684545743122" duration="3675000" />
-      <workItem from="1684607382035" duration="16832000" />
+      <workItem from="1684607382035" duration="24291000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -424,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684624934024</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="querys interface">
+      <created>1684625702984</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1684625702984</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +449,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Loggin interface working" />
     <MESSAGE value="Loggin interface, databases Interface, Model classes" />
     <MESSAGE value="fixed interface errors, table view" />
     <MESSAGE value="working databases interface,  actualy shows all mysqldatabases on pc" />
@@ -467,6 +473,7 @@
     <MESSAGE value="new interface" />
     <MESSAGE value="new interface updates" />
     <MESSAGE value="new interface updates, make querys works" />
-    <option name="LAST_COMMIT_MESSAGE" value="new interface updates, make querys works" />
+    <MESSAGE value="querys interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="querys interface" />
   </component>
 </project>

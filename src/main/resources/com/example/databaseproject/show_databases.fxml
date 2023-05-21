@@ -254,9 +254,9 @@
                   <ComboBox fx:id="operadoresComboBox" layoutX="14.0" layoutY="106.0" prefHeight="37.0" prefWidth="164.0" promptText="OPERADORES" />
                   <TextField fx:id="valorTextField" layoutX="14.0" layoutY="163.0" prefHeight="30.0" prefWidth="164.0" promptText="Ingrese Valor a filtrar" />
                   <CheckBox fx:id="andCheckBox" alignment="CENTER" layoutX="14.0" layoutY="232.0" mnemonicParsing="false" onAction="#andCheckBox" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" text="AND" textAlignment="CENTER" />
-                  <ComboBox fx:id="columnasAndCB" layoutX="14.0" layoutY="329.0" prefHeight="37.0" prefWidth="164.0" promptText="COLUMNAS" />
-                  <ComboBox fx:id="operadoresAndCB" layoutX="14.0" layoutY="378.0" prefHeight="37.0" prefWidth="164.0" promptText="OPERADORES" />
-                  <TextField fx:id="valorFieldAnd" layoutX="14.0" layoutY="426.0" prefHeight="30.0" prefWidth="164.0" promptText="Ingrese Valor a filtrar" />
+                  <ComboBox fx:id="columnasAndCB" layoutX="14.0" layoutY="329.0" prefHeight="37.0" prefWidth="164.0" promptText="COLUMNAS" visible="false" />
+                  <ComboBox fx:id="operadoresAndCB" layoutX="14.0" layoutY="378.0" onAction="#operadoresAndCB" prefHeight="37.0" prefWidth="164.0" promptText="OPERADORES ADICIONALES" visible="false" />
+                  <TextField fx:id="valorFieldAnd" layoutX="14.0" layoutY="467.0" prefHeight="30.0" prefWidth="164.0" promptText="Ingrese Valor a filtrar" visible="false" />
                   <Button fx:id="updateQuery" layoutX="14.0" layoutY="503.0" mnemonicParsing="false" onAction="#updateQuery" prefHeight="43.0" prefWidth="164.0" text="UPDATE QUERY" />
                   <TextField fx:id="nameOfView" layoutX="400.0" layoutY="507.0" prefHeight="35.0" prefWidth="164.0" promptText="ingrese nombre de la vista" />
                   <Label alignment="CENTER" layoutX="199.0" layoutY="507.0" prefHeight="35.0" prefWidth="192.0" style="-fx-border-color: #000000;" text="NOMBRE DE LA VISTA" textFill="WHITE">
@@ -266,7 +266,8 @@
                   </Label>
                   <ComboBox fx:id="seleccionColumnas" layoutX="14.0" layoutY="14.0" onAction="#seleccionColumnasCB" prefHeight="37.0" prefWidth="164.0" promptText="SELECCIONE DATOS" />
                   <TextField fx:id="limitTextField" layoutX="14.0" layoutY="200.0" prefHeight="25.0" prefWidth="164.0" promptText="Ingrese limite" />
-                  <ComboBox fx:id="tableSelectedComboBox1" layoutX="14.0" layoutY="282.0" onAction="#showTableSelected" prefHeight="35.0" prefWidth="164.0" promptText="SELECCIONA TABLA" />
+                  <ComboBox fx:id="tableSelectedComboBox1" layoutX="14.0" layoutY="282.0" onAction="#showTableSelected2" prefHeight="35.0" prefWidth="164.0" promptText="SELECCIONA TABLA" visible="false" />
+                  <ComboBox fx:id="columnasAndCB2" layoutX="14.0" layoutY="415.0" prefHeight="37.0" prefWidth="164.0" promptText="COLUMNAS FILTRO" visible="false" />
                </children>
             </Pane>
             <Button fx:id="backMainbutton" layoutX="49.0" layoutY="561.0" mnemonicParsing="false" onAction="#backMain" prefHeight="35.0" prefWidth="128.0" text="VOLVER" />
