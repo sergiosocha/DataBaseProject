@@ -350,9 +350,7 @@ public class ShowDatabasesController implements Initializable {
 
             }
             showTables_TableView.setItems(tables);
-
             ObservableList<String> tableNames = FXCollections.observableArrayList();
-
             for (Table table : showTables_TableView.getItems()) {
                 tableNames.add(String.valueOf(table.getTable().getValue()));
             }
@@ -1299,6 +1297,52 @@ public class ShowDatabasesController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void onDoDescribeTable(ActionEvent actionEvent) {
+    public void onDoDescribeTable(ActionEvent actionEvent) throws SQLException {
+
+        showTablesData.getColumns().clear();
+        showTablesData.getItems().clear();
+
+        Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
+        String searchDatabase = doSelected.getDatabase().getValue();
+        String urlToSearch = url + searchDatabase;
+
+
+        Table doTableSelected = this.showTables_TableView.getSelectionModel().getSelectedItem();
+        String searchTableData = doTableSelected.getTable().getValue();
+
+        Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("DESCRIBE " + searchTableData);
+
+        ResultSetMetaData dataTable = rs.getMetaData();
+        int numeroColumnasDinamicas = dataTable.getColumnCount();
+
+        for (int i = 1; i <= numeroColumnasDinamicas; i++) {
+
+            final int j = i;
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(dataTable.getColumnName(i));
+            column.setCellValueFactory(cellData -> {
+                ObservableList<String> valorCelda = cellData.getValue();
+                if (valorCelda != null && valorCelda.size() >= j) {
+                    return new SimpleStringProperty(valorCelda.get(j - 1));
+                } else {
+                    return new SimpleStringProperty("");
+                }
+            });
+            showTablesData.getColumns().add(column);
+        }
+
+        ObservableList<ObservableList<String>> datosTable = FXCollections.observableArrayList();
+        while (rs.next()) {
+            ObservableList<String> data = FXCollections.observableArrayList();
+            for (int i = 1; i <= numeroColumnasDinamicas; i++) {
+                data.add(rs.getString(i));
+                //System.out.print(rs.getString(i) + " | ");
+            }
+            datosTable.add(data);
+            //System.out.println(" ");
+            showTablesData.getItems().add(data);
+        }
+        showTablesData.setItems(datosTable);
     }
 }
