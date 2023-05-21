@@ -186,9 +186,11 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     private Button deletePrueba;
     @javafx.fxml.FXML
-    private TextField oldCamp;
-    @javafx.fxml.FXML
     private TextField modifyField;
+    @javafx.fxml.FXML
+    private Label oldCamp;
+    @javafx.fxml.FXML
+    private Button querysButton1;
 
     @Deprecated
     @Override
@@ -1112,11 +1114,9 @@ public class ShowDatabasesController implements Initializable {
             ObservableList<String> tableNames = FXCollections.observableArrayList();
             while (resultSet.next()) {
                 Table st = new Table();
-
                 st.setTable(resultSet.getString("Tables_in_" + doSelected));
                 tables.add(st);
                 tableNames.add(resultSet.getString("Tables_in_" + doSelected));
-
             }
 
             tableSelectedComboBox.setItems(tableNames);
@@ -1144,8 +1144,6 @@ public class ShowDatabasesController implements Initializable {
 
 
         Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
-        Statement statement = connection.createStatement();
-
         updateQuery = " UPDATE " + table + " SET " + column + " = " + "\"" + newCamp + "\"" + " WHERE " + columnaUpdate + "=" + FilterValue ;
         pst = connection.prepareStatement(updateQuery+";");
         System.out.println(updateQuery);
@@ -1162,6 +1160,11 @@ public class ShowDatabasesController implements Initializable {
         }catch (SQLException e){
             e.printStackTrace();
         }
+
+         oldCamp.setText("");
+         modifyField.setText("");
+         modifyCellDataCB.setValue("");
+         valorTextField.setText("");
 
     }
 
@@ -1207,7 +1210,6 @@ public class ShowDatabasesController implements Initializable {
 
         tableSelectedLabel.setText(tableCBselected);
 
-
         Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery(query + " ;");
@@ -1249,6 +1251,54 @@ public class ShowDatabasesController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void deletePrueba(ActionEvent actionEvent) {
+    public void deletePrueba(ActionEvent actionEvent) throws SQLException {
+        String deleteQuery;
+
+        try{
+            tableViewQuerys.getColumns().clear();
+            tableViewQuerys.getItems().clear();
+
+            String doSelected = dbFilterCB.getValue();
+
+            String urlToSearch = url + doSelected;
+
+            String table =  tableSelectedComboBox.getValue();
+            String columnToFind = columnasComboBox.getValue();
+            String valueToFind = valorTextField.getText();
+
+            deleteQuery = "DELETE FROM "+ table + " WHERE " + columnToFind+"="+valueToFind ;
+             System.out.println(deleteQuery);
+
+            Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
+            pst = connection.prepareStatement(deleteQuery+";");
+            System.out.println(updateQuery);
+            pst.executeUpdate();
+
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirmar eliminación");
+            confirmationAlert.setHeaderText("¿Estás seguro de que deseas eliminar este registro?");
+            confirmationAlert.setContentText("Esta acción no se puede deshacer.");
+
+            confirmationAlert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    Alert deletionAlert = new Alert(Alert.AlertType.INFORMATION);
+                    deletionAlert.setTitle("Registro eliminado");
+                    deletionAlert.setHeaderText(null);
+                    deletionAlert.setContentText("El registro ha sido eliminado exitosamente.");
+                    deletionAlert.showAndWait();
+                    // Aquí iría la lógica para eliminar el registro
+                }
+            });
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @javafx.fxml.FXML
+    public void onDoDescribeTable(ActionEvent actionEvent) {
     }
 }
