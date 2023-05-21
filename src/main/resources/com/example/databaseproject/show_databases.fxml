@@ -158,7 +158,7 @@
             </Pane>
          </children>
       </Pane>
-      <Pane fx:id="createTables_interface" prefHeight="671.0" prefWidth="1006.0" styleClass="background_create_tables" stylesheets="@styleSDB.css" visible="false">
+      <Pane fx:id="createTables_interface" layoutX="61.0" layoutY="74.0" prefHeight="671.0" prefWidth="1006.0" styleClass="background_create_tables" stylesheets="@styleSDB.css" visible="false">
          <children>
             <Pane layoutX="260.0" layoutY="30.0" prefHeight="598.0" prefWidth="726.0" styleClass="backgroundOptions">
                <children>
@@ -207,7 +207,8 @@
             <CheckBox fx:id="nullCheckBox" alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="202.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="123.0" style="-fx-border-color: #000000;" text="IS NULL" textAlignment="JUSTIFY" textFill="WHITE">
                <effect>
                   <Blend />
-               </effect></CheckBox>
+               </effect>
+            </CheckBox>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="249.0" prefHeight="35.0" prefWidth="129.0" styleClass="options" text="VALOR POR DEFECTO" textAlignment="CENTER" textFill="WHITE" />
             <ComboBox fx:id="extraValueComboBox" layoutX="745.0" layoutY="253.0" prefHeight="35.0" prefWidth="129.0" promptText="Extra" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="104.0" prefHeight="35.0" prefWidth="171.0" styleClass="options" text="NOMBRE TABLA" textAlignment="CENTER" textFill="#e8e8e8" />
