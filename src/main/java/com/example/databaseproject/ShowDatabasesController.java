@@ -84,8 +84,7 @@ public class ShowDatabasesController implements Initializable {
     private ObservableList<tablesView> dinamicTables;
 
     String url = "jdbc:mysql://localhost:3306/";
-    //String username = "root";
-    //String password = "12345";
+
     @javafx.fxml.FXML
     private Button create_button;
     @javafx.fxml.FXML
@@ -200,11 +199,12 @@ public class ShowDatabasesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.userLogged = new User();
+
     }
 
     //_CLASE LOGGIN__//
     @javafx.fxml.FXML
-    public void loggin(ActionEvent actionEvent) {
+    public void loggin(ActionEvent actionEvent) { //SE ENCARGA DE VERIRIFCAR LA EXISTENCIA DE LA CONEXION
         String user = user_id.getText();
         String password = password_id.getText();
         port = puerto_id.getText();
@@ -215,7 +215,6 @@ public class ShowDatabasesController implements Initializable {
         userLogged.setAddress(address);
         userLogged.setPort(port);
 
-
         System.out.println();
         System.out.println("jdbc:mysql://" + userLogged.getAddress() + ":" + userLogged.getPort() + "/");
 
@@ -224,9 +223,9 @@ public class ShowDatabasesController implements Initializable {
             if (connection != null) {
 
                 mainMenuPane.setVisible(true);
-                tableDataBases();
-                fillComboBoxes();
-                modelaTabla();
+                tableDataBases();//LLENA CON LAS BASES DE DATOS ENCONTRADAS
+                fillComboBoxes();//LLENA COMBOBOX ESTATICOS
+                modelaTabla();//MODELA TABLA PARA CARGAR DATOS
 
 
             } else {
@@ -242,7 +241,7 @@ public class ShowDatabasesController implements Initializable {
     }
 
 
-    public Connection getConnection(User userData) {
+    public Connection getConnection(User userData) {//RETORNA LA CONEXION COMO OBJETO
         String url = "jdbc:mysql://" + userData.getAddress() + ":" + userData.getPort() + "/";
         try {
             return DriverManager.getConnection(url, userData.getUser(), userData.getPassword());
@@ -253,7 +252,7 @@ public class ShowDatabasesController implements Initializable {
         }
     }
 
-    private void showConnectionErrorAlert() {
+    private void showConnectionErrorAlert() { //ALERTA DE CONEXION FALLIDA
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error de conexión");
         alert.setHeaderText("No se pudo establecer la conexión a MySQL");
@@ -274,7 +273,7 @@ public class ShowDatabasesController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void cerrarsesion_button(ActionEvent actionEvent) {
+    public void cerrarsesion_button(ActionEvent actionEvent) {//CIERRA SESION Y VUELVE AL LOGIN
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cerrar sesión");
         alert.setHeaderText("¿Estás seguro de que deseas cerrar sesión?");
@@ -290,12 +289,10 @@ public class ShowDatabasesController implements Initializable {
                 successAlert.showAndWait();
             }
         });
-
         logginPane.setVisible(true);
         mainMenuPane.setVisible(false);
         createTables_interface.setVisible(false);
         querysPane.setVisible(false);
-
     }
 
 
@@ -308,7 +305,7 @@ public class ShowDatabasesController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void update_buttonAction(ActionEvent actionEvent) {
+    public void update_buttonAction(ActionEvent actionEvent) { //REFRESAR LA TABLA DE BASES DE DATOS
         modelaTabla();
         tableDataBases();
 
@@ -325,29 +322,33 @@ public class ShowDatabasesController implements Initializable {
 
     }
 
-    public void tableDataBases() {
+    public void tableDataBases() {//TRAE LAS BASES DE DATOS Y LLENA LA TABLA
+
         Connection(); //Trae la función Connection para poder usarla en el CreateStatement para luego prepara la consulta
         ObservableList<Database> databases = FXCollections.observableArrayList();
-        this.Database.setCellValueFactory(new PropertyValueFactory("Database"));
+        this.Database.setCellValueFactory(new PropertyValueFactory("Database"));//DAMOS FORMATO ALA COLUMNA DE LA TABLA
 
         try {
 
             Statement statement = con.createStatement(); //Usa con previamente declarado en las variables para preparar el Statement
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");//Con el statement anterior en un nuevo objeto resulset preparamos el query
-            while (resultSet.next()) {
+
+            while (resultSet.next()) {//OBTIENE DATOS HASTA QUE EXISTA UN NULL
                 Database st = new Database(); //Creamos un nuevo objeto de tipo DataBase en este caso st
                 st.setDatabase(resultSet.getString("Database"));//Usamos St para dar formato a los datos que obtenemos
-                String var = resultSet.getString("DataBase");
-                databases.add(st); //agregamos al oversableList los elementos st
+                //String var = resultSet.getString("DataBase");
+                databases.add(st); //agregamos al oversableList(Array Dinamico ) los elementos st
             }
+
             dataBases_tableView.setItems(databases);//Traemos los items a la table view
             ObservableList<String> dataBaseNames = FXCollections.observableArrayList();
 
-            for (Database db : dataBases_tableView.getItems()) {
-                dataBaseNames.add(String.valueOf(db.getDatabase().getValue()));
+            for (Database db : dataBases_tableView.getItems()) {//RECORRE LA TABLA PARA ALMACENAR LOS NOMBRES DE LA BASE DE DATOS
+                dataBaseNames.add(String.valueOf(db.getDatabase().getValue()));//AGREGAMOS LOS NOMBRES AL ARRAY DataBaseNames
             }
 
-            dbFilterCB.setItems(dataBaseNames);
+            dbFilterCB.setItems(dataBaseNames);//COMBOBOX DINAMICOS CON EL ARRAY dataBaseNames
+
             Database.setCellValueFactory(f -> f.getValue().getDatabase());//damos formatos ala la columna o celdas dentro de la tabla
 
         } catch (SQLException e) {
@@ -356,43 +357,48 @@ public class ShowDatabasesController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void selectDataBase(Event event) throws SQLException {
-        Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
-        String searchDatabase = doSelected.getDatabase().getValue();
-        String urlToSearch = url + searchDatabase;
+    public void selectDataBase(Event event) throws SQLException {//CARGA LAS TABLAS AL SELECCIONAR UN ITEM EN LA TABLA BASE DE DATOS
+        Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();//VALOR SELECCIONADO
+        String searchDatabase = doSelected.getDatabase().getValue();//SACAMOS EL VALOR PARA BASE DE DATOS
 
-        dataBaseSelected.setText(searchDatabase);
+        String urlToSearch = url + searchDatabase;
+        //ARREGLAR URL
+
+        dataBaseSelected.setText(searchDatabase);//define tu base de datos en caso de que quieras cargar una tabla
+
         ObservableList<Table> tables = FXCollections.observableArrayList();
         this.showTables.setCellValueFactory(new PropertyValueFactory<>("Table"));
 
         try {
             Connection connection = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword());
             Statement statement = connection.createStatement();
-
             ResultSet resultSet = statement.executeQuery("SHOW TABLES");
+
             while (resultSet.next()) {
                 Table st = new Table();
                 st.setTable(resultSet.getString("Tables_in_" + searchDatabase));
                 tables.add(st);
-
             }
             showTables_TableView.setItems(tables);
+
             ObservableList<String> tableNames = FXCollections.observableArrayList();
             for (Table table : showTables_TableView.getItems()) {
                 tableNames.add(String.valueOf(table.getTable().getValue()));
             }
 
-            tableSelectedComboBox.setItems(tableNames);
+            tableSelectedComboBox.setItems(tableNames);//combobox dinamico consultas
             tableSelectedComboBox1.setItems(tableNames);
+
             showTables.setCellValueFactory(f -> f.getValue().getTable());
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+    //url = address.getText + "::" + port.getText + "/"
 
     @javafx.fxml.FXML
-    public void doCreate(ActionEvent actionEvent) {
+    public void doCreate(ActionEvent actionEvent) {//CREA BASES DE DATOS
         String newDataBase = JOptionPane.showInputDialog("Ingrese el nombre de la base de datos: ");
         try {
             Connection connection = DriverManager.getConnection(url, userLogged.getUser(), userLogged.getPassword());
@@ -402,8 +408,8 @@ public class ShowDatabasesController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("CREATE");
             alert.setContentText("DATA BASE " + newDataBase + " WAS CREATED");
-            alert.showAndWait();
-            tableDataBases();
+            alert.showAndWait();//SIEMPRE TIENE QUE ESTAR PARA GENERAR LAS ALERTAS
+            tableDataBases();//RECARGAMOS LA TABLA BASE DE DATOS
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -411,7 +417,7 @@ public class ShowDatabasesController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void doDelete(ActionEvent actionEvent) {
+    public void doDelete(ActionEvent actionEvent) { //ELIMINA LA BASE DE DATOS SELECCIONADA
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
 
@@ -419,12 +425,13 @@ public class ShowDatabasesController implements Initializable {
             Connection connection = DriverManager.getConnection(url, userLogged.getUser(), userLogged.getPassword());
             pst = connection.prepareStatement("DROP DATABASE " + searchDatabase);
             pst.executeUpdate();
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("DELETE");
             alert.setContentText("DATA BASE " + searchDatabase + " WAS DELETED");
             alert.showAndWait();
-            tableDataBases();
 
+            tableDataBases();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -432,34 +439,34 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void doCreateNewTable(ActionEvent actionEvent) {
-        this.createTables_interface.setVisible(true);
-        this.ShowDatabasesPane.setVisible(false);
-        newTables = FXCollections.observableArrayList();
-        setTablaFields();
+        this.createTables_interface.setVisible(true);//CARGAMOS LA INTERFAZ O LA HACEMOS VISIBLE
+        this.ShowDatabasesPane.setVisible(false);//VOLVEMOS INVISIBLE LA VENTANA PRINCIPAL
+        newTables = FXCollections.observableArrayList(); //CREAMOS UN ARRAY DINAMICO PARA LOS CAMPOS DE LA NUEVA TABLA
+        setTablaFields();//FORMATEA LA TABLA
         fieldTables.setItems(newTables);
     }
 
     @javafx.fxml.FXML
-    public void doVolver(ActionEvent actionEvent) {
+    public void doVolver(ActionEvent actionEvent) {//REGRESA AL MENU PRINCIPAL
         this.createTables_interface.setVisible(false);
         this.ShowDatabasesPane.setVisible(true);
     }
 
     @javafx.fxml.FXML
-    public void selectField(Event event) {
+    public void selectField(Event event) {//PERMITE SELECCIONAR ITEMS DE LA TABLA Y DEVUELVE LOS VALORES
         newTable newTables = this.fieldTables.getSelectionModel().getSelectedItem();
-        if (newTables != null) {
+        if (newTables != null) {//SI EL VALOR SELECCIONADO ES DIFERENTE DE NULL TE CARGA LOS DATOS
             this.nameCampoNewTable.setText(newTables.getName());
             this.typesComboBox.setValue(newTables.getType());
             this.nullCheckBox.setSelected("NULL".equals(newTables.isNullable()));
         }
     }
 
-    public String isNullable() {
+    public String isNullable() {//no eliminar pls
         return this.nullable ? "NULL" : "NOT NULL";
     }
 
-    public void setTablaFields() {
+    public void setTablaFields() {//DAR EL FORMATO ALA TABLA CREACION DE TABLAS
         //DAMOS FORMATO ALAS CELDAS DE LA TABLA INTERFAZ CREACION NEW TABLE
         nameColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getName()));
         typeColumb.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getType()));

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="delete features ready">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="Update alert">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,14 +145,9 @@
       <workItem from="1684545743122" duration="3675000" />
       <workItem from="1684607382035" duration="32256000" />
       <workItem from="1684673829055" duration="15181000" />
-      <workItem from="1684694855483" duration="11351000" />
-    </task>
-    <task id="LOCAL-00001" summary="New files, src, interface">
-      <created>1683156037359</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1683156037359</updated>
+      <workItem from="1684694855483" duration="12108000" />
+      <workItem from="1684723193738" duration="148000" />
+      <workItem from="1684761910433" duration="4853000" />
     </task>
     <task id="LOCAL-00002" summary="New files, src, interface">
       <created>1683229422292</created>
@@ -485,7 +478,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684698182397</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Update functions&#10;describe tables&#10;create view based on query&#10;update register&#10;delete register">
+      <created>1684723147305</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1684723147305</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Update alert">
+      <created>1684723328456</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1684723328456</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,8 +510,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="working databases interface,  actualy shows all mysqldatabases on pc" />
-    <MESSAGE value="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME" />
     <MESSAGE value="BUTTON DELETE, CREATE AND UPDATE WORKING ON DATABASES INTERFACE(CRUD WORKS)" />
     <MESSAGE value="UPDATE README FILE" />
     <MESSAGE value="NEW TABLES INTERFACE" />
@@ -528,6 +533,8 @@
     <MESSAGE value="querys interface" />
     <MESSAGE value="new changes" />
     <MESSAGE value="delete features ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete features ready" />
+    <MESSAGE value="Update functions&#10;describe tables&#10;create view based on query&#10;update register&#10;delete register" />
+    <MESSAGE value="Update alert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update alert" />
   </component>
 </project>
