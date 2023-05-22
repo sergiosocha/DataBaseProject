@@ -827,9 +827,7 @@ public class ShowDatabasesController implements Initializable {
     @javafx.fxml.FXML
     //PENDIENTE CREAR BOTON CREAR VIEW
     public void createViewQuery(ActionEvent actionEvent) throws  SQLException {
-
         String viewQuery;
-
         try{
             tableViewQuerys.getColumns().clear();
             tableViewQuerys.getItems().clear();
@@ -845,23 +843,20 @@ public class ShowDatabasesController implements Initializable {
                 Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
                 pst = connection.prepareStatement(viewQuery+" ;");
                 System.out.println(updateQuery);
+                pst.executeUpdate();
+
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
             confirmationAlert.setTitle("VISTA CREADA");
             confirmationAlert.setHeaderText("La vista fue creada.");
             confirmationAlert.setContentText("Puede revisarla en la ventana principal.");
-
-                pst.executeUpdate();
-
-
-
-
-
+            confirmationAlert.showAndWait();
 
         }catch (SQLException e){
             Alert confirmationAlert = new Alert(Alert.AlertType.ERROR);
             confirmationAlert.setTitle("ERROR");
             confirmationAlert.setHeaderText("INGRESE UNA CONSULTA VALIDA.");
             confirmationAlert.setContentText("No se pudó crear la vista con la consulta.");
+            confirmationAlert.showAndWait();
             e.printStackTrace();
         }
 
