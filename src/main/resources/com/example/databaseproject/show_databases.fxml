@@ -18,16 +18,16 @@
 
 <AnchorPane prefHeight="640.0" prefWidth="964.0" style="-fx-background-radius: 20;" styleClass="background" stylesheets="@styleSDB.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.ShowDatabasesController">
    <children>
-      <Pane id="background" layoutX="10.0" layoutY="10.0" prefHeight="549.0" prefWidth="794.0" style="-fx-background-color: #ece1c3; -fx-border-color: #030303;" styleClass="Pane" stylesheets="@style.css">
+      <Pane id="background" fx:id="logginPane" layoutX="10.0" layoutY="10.0" prefHeight="549.0" prefWidth="794.0" style="-fx-background-color: #ece1c3; -fx-border-color: #030303;" styleClass="Pane" stylesheets="@style.css">
          <children>
-            <ImageView fitHeight="920.0" fitWidth="1218.0" layoutX="-39.0" layoutY="-80.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="932.0" fitWidth="1174.0" layoutX="-39.0" layoutY="-80.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/wallpaper.jpg" />
                </image>
             </ImageView>
             <Pane id="pane" layoutX="443.0" layoutY="144.0" prefHeight="354.0" prefWidth="308.0" styleClass="Pane" stylesheets="@style.css">
                <children>
-                  <Label alignment="CENTER" layoutX="125.0" layoutY="217.0" prefHeight="25.0" prefWidth="64.0" stylesheets="@style.css" text="USER" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="107.0" layoutY="217.0" prefHeight="29.0" prefWidth="101.0" stylesheets="@style.css" text="USUARIO" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -36,7 +36,7 @@
                         <String fx:value="titlesFonts" />
                      </styleClass>
                   </Label>
-                  <Label id="titles" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="31.0" prefHeight="46.0" prefWidth="239.0" style="-fx-border-color: #000000; -fx-background-color: #3e838c;" stylesheets="@style.css" text="LOGGIN" textAlignment="CENTER" textFill="WHITE">
+                  <Label id="titles" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="31.0" prefHeight="46.0" prefWidth="239.0" style="-fx-border-color: #000000; -fx-background-color: #3e838c;" stylesheets="@style.css" text="GESTOR BASE DE DATOS" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Cooper Black" size="31.0" />
                      </font>
@@ -46,7 +46,7 @@
                      </styleClass>
                   </Label>
                   <TextField id="user_box" fx:id="user_id" alignment="CENTER" layoutX="26.0" layoutY="246.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER USER" />
-                  <Label alignment="CENTER" layoutX="105.0" layoutY="279.0" prefHeight="25.0" prefWidth="104.0" stylesheets="@style.css" text="PASSWORD" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="95.0" layoutY="279.0" prefHeight="29.0" prefWidth="123.0" stylesheets="@style.css" text="CONTRASEÑA" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -78,7 +78,7 @@
                   <PasswordField fx:id="password_id" alignment="CENTER" layoutX="25.0" layoutY="308.0" prefHeight="25.0" prefWidth="263.0" promptText="ENTER PASSWORD" />
                </children>
             </Pane>
-            <Button id="loggin_password" fx:id="loggin_password" layoutX="533.0" layoutY="498.0" mnemonicParsing="false" onAction="#loggin" prefHeight="25.0" prefWidth="128.0" style="-fx-border-color: #030303; -fx-background-color: #8ebdb6;" styleClass="loggin_password" stylesheets="@style.css" text="Login" textFill="WHITE">
+            <Button id="loggin_password" fx:id="loggin_password" layoutX="533.0" layoutY="504.0" mnemonicParsing="false" onAction="#loggin" prefHeight="25.0" prefWidth="128.0" style="-fx-border-color: #030303; -fx-background-color: #8ebdb6;" styleClass="loggin_password" stylesheets="@style.css" text="INGRESAR" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -109,17 +109,17 @@
                      <children>
                         <Pane layoutX="16.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
                            <children>
-                              <Button fx:id="create_button" layoutX="36.0" layoutY="32.0" mnemonicParsing="false" onAction="#doCreate" prefHeight="27.0" prefWidth="129.0" text="Create">
+                              <Button fx:id="create_button" layoutX="36.0" layoutY="32.0" mnemonicParsing="false" onAction="#doCreate" prefHeight="27.0" prefWidth="129.0" styleClass="buttons" text="Create">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="update_button" layoutX="36.0" layoutY="87.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" text="Update">
+                              <Button fx:id="update_button" layoutX="36.0" layoutY="87.0" mnemonicParsing="false" onAction="#update_buttonAction" prefHeight="27.0" prefWidth="129.0" styleClass="buttons" text="Update">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="delete_button" layoutX="36.0" layoutY="143.0" mnemonicParsing="false" onAction="#doDelete" prefHeight="27.0" prefWidth="129.0" text="Delete">
+                              <Button fx:id="delete_button" layoutX="36.0" layoutY="143.0" mnemonicParsing="false" onAction="#doDelete" prefHeight="27.0" prefWidth="129.0" styleClass="buttons" text="Delete">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -127,29 +127,29 @@
                            </children>
                         </Pane>
                         <Label alignment="CENTER" layoutX="72.0" layoutY="14.0" prefHeight="27.0" prefWidth="101.0" styleClass="containers_titles" stylesheets="@styleSDB.css" text="DataBases" />
-                        <Button fx:id="cerrarsesion_button" layoutX="60.0" layoutY="541.0" mnemonicParsing="false" onAction="#cerrarsesion_button" prefHeight="43.0" prefWidth="123.0" text="cerrar sesion">
+                        <Button fx:id="cerrarsesion_button" layoutX="19.0" layoutY="541.0" mnemonicParsing="false" onAction="#cerrarsesion_button" prefHeight="43.0" prefWidth="192.0" style="-fx-background-color: #8ebdb6; -fx-border-color: #000000;" styleClass="loggin_password" stylesheets="@style.css" text="CERRAR SESION" textFill="WHITE">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="Dubai Bold" size="16.0" />
                            </font>
                         </Button>
                         <Pane layoutX="15.0" layoutY="299.0" prefHeight="229.0" prefWidth="200.0" styleClass="containers_buttons" stylesheets="@styleSDB.css">
                            <children>
-                              <Button fx:id="createNewTable_button" layoutX="36.0" layoutY="47.0" mnemonicParsing="false" onAction="#doCreateNewTable" prefHeight="27.0" prefWidth="129.0" text="Create New Table">
+                              <Button fx:id="createNewTable_button" layoutX="36.0" layoutY="47.0" mnemonicParsing="false" onAction="#doCreateNewTable" prefHeight="27.0" prefWidth="129.0" styleClass="buttons" text="Create New Table">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="deleteTableButton" layoutX="36.0" layoutY="88.0" mnemonicParsing="false" onAction="#onDeleteTable" prefHeight="27.0" prefWidth="129.0" text="Delete Table">
+                              <Button fx:id="deleteTableButton" layoutX="36.0" layoutY="88.0" mnemonicParsing="false" onAction="#onDeleteTable" prefHeight="27.0" prefWidth="129.0" styleClass="buttons" text="Delete Table">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="querysButton" layoutX="36.0" layoutY="132.0" mnemonicParsing="false" onAction="#onQueryButton" prefHeight="27.0" prefWidth="129.0" text="Consultas">
+                              <Button fx:id="querysButton" layoutX="36.0" layoutY="132.0" mnemonicParsing="false" onAction="#onQueryButton" prefHeight="27.0" prefWidth="129.0" styleClass="buttons" text="Consultas">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="querysButton1" layoutX="36.0" layoutY="174.0" mnemonicParsing="false" onAction="#onDoDescribeTable" prefHeight="27.0" prefWidth="129.0" text="DESCRIBE TABLE">
+                              <Button fx:id="querysButton1" layoutX="36.0" layoutY="174.0" mnemonicParsing="false" onAction="#onDoDescribeTable" prefHeight="27.0" prefWidth="129.0" styleClass="buttons" text="DESCRIBE TABLE">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
@@ -165,7 +165,12 @@
       </Pane>
       <Pane fx:id="createTables_interface" layoutX="61.0" layoutY="74.0" prefHeight="671.0" prefWidth="1006.0" styleClass="background_create_tables" stylesheets="@styleSDB.css" visible="false">
          <children>
-            <Pane layoutX="260.0" layoutY="30.0" prefHeight="598.0" prefWidth="726.0" styleClass="backgroundOptions">
+            <ImageView fitHeight="893.0" fitWidth="1150.0" layoutX="-34.0" layoutY="-42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/fadedWallpaper.jpg" />
+               </image>
+            </ImageView>
+            <Pane layoutX="263.0" layoutY="40.0" prefHeight="598.0" prefWidth="726.0" styleClass="backgroundOptions">
                <children>
                   <TableView fx:id="fieldTables" layoutX="60.0" layoutY="289.0" onMouseClicked="#selectField" prefHeight="259.0" prefWidth="607.0" styleClass="tablesViewsCreateInterface">
                     <columns>
@@ -179,7 +184,7 @@
                   <TextField fx:id="defaultValueTextField" layoutX="300.0" layoutY="226.0" prefHeight="27.0" prefWidth="152.0" />
                </children>
             </Pane>
-            <Pane layoutX="14.0" layoutY="14.0" prefHeight="623.0" prefWidth="221.0" styleClass="containers_buttons">
+            <Pane layoutX="17.0" layoutY="24.0" prefHeight="623.0" prefWidth="221.0" styleClass="containers_buttons">
                <children>
                   <Button fx:id="newFieldButton" layoutX="25.0" layoutY="237.0" mnemonicParsing="false" onAction="#doCreateField" prefHeight="35.0" prefWidth="171.0" styleClass="buttons" text=" Agregar Campo">
                      <font>
@@ -202,28 +207,33 @@
                   <Label fx:id="dataBaseSelected" alignment="CENTER" layoutX="23.0" layoutY="69.0" prefHeight="35.0" prefWidth="171.0" styleClass="titlesDataBaseSelected" text="Select Data Base" textFill="WHITE" />
                </children>
             </Pane>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="332.0" layoutY="41.0" prefHeight="50.0" prefWidth="616.0" style="-fx-border-color: #000000; -fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #8ebdb6;" text="CREATE TABLES" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="335.0" layoutY="51.0" prefHeight="50.0" prefWidth="616.0" style="-fx-border-color: #000000; -fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #8ebdb6;" text="CREATE TABLES" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <TextField fx:id="nameCampoNewTable" layoutX="637.0" layoutY="156.0" prefHeight="35.0" prefWidth="237.0" promptText="Ingrese el nombre del campo" />
-            <ComboBox fx:id="typesComboBox" layoutX="703.0" layoutY="202.0" onAction="#doChooseType" prefHeight="35.0" prefWidth="171.0" promptText="Escoger el tipo" />
-            <CheckBox fx:id="nullCheckBox" alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="202.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="123.0" style="-fx-border-color: #000000;" text="IS NULL" textAlignment="JUSTIFY" textFill="WHITE">
+            <TextField fx:id="nameCampoNewTable" layoutX="640.0" layoutY="166.0" prefHeight="35.0" prefWidth="237.0" promptText="Ingrese el nombre del campo" />
+            <ComboBox fx:id="typesComboBox" layoutX="706.0" layoutY="212.0" onAction="#doChooseType" prefHeight="35.0" prefWidth="171.0" promptText="Escoger el tipo" />
+            <CheckBox fx:id="nullCheckBox" alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="212.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="123.0" style="-fx-border-color: #000000;" text="IS NULL" textAlignment="JUSTIFY" textFill="WHITE">
                <effect>
                   <Blend />
                </effect>
             </CheckBox>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="249.0" prefHeight="35.0" prefWidth="129.0" styleClass="options" text="VALOR POR DEFECTO" textAlignment="CENTER" textFill="WHITE" />
-            <ComboBox fx:id="extraValueComboBox" layoutX="745.0" layoutY="253.0" prefHeight="35.0" prefWidth="129.0" promptText="Extra" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="104.0" prefHeight="35.0" prefWidth="171.0" styleClass="options" text="NOMBRE TABLA" textAlignment="CENTER" textFill="#e8e8e8" />
-            <TextField fx:id="nameTableTextField" layoutX="636.0" layoutY="104.0" prefHeight="35.0" prefWidth="237.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="156.0" prefHeight="35.0" prefWidth="171.0" styleClass="options" text="NOMBRE CAMPO" textAlignment="CENTER" textFill="#e8e8e8" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="536.0" layoutY="202.0" prefHeight="35.0" prefWidth="152.0" styleClass="options" text="SELECCIONE TIPO" textAlignment="CENTER" textFill="#e8e8e8" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="259.0" prefHeight="35.0" prefWidth="129.0" styleClass="options" text="VALOR POR DEFECTO" textAlignment="CENTER" textFill="WHITE" />
+            <ComboBox fx:id="extraValueComboBox" layoutX="748.0" layoutY="263.0" prefHeight="35.0" prefWidth="129.0" promptText="Extra" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="114.0" prefHeight="35.0" prefWidth="171.0" styleClass="options" text="NOMBRE TABLA" textAlignment="CENTER" textFill="#e8e8e8" />
+            <TextField fx:id="nameTableTextField" layoutX="639.0" layoutY="114.0" prefHeight="35.0" prefWidth="237.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="166.0" prefHeight="35.0" prefWidth="171.0" styleClass="options" text="NOMBRE CAMPO" textAlignment="CENTER" textFill="#e8e8e8" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="539.0" layoutY="212.0" prefHeight="35.0" prefWidth="152.0" styleClass="options" text="SELECCIONE TIPO" textAlignment="CENTER" textFill="#e8e8e8" />
          </children>
       </Pane>
-      <Pane fx:id="querysPane" layoutX="-25.0" prefHeight="778.0" prefWidth="1150.0" style="-fx-background-color: #3e838c; -fx-border-color: #000000;" styleClass="background" stylesheets="@querys.css" visible="false">
+      <Pane fx:id="querysPane" layoutX="-25.0" prefHeight="778.0" prefWidth="1150.0" style="-fx-border-color: #000000;" styleClass="background" stylesheets="@querys.css" visible="false">
          <children>
+            <ImageView fitHeight="943.0" fitWidth="1192.0" layoutX="-27.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/fadedWallpaper.jpg" />
+               </image>
+            </ImageView>
             <Pane layoutX="31.0" layoutY="105.0" prefHeight="629.0" prefWidth="200.0" style="-fx-border-color: #000000;" styleClass="container" stylesheets="@querys.css">
                <children>
                   <Label alignment="CENTER" layoutX="18.0" layoutY="25.0" prefHeight="35.0" prefWidth="164.0" style="-fx-border-color: #000000;" styleClass="containers_titles" text="BASE DE DATOS" textFill="WHITE">
@@ -260,10 +270,10 @@
                <children>
                   <TableView fx:id="tableViewQuerys" layoutX="342.0" layoutY="317.0" onMouseClicked="#selectedFilterQuery" prefHeight="246.0" prefWidth="515.0" />
                   <Button fx:id="createView" layoutX="728.0" layoutY="567.0" mnemonicParsing="false" onAction="#createViewQuery" prefHeight="35.0" prefWidth="128.0" styleClass="buttons" text="VISTA" />
-                  <Button fx:id="executeQueryButton" layoutX="748.0" layoutY="34.0" mnemonicParsing="false" onAction="#executeQuery" prefHeight="35.0" prefWidth="128.0" styleClass="buttons" text="CONSULTA" />
+                  <Button fx:id="executeQueryButton" layoutX="748.0" layoutY="34.0" mnemonicParsing="false" onAction="#executeQuery" prefHeight="35.0" prefWidth="128.0" styleClass="buttons" text="CONSULTAR" />
                   <TextField fx:id="textFieldQuery" layoutX="342.0" layoutY="33.0" prefHeight="37.0" prefWidth="384.0" promptText="INGRESE LA CONSULTA EN LENGUAGE SQL" style="-fx-border-radius: 20;" />
                   <CheckBox fx:id="andCheckBox" alignment="CENTER" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" onAction="#andCheckBox" prefHeight="35.0" prefWidth="123.0" styleClass="containers_buttons" text="AND" textAlignment="CENTER" textFill="WHITE" />
-                  <Button fx:id="updateQuery" layoutX="106.0" layoutY="575.0" mnemonicParsing="false" onAction="#updateQuery" prefHeight="27.0" prefWidth="123.0" styleClass="buttons" text="UPDATE QUERY" />
+                  <Button fx:id="updateQuery" layoutX="106.0" layoutY="575.0" mnemonicParsing="false" onAction="#updateQuery" prefHeight="27.0" prefWidth="140.0" styleClass="buttons" text="GENERAR CONSULTA" />
                   <TextField fx:id="nameOfView" layoutX="556.0" layoutY="567.0" prefHeight="35.0" prefWidth="164.0" promptText="ingrese nombre de la vista" />
                   <Label alignment="CENTER" layoutX="342.0" layoutY="567.0" prefHeight="35.0" prefWidth="192.0" style="-fx-border-color: #000000;" text="NOMBRE DE LA VISTA" textFill="WHITE">
                      <font>
@@ -302,15 +312,16 @@
                   <CheckBox fx:id="andCheckBox1" alignment="CENTER" layoutX="167.0" layoutY="247.0" mnemonicParsing="false" onAction="#andCheckBoxAdicional" prefHeight="35.0" prefWidth="152.0" styleClass="containers_buttons" text="FILTRO ADICIONAL" textAlignment="CENTER" textFill="WHITE" />
                   <Pane layoutX="330.0" layoutY="100.0" prefHeight="133.0" prefWidth="539.0" styleClass="container">
                      <children>
-                        <TextField fx:id="modifyField" layoutX="215.0" layoutY="84.0" prefHeight="35.0" prefWidth="177.0" />
-                        <Button fx:id="modifyButton" layoutX="397.0" layoutY="84.0" mnemonicParsing="false" onAction="#modifyQueryButton" prefHeight="35.0" prefWidth="128.0" styleClass="buttons" text="CONSULTA" />
+                        <TextField fx:id="modifyField" layoutX="181.0" layoutY="84.0" prefHeight="35.0" prefWidth="177.0" />
+                        <Button fx:id="modifyButton" layoutX="373.0" layoutY="84.0" mnemonicParsing="false" onAction="#modifyQueryButton" prefHeight="35.0" prefWidth="152.0" styleClass="buttons" text="MODIFICAR REGISTRO" />
                         <Label alignment="CENTER" layoutX="177.0" layoutY="-20.0" prefHeight="37.0" prefWidth="206.0" styleClass="containers_titles" text="MODIFICAR REGISTRO" textAlignment="CENTER" textFill="WHITE" />
-                        <Label alignment="CENTER" layoutX="23.0" layoutY="32.0" prefHeight="35.0" prefWidth="297.0" styleClass="containers_titles" text="ELIJA LA COLUMNA DEL REGISTRO A MODIFICAR" textAlignment="CENTER" textFill="WHITE" />
+                        <Label alignment="CENTER" layoutX="12.0" layoutY="32.0" prefHeight="35.0" prefWidth="308.0" styleClass="containers_titles" text="ELIJA LA COLUMNA DEL REGISTRO A MODIFICAR" textAlignment="CENTER" textFill="WHITE" />
                         <ComboBox fx:id="modifyCellDataCB" layoutX="346.0" layoutY="32.0" onAction="#modifyCellDataCB" prefHeight="35.0" prefWidth="140.0" />
-                        <Label fx:id="oldCamp" alignment="CENTER" layoutX="29.0" layoutY="84.0" prefHeight="35.0" prefWidth="177.0" styleClass="containers_titles" textAlignment="CENTER" textFill="WHITE" />
+                        <Label fx:id="oldCamp" alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="35.0" prefWidth="164.0" styleClass="containers_titles" textAlignment="CENTER" textFill="WHITE" />
                      </children>
                   </Pane>
-                  <Button fx:id="deletePrueba" layoutX="534.0" layoutY="247.0" mnemonicParsing="false" onAction="#deletePrueba" prefHeight="35.0" prefWidth="140.0" styleClass="buttons" text="ELIMINAR REGISTRO" />
+                  <Button fx:id="deletePrueba" layoutX="464.0" layoutY="247.0" mnemonicParsing="false" onAction="#deletePrueba" prefHeight="35.0" prefWidth="140.0" styleClass="buttons" text="ELIMINAR REGISTRO" />
+                  <Button fx:id="deletePrueba1" layoutX="624.0" layoutY="247.0" mnemonicParsing="false" onAction="#doNewRegister" prefHeight="35.0" prefWidth="200.0" styleClass="buttons" text="AGREGAR NUEVO REGISTRO" />
                </children>
             </Pane>
          </children>

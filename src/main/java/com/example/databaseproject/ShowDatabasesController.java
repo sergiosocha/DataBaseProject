@@ -191,6 +191,10 @@ public class ShowDatabasesController implements Initializable {
     private Label oldCamp;
     @javafx.fxml.FXML
     private Button querysButton1;
+    @javafx.fxml.FXML
+    private Button deletePrueba1;
+    @javafx.fxml.FXML
+    private Pane logginPane;
 
     @Deprecated
     @Override
@@ -271,7 +275,30 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void cerrarsesion_button(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Cerrar sesión");
+        alert.setHeaderText("¿Estás seguro de que deseas cerrar sesión?");
+        alert.setContentText("Se cerrará la conexión con la base de datos.");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Cierre de sesión");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("La sesión ha sido cerrada exitosamente.");
+                successAlert.showAndWait();
+            }
+        });
+
+        logginPane.setVisible(true);
+        mainMenuPane.setVisible(false);
+        createTables_interface.setVisible(false);
+        querysPane.setVisible(false);
+
     }
+
+
 
     public void modelaTabla() {
         this.databases = FXCollections.observableArrayList();
@@ -798,15 +825,50 @@ public class ShowDatabasesController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void createViewQuery(ActionEvent actionEvent) {
-        String viewQuery = "CREATE VIEW " + nameOfView.getText() + " AS " + textFieldQuery.getText();
+    //PENDIENTE CREAR BOTON CREAR VIEW
+    public void createViewQuery(ActionEvent actionEvent) throws  SQLException {
 
-        System.out.println(viewQuery);
+        String viewQuery;
+
+        try{
+            tableViewQuerys.getColumns().clear();
+            tableViewQuerys.getItems().clear();
+
+            String doSelected = dbFilterCB.getValue();
+            String urlToSearch = url + doSelected;
+
+            String nameOfViews =nameOfView.getText();
+            String queryForView = textFieldQuery.getText();
+
+                viewQuery = "CREATE VIEW " + nameOfViews + " AS " + queryForView ;
+                System.out.println(viewQuery);
+                Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
+                pst = connection.prepareStatement(viewQuery+" ;");
+                System.out.println(updateQuery);
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("VISTA CREADA");
+            confirmationAlert.setHeaderText("La vista fue creada.");
+            confirmationAlert.setContentText("Puede revisarla en la ventana principal.");
+
+                pst.executeUpdate();
+
+
+
+
+
+
+        }catch (SQLException e){
+            Alert confirmationAlert = new Alert(Alert.AlertType.ERROR);
+            confirmationAlert.setTitle("ERROR");
+            confirmationAlert.setHeaderText("INGRESE UNA CONSULTA VALIDA.");
+            confirmationAlert.setContentText("No se pudó crear la vista con la consulta.");
+            e.printStackTrace();
+        }
+
+
+
     }
 
-    public void selectedFilter2() {
-
-    }
 
     @javafx.fxml.FXML
     public void backMain(ActionEvent actionEvent) {
@@ -1257,18 +1319,17 @@ public class ShowDatabasesController implements Initializable {
             tableViewQuerys.getItems().clear();
 
             String doSelected = dbFilterCB.getValue();
-
             String urlToSearch = url + doSelected;
 
             String table =  tableSelectedComboBox.getValue();
             String columnToFind = columnasComboBox.getValue();
             String valueToFind = valorTextField.getText();
 
-            deleteQuery = "DELETE FROM "+ table + " WHERE " + columnToFind+"="+valueToFind ;
-             System.out.println(deleteQuery);
+            deleteQuery = "DELETE FROM "+ table + " WHERE " + columnToFind+" = "+valueToFind ;
+            System.out.println(deleteQuery);
 
             Connection connection = DriverManager.getConnection(urlToSearch,userLogged.getUser(), userLogged.getPassword());
-            pst = connection.prepareStatement(deleteQuery+";");
+            pst = connection.prepareStatement(deleteQuery+" ;");
             System.out.println(updateQuery);
             pst.executeUpdate();
 
@@ -1284,7 +1345,6 @@ public class ShowDatabasesController implements Initializable {
                     deletionAlert.setHeaderText(null);
                     deletionAlert.setContentText("El registro ha sido eliminado exitosamente.");
                     deletionAlert.showAndWait();
-                    // Aquí iría la lógica para eliminar el registro
                 }
             });
 
@@ -1344,5 +1404,73 @@ public class ShowDatabasesController implements Initializable {
             showTablesData.getItems().add(data);
         }
         showTablesData.setItems(datosTable);
+    }
+
+
+    public void addNewRegister(){
+        String doSelected = dbFilterCB.getValue();
+
+        String urlToSearch = url + doSelected;
+
+        Table doTableSelected = this.showTables_TableView.getSelectionModel().getSelectedItem();
+        String searchTableData = doTableSelected.getTable().getValue();
+        String tableCBselected = this.tableSelectedComboBox.getValue();
+
+        try (
+
+            Connection conn = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword())) {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableCBselected);
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            String[] columnNames = new String[columnCount];
+            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+                columnNames[columnIndex - 1] = metaData.getColumnName(columnIndex);
+            }
+
+            String[] recordValues = new String[columnCount];
+            for (int i = 0; i < columnCount; i++) {
+                String value = JOptionPane.showInputDialog(null, "Ingrese el valor para la columna '" + columnNames[i] + "':", "Ingresar registro", JOptionPane.PLAIN_MESSAGE);
+                if (value == null) {
+                    return;  // Si el usuario cancela la operación, no se agrega el registro
+                }
+                recordValues[i] = value;
+            }
+
+            StringBuilder queryBuilder = new StringBuilder("INSERT INTO ");
+            queryBuilder.append(tableCBselected);
+            queryBuilder.append(" (");
+            for (int i = 0; i < columnCount; i++) {
+                queryBuilder.append(columnNames[i]);
+                if (i < columnCount - 1) {
+                    queryBuilder.append(", ");
+                }
+            }
+            queryBuilder.append(") VALUES (");
+            for (int i = 0; i < columnCount; i++) {
+                queryBuilder.append("'");
+                queryBuilder.append(recordValues[i]);
+                queryBuilder.append("'");
+                if (i < columnCount - 1) {
+                    queryBuilder.append(", ");
+                }
+            }
+            queryBuilder.append(")");
+
+            stmt.executeUpdate(queryBuilder.toString());
+
+            //showTablesData(); // Actualizar la vista del TableView después de agregar el registro
+
+            JOptionPane.showMessageDialog(null, "Registro agregado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al agregar el registro.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void doNewRegister(ActionEvent actionEvent) {
+        addNewRegister();
     }
 }

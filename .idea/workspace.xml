@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="new changes">
+    <list default="true" id="679daa56-a9ee-493e-aae8-0bc0690f47dc" name="Changes" comment="delete features ready">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/databaseproject/ShowDatabasesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/show_databases.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/databaseproject/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +147,7 @@
       <workItem from="1684545743122" duration="3675000" />
       <workItem from="1684607382035" duration="32256000" />
       <workItem from="1684673829055" duration="15181000" />
-      <workItem from="1684694855483" duration="2620000" />
+      <workItem from="1684694855483" duration="11351000" />
     </task>
     <task id="LOCAL-00001" summary="New files, src, interface">
       <created>1683156037359</created>
@@ -470,7 +471,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684689166024</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="delete features ready">
+      <created>1684697574592</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1684697574592</updated>
+    </task>
+    <task id="LOCAL-00048" summary="delete features ready">
+      <created>1684698182397</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1684698182397</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,7 +503,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed interface errors, table view" />
     <MESSAGE value="working databases interface,  actualy shows all mysqldatabases on pc" />
     <MESSAGE value="SHOW TABLES, NEW OPTIONS, UPDATING ON REAL TIME" />
     <MESSAGE value="BUTTON DELETE, CREATE AND UPDATE WORKING ON DATABASES INTERFACE(CRUD WORKS)" />
@@ -513,6 +527,7 @@
     <MESSAGE value="new interface updates, make querys works" />
     <MESSAGE value="querys interface" />
     <MESSAGE value="new changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="new changes" />
+    <MESSAGE value="delete features ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete features ready" />
   </component>
 </project>
