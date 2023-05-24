@@ -1,15 +1,15 @@
 package com.example.databaseproject.modelo;
 
-public class tablesView {
+public class deleteMethod {
     private String Id;
     private String name;
 
-    public tablesView(){
+    public deleteMethod(){
         this.Id = "";
         this.name = "";
     }
 
-    public tablesView(String Id, String name){
+    public deleteMethod(String Id, String name){
         this.Id = Id;
         this.name = name;
 

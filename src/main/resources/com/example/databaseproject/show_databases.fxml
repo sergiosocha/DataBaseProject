@@ -220,7 +220,7 @@
                </effect>
             </CheckBox>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="259.0" prefHeight="35.0" prefWidth="129.0" styleClass="options" text="VALOR POR DEFECTO" textAlignment="CENTER" textFill="WHITE" />
-            <ComboBox fx:id="extraValueComboBox" layoutX="748.0" layoutY="263.0" prefHeight="35.0" prefWidth="129.0" promptText="Extra" />
+            <ComboBox fx:id="extraValueComboBox" layoutX="748.0" layoutY="263.0" prefHeight="35.0" prefWidth="129.0" promptText="Extra" visible="false" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="114.0" prefHeight="35.0" prefWidth="171.0" styleClass="options" text="NOMBRE TABLA" textAlignment="CENTER" textFill="#e8e8e8" />
             <TextField fx:id="nameTableTextField" layoutX="639.0" layoutY="114.0" prefHeight="35.0" prefWidth="237.0" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="166.0" prefHeight="35.0" prefWidth="171.0" styleClass="options" text="NOMBRE CAMPO" textAlignment="CENTER" textFill="#e8e8e8" />

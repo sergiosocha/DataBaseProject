@@ -1,7 +1,6 @@
 package com.example.databaseproject;
 
 import com.example.databaseproject.modelo.*;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,14 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.Map;
-import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import javax.swing.*;
 
 import static java.util.Arrays.stream;
@@ -81,7 +75,7 @@ public class ShowDatabasesController implements Initializable {
     private Button newFieldButton;
 
     private ObservableList<newTable> newTables;
-    private ObservableList<tablesView> dinamicTables;
+    private ObservableList<deleteMethod> dinamicTables;
 
 
 
@@ -303,8 +297,6 @@ public class ShowDatabasesController implements Initializable {
     public void modelaTabla() {
         this.databases = FXCollections.observableArrayList();
         this.Tables = FXCollections.observableArrayList();
-
-
     }
 
     @javafx.fxml.FXML
@@ -330,9 +322,7 @@ public class ShowDatabasesController implements Initializable {
         Connection(); //Trae la función Connection para poder usarla en el CreateStatement para luego prepara la consulta
         ObservableList<Database> databases = FXCollections.observableArrayList();
         this.Database.setCellValueFactory(new PropertyValueFactory("Database"));//DAMOS FORMATO ALA COLUMNA DE LA TABLA
-
         try {
-
             Statement statement = con.createStatement(); //Usa con previamente declarado en las variables para preparar el Statement
             ResultSet resultSet = statement.executeQuery("SHOW DATABASES");//Con el statement anterior en un nuevo objeto resulset preparamos el query
 
@@ -480,12 +470,10 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void doCreateField(ActionEvent actionEvent) {//CREA EL CAMPO EN LA TAMBLA
-
         try {
             String Default = "";
             String name = nameCampoNewTable.getText();
             String selected = nullCheckBox.isSelected() ? "NULL" : "NOT NULL";
-
             String type = typesComboBox.getValue();
             String extra = extraValueComboBox.getValue() != null ? extraValueComboBox.getValue() : "";
             String defaultValue = defaultValueTextField.getText();
@@ -493,7 +481,6 @@ public class ShowDatabasesController implements Initializable {
             if (!defaultValue.isEmpty()) {
                 Default = "DEFAULT " + defaultValue;
             }
-
             newTable tableData = new newTable(name, type, selected, extra, Default);
             newTables.add(tableData);
             fieldTables.setItems(newTables);
@@ -570,7 +557,6 @@ public class ShowDatabasesController implements Initializable {
     public void doCreateTables(ActionEvent actionEvent) {
         int size = newTables.size();
         String query = "";//STRING QUE SERA LOS ELEMENTOS PARA CONSULTA
-
         for (int i = 0; i < newTables.size(); i++) {//CICLO PARA RECORRER TODOS LOS ELEMENTOS DE LA TABLA CREAR TABLA
             newTable table = newTables.get(i);
             System.out.print(table);
@@ -669,10 +655,8 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void selectTable(Event event) throws SQLException {
-
         showTablesData.getColumns().clear(); //ELIMINAMOS COLUMNAS E ITEMS
         showTablesData.getItems().clear();
-
         //BUSCA BASE DE DATOS
         Database doSelected = this.dataBases_tableView.getSelectionModel().getSelectedItem();
         String searchDatabase = doSelected.getDatabase().getValue();
@@ -871,6 +855,7 @@ public class ShowDatabasesController implements Initializable {
 
     @javafx.fxml.FXML
     public void backMain(ActionEvent actionEvent) {//VOLVER ALA VENTANA PRINCIPAL
+        textFieldQuery.setText("");
         mainMenuPane.setVisible(true);
         createTables_interface.setVisible(false);
         querysPane.setVisible(false);
@@ -903,7 +888,6 @@ public class ShowDatabasesController implements Initializable {
             } else if (!operadoresComboBox.getValue().equals("")) {
                 operadores = operadoresComboBox.getValue();
             }
-
             if (limitTextField.getText().equals("")) {
                 querys = "SELECT " + allValues + " FROM " + table + " WHERE " + column + " " + operadores + " " + "\"" + valor + "\"";
             } else if (!limitTextField.getText().equals("")) {
@@ -1397,9 +1381,10 @@ public class ShowDatabasesController implements Initializable {
         String doSelected = dbFilterCB.getValue();
         String urlToSearch = url + doSelected;
 
-        Table doTableSelected = this.showTables_TableView.getSelectionModel().getSelectedItem();
-        String searchTableData = doTableSelected.getTable().getValue();
-        String tableCBselected = this.tableSelectedComboBox.getValue();
+        //Table doTableSelected = this.showTables_TableView.getSelectionModel().getSelectedItem();
+        //String searchTableData = this.tableSelectedComboBox.getValue();
+        //String tableCBselected = this.tableSelectedComboBox.getValue();
+        String tableCBselected = this.tableSelectedLabel.getText();
 
         try (
             Connection conn = DriverManager.getConnection(urlToSearch, userLogged.getUser(), userLogged.getPassword())) {
